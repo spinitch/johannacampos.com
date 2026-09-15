@@ -1,0 +1,346 @@
+/* ==========================================================================
+   johannacampos.com — shared styles
+   Tokens + type follow johannacampos_redesign2.html; layout follows the Figma
+   (designed on a 1024px frame). Breakpoints: ≤1000 / ≤900 small desktop,
+   ≤860 case-study splits stack, ≤767 mobile menu + stacked bands, ≤480 phone.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #1A1A2E; --coral: #E8624A; --coral-hot: #F0512E; --slate: #4A5568;
+  --muted: #8A8FA0; --bg: #F8F7F4; --white: #FFFFFF; --rule: #E2E0DC;
+  --nav-bg: #0F0F0F; --black: #000000; --rose: #D5CFCF;
+  --text-body: #737373; --text-strong: #202020; --text-soft: #848484;
+  --card-soft: #F7F7F7; --about-bg: #F9F9F9;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --nav-h: 70px;
+  --gutter: 48px;
+}
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: absolute; left: 12px; top: -48px; z-index: 300; background: var(--coral); color: #fff; padding: 10px 16px; font-size: 13px; font-weight: 600; text-decoration: none; }
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+/* Shared eyebrow (orange, letter-spaced caps) */
+.eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); }
+.eyebrow--lg { font-size: 17px; font-weight: 500; letter-spacing: 0.12em; }
+.plus { color: var(--coral); }
+
+/* ==========================================================================
+   1. NAV (shared)
+   ========================================================================== */
+.site-nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); background: var(--nav-bg); display: flex; align-items: center; justify-content: space-between; padding: 0 38px 0 48px; }
+.nav-brand { display: flex; align-items: center; gap: 50px; text-decoration: none; }
+.nav-mark { width: 27px; height: auto; }
+.nav-wordmark { font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); white-space: nowrap; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: #FFFFFF; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--coral); }
+.nav-toggle { display: none; background: none; border: 0; cursor: pointer; width: 44px; height: 44px; margin-right: -10px; position: relative; }
+.nav-toggle span { position: absolute; left: 11px; right: 11px; height: 2px; background: #fff; border-radius: 1px; transition: transform 0.25s, opacity 0.2s, top 0.25s; }
+.nav-toggle span:nth-child(1) { top: 15px; }
+.nav-toggle span:nth-child(2) { top: 21px; }
+.nav-toggle span:nth-child(3) { top: 27px; }
+.nav-open .nav-toggle span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav-open .nav-toggle span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* ==========================================================================
+   2. CTA BAND (shared) — "Ready to build something that matters?"
+   ========================================================================== */
+.cta-band { background: var(--rose); padding: 92px 24px 86px; text-align: center; }
+.cta-band h2 { font-family: var(--serif); font-size: clamp(34px, 5.1vw, 52px); font-weight: 400; line-height: 1.15; color: var(--ink); max-width: 640px; margin: 22px auto 22px; }
+.btn-primary { background: var(--ink); color: var(--bg); padding: 16px 32px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; display: inline-block; }
+.btn-primary:hover { background: var(--coral); }
+.btn-coral { background: var(--coral-hot); color: #fff; padding: 16px 32px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s; }
+.btn-coral:hover { background: var(--coral); }
+
+/* ==========================================================================
+   3. FOOTER (shared)
+   ========================================================================== */
+.site-footer { background: var(--ink); padding: 44px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+.footer-logo { font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg); text-decoration: none; }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--coral); }
+.footer-copy { font-size: 12px; color: var(--muted); justify-self: end; }
+
+/* ==========================================================================
+   4. HOME
+   ========================================================================== */
+/* PHOTO HERO — verbatim from johannacampos_redesign2.html, except margin-top
+   (the nav is now sticky rather than fixed, so no offset is needed). */
+.photo-hero { position: relative; width: 100%; aspect-ratio: 2400 / 1350; overflow: hidden; background: #0a0a14; margin-top: 0; }
+.photo-hero-grid { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(5, 1fr); gap: 3px; background: #0a0a14; }
+.ph-tile {
+  width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; display: block;
+  filter: grayscale(1) contrast(1.1) brightness(0.98);
+  opacity: 0; animation: ph-fade-in 0.9s ease forwards;
+}
+@keyframes ph-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ph-tile, .photo-hero-panel { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+.photo-hero-panel {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%);
+  width: 64%; background: rgba(10,10,18,0.62);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px; border: 1px solid rgba(255,255,255,0.09);
+  padding: 5.2% 6%; text-align: center;
+  opacity: 0; animation: ph-panel-in 1s ease forwards; animation-delay: 1.15s;
+}
+@keyframes ph-panel-in {
+  from { opacity: 0; transform: translate(-50%, -46%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+.ph-star { width: clamp(22px, 2.4vw, 34px); height: clamp(22px, 2.4vw, 34px); margin: 0 auto 14px; display: block; }
+.ph-star polygon { fill: var(--coral); }
+.ph-eyebrow { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(10px, 1.15vw, 17px); letter-spacing: 0.22em; color: var(--coral); margin-bottom: 16px; }
+.ph-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 3vw, 46px); line-height: 1.34; color: #f8f7f4; }
+.ph-attr { font-family: 'Inter', sans-serif; font-size: clamp(8px, 0.72vw, 11px); letter-spacing: 0.18em; color: var(--coral); margin-top: 18px; }
+
+@media (max-width: 900px) {
+  .photo-hero { aspect-ratio: 4 / 5; }
+  .photo-hero-panel { width: 86%; padding: 7% 6%; }
+}
+@media (max-width: 520px) {
+  .photo-hero { aspect-ratio: 3 / 4; }
+  .photo-hero-panel { width: 90%; padding: 8% 6%; }
+}
+
+/* Intro */
+.home-intro { background: var(--white); padding: 88px 24px 92px; }
+.home-intro p { max-width: 840px; margin: 0 auto; text-align: center; font-size: 17px; font-weight: 300; line-height: 1.82; color: var(--slate); }
+
+/* How I can help band */
+.help-band { background: var(--black); padding: 44px var(--gutter) 80px; }
+.help-band .eyebrow { text-align: center; margin-bottom: 44px; }
+.help-cards { max-width: 928px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 29px; }
+.help-card { background: var(--white); padding: 44px 32px 50px; display: flex; flex-direction: column; min-height: 286px; }
+.help-card h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 14px; }
+.help-card p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--slate); margin-bottom: 36px; }
+.link-more { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); text-decoration: none; border-bottom: 1px solid var(--coral); padding-bottom: 3px; align-self: flex-start; margin-top: auto; }
+.link-more span { display: inline-block; transition: transform 0.2s; }
+.link-more:hover span { transform: translateX(3px); }
+
+/* Selected work */
+.work { background: var(--white); padding: 58px var(--gutter) 66px; }
+.work .eyebrow { text-align: center; margin-bottom: 64px; }
+.work-grid { max-width: 830px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 121px; row-gap: 56px; }
+.work-card { text-decoration: none; display: block; }
+.work-card-img { overflow: hidden; aspect-ratio: 354 / 306; background: #eee; }
+.work-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.work-card:hover .work-card-img img { transform: scale(1.04); }
+.work-card h3 { font-size: 17px; font-weight: 600; color: var(--slate); margin: 14px 0 2px; line-height: 1.4; }
+.work-card:hover h3 { color: var(--coral); }
+.work-card p { font-size: 13px; color: var(--slate); line-height: 1.4; }
+
+/* About band */
+.about-band { background: var(--black); padding: 96px var(--gutter) 46px; }
+.about-band-inner { max-width: 830px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 570px) 100px; column-gap: 80px; align-items: start; }
+.about-band .eyebrow { margin-bottom: 8px; }
+.about-band p { font-size: 14.5px; font-weight: 300; line-height: 1.9; color: #FFFFFF; margin-bottom: 26px; }
+.about-band .btn-coral { margin-top: 12px; }
+.about-band-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-top: 30px; margin-right: 0; }
+
+/* ==========================================================================
+   5. ABOUT ME
+   ========================================================================== */
+.about-page { background: var(--about-bg); padding: 50px 24px 50px; }
+.about-page h1 { font-family: var(--sans); font-size: 19px; font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase; text-align: center; color: #000; margin-bottom: 50px; }
+.stat-grid { max-width: 675px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 13px; row-gap: 18px; }
+.stat-card { background: var(--white); min-height: 228px; padding: 18px 18px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.stat-num { font-family: var(--serif); font-variant-numeric: lining-nums; font-size: 84px; font-weight: 500; line-height: 1; color: var(--coral-hot); margin-bottom: 10px; }
+.stat-label { font-size: 12.5px; font-weight: 600; line-height: 1.25; color: #333; max-width: 150px; margin-bottom: 18px; }
+.stat-detail { font-size: 12.5px; line-height: 1.22; color: var(--text-soft); max-width: 170px; }
+.stat-product { width: 40px; height: auto; margin-top: -4px; }
+.stat-card--wide { grid-column: 1 / -1; min-height: 137px; flex-direction: row; justify-content: center; gap: 30px; padding: 16px 40px; margin-top: -4px; }
+.stat-card--wide .stat-num { font-size: 96px; margin: 0; flex: none; width: 90px; text-align: center; }
+.stat-card--wide .stat-text { font-size: 12.5px; line-height: 1.22; color: #333; text-align: left; max-width: 310px; }
+.stat-card--wide img { width: 57px; height: 57px; border-radius: 50%; object-fit: cover; flex: none; margin-left: 30px; }
+
+/* ==========================================================================
+   6. HOW I CAN HELP (tabbed)
+   ========================================================================== */
+.help-hero { background: linear-gradient(105deg, #000 0%, #050505 30%, #262626 55%, #4a4a4a 80%, #5a5a5a 100%); padding: 56px 24px 0; }
+.help-hero .eyebrow { text-align: center; margin-bottom: 46px; }
+.tablist { max-width: 896px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+.tab { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.15; color: #FFFFFF; background: rgba(255,255,255,0.13); border: 0; min-height: 73px; padding: 12px 16px; cursor: pointer; transition: background 0.2s; }
+.tab:hover { background: rgba(255,255,255,0.2); }
+.tab[aria-selected="true"] { background: var(--white); color: var(--ink); cursor: default; }
+.tab .tab-line { display: inline; }
+.help-body { background: var(--white); padding: 64px 24px 56px; }
+.help-panel { max-width: 668px; margin: 0 auto; }
+.js .help-panel:not(.is-active) { display: none; }
+.help-panel + .help-panel { margin-top: 96px; } /* no-JS fallback: panels stack */
+.js .help-panel + .help-panel { margin-top: 0; }
+.help-panel .help-preamble { font-size: 18.5px; font-weight: 300; line-height: 1.46; color: var(--slate); padding-left: 7px; margin-bottom: 42px; }
+.help-preamble strong { font-weight: 600; }
+.help-panel h3 { font-size: 16.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; color: #000; margin-bottom: 14px; }
+.help-panel p, .help-panel li { font-size: 17.5px; line-height: 1.55; color: var(--text-strong); }
+.help-section { margin-bottom: 44px; }
+.help-section > p + p, .help-section > p + ul { margin-top: 0; }
+.help-list { list-style: disc; padding-left: 27px; margin-top: 26px; display: grid; gap: 26px; }
+.help-list strong, .help-addon strong { font-weight: 600; color: #000; }
+.help-addon { margin-top: 30px; padding: 18px 22px; border-left: 2px solid var(--coral-hot); background: #FBFAF8; }
+.case-card { background: var(--card-soft); border-radius: 40px; padding: 52px 56px 80px; margin: 58px 37px 0; }
+.case-card h3 { font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: var(--coral-hot); text-align: center; margin-bottom: 36px; }
+.case-card p + p { margin-top: 27px; }
+
+/* ==========================================================================
+   7. CASE STUDY template
+   ========================================================================== */
+.cs-hero { position: relative; padding: 56px 24px 0; text-align: center; background: #ccc; overflow: hidden; }
+.cs-hero--telehealth { background:
+    radial-gradient(circle, rgba(255,255,255,0.5) 1.6px, transparent 2.2px) 12px 12px / 31px 27px,
+    linear-gradient(180deg, #BAB2CC 0%, #ABD0D0 100%); }
+.cs-hero--cancercompass { background:
+    linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%),
+    linear-gradient(90deg, #607752 0 22.3%, #DA8F50 22.3% 50.1%, #C86647 50.1% 77.8%, #EEDDBC 77.8% 100%); }
+.cs-hero--symptom { background: #B0BFD2 url("../img/symptom-checker/symptom-checker-hero-bg.jpg") center / cover no-repeat; }
+.cs-hero--lakatta { background: #E1EAF7 url("../img/lakatta/lakatta-hero-hills.svg") right top / auto 330px no-repeat; }
+.cs-hero .cs-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #000; margin-bottom: 4px; }
+.cs-hero h1 { font-family: var(--sans); font-size: 36px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em; color: #000; margin-bottom: 30px; }
+.cs-tagbox { position: relative; background: var(--white); max-width: 825px; margin: 0 auto; padding: 24px 32px 22px; }
+.cs-tags { list-style: none; max-width: 540px; margin: 0 auto; font-size: 15px; line-height: 1.68; color: var(--slate); }
+.cs-tags li { display: inline; }
+.cs-tags li:not(:last-child)::after { content: "·"; color: var(--coral); margin: 0 0.85em 0 0.75em; }
+.cs-body { background: var(--white); padding: 70px 0 72px; }
+.cs-section { max-width: 728px; margin: 0 auto; padding: 0 24px; }
+.cs-section + .cs-section, .cs-section + .cs-split, .cs-split + .cs-section, .cs-figure + .cs-section, .cs-quote + .cs-section, .cs-section + .cs-figure { margin-top: 72px; }
+.cs-section h2 { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.005em; color: #000; margin-bottom: 12px; }
+.cs-section p { font-size: 14.5px; line-height: 1.66; color: var(--text-body); }
+.cs-section p + p { margin-top: 24px; }
+
+/* Image + text split (image bleeds off the left edge) */
+.cs-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 488px); align-items: center; column-gap: 44px; padding-right: max(24px, calc((100% - 680px) / 2)); }
+.cs-split-img { justify-self: start; width: clamp(240px, 28vw, 380px); }
+.cs-split-img img { width: 100%; height: auto; }
+.cs-split .cs-section { max-width: none; margin: 0; padding: 0; }
+
+/* Figures */
+.cs-figure { margin: 72px auto 0; padding: 0 24px; }
+.cs-figure img { margin: 0 auto; height: auto; }
+.cs-figure--telehealth img { width: 614px; }
+.cs-figure--bodymap img { width: 567px; }
+.cs-figure--lakatta-desktop img { width: 681px; }
+.cs-figure-pair { max-width: 690px; margin: 72px auto 0; padding: 0 24px; display: grid; grid-template-columns: 292fr 307fr; column-gap: 50px; align-items: start; }
+.cs-figure-pair img { width: 100%; height: auto; }
+.cs-figure-pair + .cs-figure { margin-top: 62px; }
+.cs-diagram { max-width: 488px; margin: 6px auto 0; padding: 0 24px; }
+.cs-diagram svg { width: 100%; height: auto; display: block; }
+
+/* CancerCompass pull-quote band */
+.cs-quote { margin-top: 70px; background: linear-gradient(90deg, #4C7B5D 0%, #457A70 50%, #3B758C 100%); padding: 38px 24px 40px; text-align: center; }
+.cs-quote p { font-size: 18.5px; font-weight: 600; line-height: 1.65; color: #fff; }
+.cs-quote + .cs-section { margin-top: 104px; }
+
+/* CancerCompass collage (positions measured from the Figma frame) */
+.cs-collage { position: relative; max-width: 700px; margin: 72px auto 0; aspect-ratio: 700 / 500; }
+.cs-collage img { position: absolute; height: auto; }
+.cs-collage .c-web { left: 0; top: 0; width: 61.9%; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+.cs-collage .c-brand { left: 42.9%; top: 42.2%; width: 57.1%; border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+.cs-collage .c-social { left: 2.9%; top: 68.8%; width: 36.4%; }
+
+/* ==========================================================================
+   8. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1000px) {
+  :root { --gutter: 40px; }
+  .work-grid { column-gap: 72px; }
+}
+
+@media (max-width: 900px) {
+  .help-cards { gap: 18px; }
+  .help-card { padding: 36px 24px 40px; }
+  .work-grid { column-gap: 40px; }
+  .tab { font-size: 21px; }
+}
+
+/* Image + text splits stack before the image column gets too narrow */
+@media (max-width: 860px) {
+  .cs-split { grid-template-columns: 1fr; padding-right: 0; row-gap: 28px; }
+  .cs-split-img { width: min(78vw, 340px); }
+  .cs-split .cs-section { max-width: 728px; margin: 0 auto; padding: 0 24px; width: 100%; }
+}
+
+/* Tablet portrait & below: mobile menu, stacked bands */
+@media (max-width: 767px) {
+  :root { --nav-h: 60px; --gutter: 24px; }
+  .site-nav { padding: 0 20px; }
+  .nav-brand { gap: 16px; }
+  .nav-mark { width: 24px; }
+  .nav-toggle { display: block; margin-left: auto; }
+  .nav-links { display: none; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--nav-bg); flex-direction: column; gap: 0; padding: 8px 20px 20px; border-top: 1px solid rgba(255,255,255,0.08); box-shadow: 0 12px 24px rgba(0,0,0,0.35); }
+  .nav-open .nav-links { display: flex; }
+  .nav-links li + li { border-top: 1px solid rgba(255,255,255,0.08); }
+  .nav-links a { display: block; padding: 16px 0; font-size: 15px; }
+
+  .home-intro { padding: 60px 24px; }
+  .home-intro p { font-size: 16px; text-align: left; }
+  .help-band { padding: 44px var(--gutter) 56px; }
+  .help-band .eyebrow, .work .eyebrow { margin-bottom: 32px; }
+  .help-cards { grid-template-columns: 1fr; max-width: 480px; }
+  .help-card { min-height: 0; }
+  .work { padding: 52px var(--gutter) 60px; }
+  .work-grid { grid-template-columns: 1fr; max-width: 480px; row-gap: 44px; }
+  .about-band { padding: 64px var(--gutter) 56px; }
+  .about-band-inner { grid-template-columns: 1fr; }
+  .about-band-photo { grid-row: 1; margin: 0 0 28px; }
+
+  .cta-band { padding: 64px 24px 68px; }
+
+  .site-footer { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 36px 20px; gap: 18px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+  .footer-copy { justify-self: center; }
+
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .stat-card--wide { flex-wrap: wrap; gap: 16px 24px; padding: 28px 24px; }
+  .stat-card--wide img { margin-left: 0; }
+
+  .help-hero { padding-top: 40px; }
+  .help-hero .eyebrow { margin-bottom: 30px; }
+  .tablist { gap: 6px; }
+  .tab { font-size: 19px; min-height: 64px; padding: 10px 8px; }
+  .tab .tab-line { display: block; }
+  .help-body { padding: 44px 24px 48px; }
+  .help-panel .help-preamble { font-size: 17.5px; }
+  .help-panel p, .help-panel li { font-size: 16.5px; }
+  .help-panel .help-preamble { padding-left: 0; }
+  .case-card { margin: 48px 0 0; padding: 40px 28px 48px; border-radius: 28px; }
+
+  .cs-hero { padding-top: 44px; }
+  .cs-hero h1 { font-size: 30px; margin-bottom: 24px; }
+  .cs-hero--lakatta { background-size: auto 250px; }
+  .cs-tagbox { padding: 18px 20px; }
+  .cs-tags { font-size: 14px; }
+  .cs-body { padding: 52px 0 56px; }
+  .cs-section + .cs-section, .cs-section + .cs-split, .cs-split + .cs-section, .cs-figure + .cs-section, .cs-quote + .cs-section, .cs-section + .cs-figure { margin-top: 52px; }
+  .cs-figure, .cs-figure-pair { margin-top: 52px; }
+  .cs-figure-pair { grid-template-columns: 1fr; row-gap: 20px; max-width: 420px; }
+  .cs-quote p { font-size: 16px; }
+  .cs-quote + .cs-section { margin-top: 64px; }
+  .cs-collage { aspect-ratio: auto; max-width: 480px; padding: 0 24px; display: grid; gap: 20px; }
+  .cs-collage img { position: static; width: 100% !important; }
+  .cs-collage .c-social { width: 72% !important; justify-self: center; }
+}
+
+@media (max-width: 480px) {
+  .nav-wordmark { font-size: 12px; letter-spacing: 0.1em; }
+  .stat-grid { grid-template-columns: 1fr; max-width: 340px; }
+  .stat-card { min-height: 0; padding: 24px 20px 28px; }
+  .stat-card--wide { flex-direction: column; text-align: center; }
+  .stat-card--wide .stat-text { text-align: center; }
+  .tab { font-size: 16px; }
+  .help-list { padding-left: 20px; }
+  .case-card { padding: 34px 22px 40px; }
+  .cs-hero h1 { font-size: 27px; }
+}
