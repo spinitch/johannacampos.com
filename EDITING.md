@@ -5,6 +5,7 @@
 Go to **https://johannacampos.com/admin** and log in with GitHub.
 
 - **Pages**: Home, How I Can Help (which also feeds the home page service cards), About, Contact.
+- **Pages → Chat**: the scripted chat on the test home page at johannacampos.com/v2 (greeting, questions, answers, buttons). It isn't AI; visitors only see the answers you write. /v2 is hidden from search engines and not linked from the site.
 - **Work**: the case-study cards on the home page (title, tags, thumbnail, order).
 - **Case studies**: text, tags and images for each case study.
 - **Site settings**: Calendly link, LinkedIn, email, footer band, copyright.

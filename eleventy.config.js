@@ -22,6 +22,37 @@ const noWidow = (html) => html.replace(/ (\S+)$/, "&nbsp;$1");
 export default function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml", (contents) => loadYaml(contents));
 
+  // Scripted chat data for assets/js/chat.js. Each blank-line-separated
+  // paragraph of an answer becomes its own bubble.
+  eleventyConfig.addFilter("chatJson", (chat, site) => {
+    const bubbles = (s) => String(s ?? "").split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
+      .map((p) => md.renderInline(p).replace(/\n/g, ""));
+    const data = {
+      greetings: chat.greetings,
+      opening: bubbles(chat.opening),
+      more: bubbles(chat.more_prompt),
+      done: bubbles(chat.done_prompt),
+      restart: chat.restart_label,
+      avatar: String(chat.avatar ?? ""),
+      book: { label: chat.book_label, url: site.booking_url },
+      topics: (chat.topics ?? []).map((t) => ({
+        question: t.question,
+        answer: bubbles(t.answer),
+        buttons: (t.buttons ?? []).map((b) => ({ label: b.label, url: b.link })),
+        book: Boolean(t.book),
+      })),
+    };
+    // Safe inside <script>: no "</script>" or HTML comment openers survive.
+    return JSON.stringify(data).replace(/</g, "\\u003c");
+  });
+
+  // Pages in subfolders (/v2/) share templates written with relative links,
+  // so point those links at the site root instead.
+  eleventyConfig.addTransform("rootLinks", function (content) {
+    if (!(this.page.outputPath || "").match(/\/v2\//)) return content;
+    return content.replace(/\b(href|src)="(?![a-z]+:|\/|#)/g, '$1="/');
+  });
+
   // Paragraphs, lists, bold, links.
   eleventyConfig.addFilter("md", (s) => md.render(String(s ?? "")));
   // A single line: bold, italics, links, no <p> wrapper.

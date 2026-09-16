@@ -1,0 +1,12 @@
+---
+# Test version of the home page with the scripted chat. Not linked from the
+# site and hidden from search engines; share the URL directly.
+layout: base.njk
+permalink: v2/index.html
+noindex: true
+showChat: true
+eleventyComputed:
+  title: "{{ home.page_title }}"
+  description: "{{ home.description }}"
+---
+{% include "home-body.njk" %}

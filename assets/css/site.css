@@ -90,6 +90,7 @@ a { color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ph-tile, .photo-hero-panel { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .chat-bubble, .chat-chip, .chat-typing span { animation: none !important; }
 }
 .photo-hero-panel {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%);
@@ -307,6 +308,49 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
 .form-success { padding: 22px 24px; background: rgba(248,247,244,0.08); border: 1px solid rgba(248,247,244,0.15); font-size: 14px; color: var(--bg); line-height: 1.75; }
 
 /* ==========================================================================
+   9b. SCRIPTED CHAT (home page test at /v2)
+   ========================================================================== */
+.chat-band { background: var(--bg); padding: 72px 24px 80px; }
+.chat-eyebrow { text-align: center; font-size: 15px; margin-bottom: 22px; }
+.chat { max-width: 640px; margin: 0 auto; background: var(--white); border: 1px solid var(--rule); box-shadow: 0 18px 40px -24px rgba(26,26,46,0.25); }
+.chat-head { display: flex; align-items: center; gap: 14px; padding: 18px 22px; border-bottom: 1px solid var(--rule); }
+.chat-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: none; }
+.chat-name { font-family: var(--serif); font-size: 26px; font-weight: 500; line-height: 1.1; color: var(--ink); }
+.chat-status { font-size: 13px; line-height: 1.4; color: var(--muted); }
+.chat-log { height: 420px; overflow-y: auto; padding: 22px 22px 8px; display: flex; flex-direction: column; gap: 14px; overscroll-behavior: contain; }
+.chat-row { display: flex; gap: 10px; align-items: flex-start; }
+.chat-row--you { justify-content: flex-end; }
+.chat-row-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; margin-top: 2px; }
+.chat-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; max-width: 82%; }
+.chat-bubble { font-size: 16px; line-height: 1.55; padding: 10px 15px; border-radius: 18px; background: #F1EFEA; color: var(--text-strong); animation: chat-in 0.25s ease-out; }
+.chat-stack .chat-bubble:first-child { border-top-left-radius: 6px; }
+.chat-bubble strong { font-weight: 600; }
+.chat-bubble a { color: var(--coral-hot); text-decoration: underline; text-underline-offset: 2px; }
+.chat-row--you .chat-bubble { max-width: 82%; background: var(--ink); color: #fff; border-top-right-radius: 6px; }
+.chat-typing { display: inline-flex; gap: 4px; padding: 14px 16px; border-radius: 18px; border-top-left-radius: 6px; background: #F1EFEA; }
+.chat-typing span { width: 7px; height: 7px; border-radius: 50%; background: #A7A39B; animation: chat-dot 1.1s infinite ease-in-out; }
+.chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+.chat-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chat-action { display: inline-block; padding: 9px 16px; border-radius: 999px; background: var(--coral-hot); color: #fff; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+.chat-action:hover { background: var(--ink); }
+.chat-choices { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; padding: 12px 22px 22px; min-height: 22px; }
+.chat-chip { font-family: var(--sans); font-size: 14.5px; line-height: 1.35; text-align: left; padding: 9px 15px; border-radius: 20px; border: 1px solid var(--coral-hot); background: var(--white); color: var(--ink); cursor: pointer; transition: background 0.2s, color 0.2s; animation: chat-in 0.25s ease-out; }
+.chat-chip--quiet { border-color: var(--rule); color: var(--muted); }
+@media (hover: hover) {
+  .chat-chip:hover { background: var(--coral-hot); color: #fff; }
+  .chat-chip--quiet:hover { background: var(--rule); color: var(--ink); }
+}
+@keyframes chat-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes chat-dot { 0%, 60%, 100% { opacity: 0.35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+/* Without JavaScript: a plain question-and-answer list instead. */
+.chat-fallback { padding: 22px; }
+.chat-fallback details { border-top: 1px solid var(--rule); padding: 12px 0; }
+.chat-fallback summary { cursor: pointer; font-weight: 500; }
+.chat-fallback p { margin: 10px 0; font-size: 16px; line-height: 1.55; }
+.js .chat-fallback, html:not(.js) .chat-log, html:not(.js) .chat-choices { display: none; }
+
+/* ==========================================================================
    10. RESPONSIVE
    ========================================================================== */
 @media (max-width: 1000px) {
@@ -341,6 +385,11 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .nav-links a { display: block; padding: 16px 0; font-size: 15px; }
 
   .home-intro { padding: 60px 24px; }
+  .chat-band { padding: 52px 16px 60px; }
+  .chat-head { padding: 14px 16px; }
+  .chat-log { height: 380px; padding: 18px 14px 6px; }
+  .chat-stack { max-width: 88%; }
+  .chat-choices { padding: 10px 14px 18px; }
   .home-intro p { font-size: 17px; text-align: left; }
   .help-band { padding: 44px var(--gutter) 56px; }
   .help-band .eyebrow, .work .eyebrow { margin-bottom: 32px; }

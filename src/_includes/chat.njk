@@ -1,0 +1,29 @@
+<!-- SCRIPTED CHAT (v2 test) — copy in src/_data/chat.yml, behaviour in assets/js/chat.js -->
+<section class="chat-band" aria-labelledby="chat-heading">
+  <p class="eyebrow chat-eyebrow">{{ chat.eyebrow }}</p>
+  <div class="chat" data-chat>
+    <header class="chat-head">
+      <img class="chat-avatar" src="{{ chat.avatar | asset }}" alt="" width="48" height="48">
+      <div>
+        <h2 id="chat-heading" class="chat-name">{{ chat.name }}</h2>
+        <p class="chat-status">{{ chat.status }}</p>
+      </div>
+    </header>
+    <div class="chat-log" role="log" aria-live="polite"></div>
+    <div class="chat-choices" role="group" aria-label="Questions you can ask"></div>
+
+    {#- Without JavaScript, show the questions and answers as a plain list. #}
+    <div class="chat-fallback">
+      <p class="chat-bubble">{{ chat.opening }}</p>
+      {%- for t in chat.topics %}
+      <details>
+        <summary>{{ t.question }}</summary>
+        {{ t.answer | md | safe }}
+        {%- for b in t.buttons %} <a class="chat-action" href="{{ b.link }}">{{ b.label }}</a>{% endfor %}
+        {%- if t.book %} <a class="chat-action" href="{{ site.booking_url }}" target="_blank" rel="noopener">{{ chat.book_label }}</a>{% endif %}
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+  <script type="application/json" id="chat-data">{{ chat | chatJson(site) | safe }}</script>
+</section>

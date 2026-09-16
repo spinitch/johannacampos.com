@@ -62,6 +62,45 @@ collections:
               - {label: Photo, name: photo, widget: image, hint: "Shown as a circle; use a square photo."}
               - {label: Photo alt text, name: photo_alt, widget: string}
 
+      - label: Chat (test home page at /v2)
+        name: chat
+        file: src/_data/chat.yml
+        fields:
+          - {label: Heading above the chat, name: eyebrow, widget: string}
+          - {label: Name, name: name, widget: string}
+          - {label: Status line, name: status, widget: string, hint: "Small grey text under your name."}
+          - {label: Photo, name: avatar, widget: image, hint: "Shown as a circle; use a square photo."}
+          - label: Greeting (by the visitor’s time of day)
+            name: greetings
+            widget: object
+            fields:
+              - {label: Before noon, name: morning, widget: string}
+              - {label: Noon to 6 pm, name: afternoon, widget: string}
+              - {label: After 6 pm, name: evening, widget: string}
+          - {label: First question, name: opening, widget: text, hint: "Follows the greeting. A blank line makes a second message bubble."}
+          - {label: After each answer, name: more_prompt, widget: text}
+          - {label: When every question has been asked, name: done_prompt, widget: text}
+          - {label: Start-over button, name: restart_label, widget: string}
+          - {label: Booking button, name: book_label, widget: string, hint: "Opens the Calendly link from Site settings."}
+          - label: Questions
+            name: topics
+            widget: list
+            summary: "{{fields.question}}"
+            collapsed: true
+            hint: "Visitors tap a question and get your answer. Drag to reorder."
+            fields:
+              - {label: Question (what the visitor taps), name: question, widget: string}
+              - {label: Your answer, name: answer, widget: text, hint: "Each paragraph (blank line between) is its own message bubble. **double asterisks** = bold; links: [words](about.html)"}
+              - label: Buttons after the answer
+                name: buttons
+                widget: list
+                required: false
+                summary: "{{fields.label}}"
+                fields:
+                  - {label: Button text, name: label, widget: string}
+                  - {label: Link, name: link, widget: string, hint: "A page like about.html, how-i-can-help.html#design-deliver, or #work for the work grid on this page."}
+              - {label: Add the booking button, name: book, widget: boolean, default: false, required: false}
+
       - label: How I Can Help (and the home page service cards)
         name: services
         file: src/_data/offerings.yml

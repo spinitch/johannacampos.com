@@ -6,6 +6,9 @@
 {#- title/description arrive already escaped: pages set them via eleventyComputed templates. #}
 <title>{{ title | safe }}</title>
 <meta name="description" content="{{ description | safe }}">
+{%- if noindex %}
+<meta name="robots" content="noindex">
+{%- endif %}
 {%- if og %}
 <meta property="og:title" content="{{ title | safe }}">
 <meta property="og:description" content="{{ og.description | safe }}">
@@ -16,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
-{%- if tabs %}
+{%- if tabs or showChat %}
 <script>document.documentElement.classList.add('js');</script>
 {%- endif %}
 </head>
@@ -71,5 +74,8 @@
 </footer>
 
 <script src="assets/js/site.js" defer></script>
+{%- if showChat %}
+<script src="assets/js/chat.js" defer></script>
+{%- endif %}
 </body>
 </html>

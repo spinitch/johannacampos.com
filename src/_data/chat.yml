@@ -1,0 +1,64 @@
+eyebrow: Say Hello
+name: Johanna
+status: Pre-written answers. The real me replies by email.
+avatar: /assets/img/johanna-portrait.png
+greetings:
+  morning: Good morning! ☀️
+  afternoon: Good afternoon!
+  evening: Good evening! 🌙
+opening: How can I help you today?
+more_prompt: Anything else I can help with?
+done_prompt: That’s everything I’ve got pre-written. The best next step is a quick call.
+restart_label: Start over
+book_label: Book a free 30-min call
+topics:
+  - question: I have a product, but I’m not sure it’s the right one
+    answer: |-
+      That gap between “it works” and “it’s ready” is exactly what **Dissect + Diagnose** is for.
+
+      It’s a fixed-scope audit. I talk with your users and stakeholders, map how the experience actually works, and hand you findings ranked by impact, so you know what to fix first.
+    buttons:
+      - label: How the audit works
+        link: how-i-can-help.html#dissect-diagnose
+    book: false
+  - question: My product works, but it isn’t landing
+    answer: |-
+      Been there! That’s **Design + Deliver**.
+
+      We close the gap between functional and great: research, design, and a system your engineers can build from. I can even turn it into a working prototype you can put in front of users or investors.
+    buttons:
+      - label: About Design + Deliver
+        link: how-i-can-help.html#design-deliver
+    book: false
+  - question: We need a design leader, not a full-time hire
+    answer: |-
+      That’s **Direct + Develop**.
+
+      I take the design seat at your leadership table, part-time. I set direction, keep design and engineering moving together, and build a practice your team can run on its own.
+    buttons:
+      - label: About Direct + Develop
+        link: how-i-can-help.html#direct-develop
+    book: false
+  - question: Who are you, anyway?
+    answer: |-
+      Ha, fair question.
+
+      I’ve been designing my whole life: trained in interior design in the Philippines, then visual design and the early web, and eventually products used by millions.
+
+      These days I care most about making things simpler, so people spend less time on screens and more time being human.
+    buttons:
+      - label: More about me
+        link: about.html
+    book: false
+  - question: Can I see your work?
+    answer: |-
+      Of course! A few favorites: a travel app I built solo, an AI-powered cancer care platform, WebMD’s Symptom Checker, and a telehealth service.
+    buttons:
+      - label: See my work
+        link: "#work"
+    book: false
+  - question: I’m not sure yet. Can we just talk?
+    answer: |-
+      Absolutely. Grab a free 30-minute call and we’ll figure it out together.
+    buttons: []
+    book: true
