@@ -122,6 +122,10 @@ a { color: inherit; }
 /* Intro */
 .home-intro { background: var(--white); padding: 88px 24px 92px; }
 .home-intro p { max-width: 840px; margin: 0 auto; text-align: center; font-size: 18px; font-weight: 300; line-height: 1.82; color: var(--slate); }
+.home-intro p + p { margin-top: 1.4em; }
+/* Alignment is chosen in the CMS; phones always get left-aligned text (see 767px block). */
+.home-intro--left p { text-align: left; }
+.home-intro--right p { text-align: right; }
 
 /* How I can help band */
 .help-band { background: var(--black); padding: 44px var(--gutter) 80px; }
@@ -196,7 +200,7 @@ a { color: inherit; }
 .help-panel h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; color: #000; margin-bottom: 14px; }
 .help-panel p, .help-panel li { font-size: 17px; line-height: 1.7; color: var(--text-strong); }
 .help-section { margin-bottom: 44px; }
-.help-section > p + p { margin-top: 0; }
+.help-section > p + p { margin-top: 20px; }
 .help-list { list-style: disc; padding-left: 27px; margin-top: 24px; display: grid; gap: 22px; }
 .help-list strong { font-weight: 600; color: #000; }
 .text-link { color: var(--coral-hot); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }

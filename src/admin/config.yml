@@ -43,7 +43,8 @@ collections:
               - {label: Eyebrow, name: eyebrow, widget: string}
               - {label: Quote, name: quote, widget: text, hint: "Wrap words in **double asterisks** to give them the orange underline."}
               - {label: Attribution, name: attribution, widget: string}
-          - {label: Intro paragraph, name: intro, widget: text}
+          - {label: Intro, name: intro, widget: text, hint: "Press Return for a line break; leave a blank line to start a new paragraph."}
+          - {label: Intro alignment, name: intro_align, widget: select, default: center, options: [{label: Centered, value: center}, {label: Left, value: left}, {label: Right, value: right}], hint: "On phones the intro is always left-aligned so it's easier to read."}
           - label: Book a call (under the service cards)
             name: book
             widget: object

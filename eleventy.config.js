@@ -3,8 +3,8 @@
 import { load as loadYaml } from "js-yaml";
 import markdownIt from "markdown-it";
 
-const md = markdownIt({ html: true });
-const mdBreaks = markdownIt({ html: true, breaks: true });
+// breaks: a single Return in the CMS is a line break; a blank line starts a new paragraph.
+const md = markdownIt({ html: true, breaks: true });
 
 // Links written in the CMS get the site's coral underline style.
 const defaultLinkOpen = md.renderer.rules.link_open ||
@@ -27,7 +27,7 @@ export default function (eleventyConfig) {
   // A single line: bold, italics, links, no <p> wrapper.
   eleventyConfig.addFilter("mdi", (s) => md.renderInline(String(s ?? "").trim()));
   // Headings: a new line in the CMS becomes a line break.
-  eleventyConfig.addFilter("heading", (s) => noWidow(mdBreaks.renderInline(String(s ?? "").trim())));
+  eleventyConfig.addFilter("heading", (s) => noWidow(md.renderInline(String(s ?? "").trim())));
   // **words** become <span class="cls">words</span> (orange underline / accent).
   eleventyConfig.addFilter("accent", (s, cls) =>
     md.renderInline(String(s ?? "").trim())
