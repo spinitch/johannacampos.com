@@ -1,0 +1,14 @@
+# Working files kept beside the site but never deployed.
+# Anything committed here is served publicly on Netlify.
+
+# Figma frame exports (reference only)
+/Home.png
+/Home-1.png
+/About Me.png
+/Case Study- *.png
+
+# Handoff / working notes
+/claude-code-handoff.md
+/CLAUDE.md
+
+.DS_Store
