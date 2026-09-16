@@ -23,6 +23,9 @@
         {%- if t.book %} <a class="chat-action" href="{{ site.booking_url }}" target="_blank" rel="noopener">{{ chat.book_label }}</a>{% endif %}
       </details>
       {%- endfor %}
+      {%- if chat.note %}
+      <p><a class="chat-action" href="contact.html">{{ chat.note.chip }}</a></p>
+      {%- endif %}
     </div>
   </div>
   <script type="application/json" id="chat-data">{{ chat | chatJson(site) | safe }}</script>

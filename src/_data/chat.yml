@@ -1,6 +1,6 @@
 eyebrow: Say Hello
 name: Johanna
-status: Pre-written answers. The real me replies by email.
+status: I wrote these answers myself :)
 avatar: /assets/img/johanna-portrait.png
 greetings:
   morning: Good morning! ☀️
@@ -11,6 +11,17 @@ more_prompt: Anything else I can help with?
 done_prompt: That’s everything I’ve got pre-written. The best next step is a quick call.
 restart_label: Start over
 book_label: Book a free 30-min call
+note:
+  chip: Leave me a note ✍️
+  you_say: I’d like to leave you a note
+  ask_name: Lovely! What’s your name?
+  ask_about: Nice to meet you, {name}! What do you do, and where? (Totally optional.)
+  ask_email: What’s your email, so I can write back?
+  ask_message: And what would you like to tell me?
+  thanks: Got it, thank you {name}! I read every note and reply within one to two business days.
+  error: Hmm, that didn’t go through. Could you email me at {email} instead?
+  skip_label: Skip
+  send_label: Send
 topics:
   - question: I have a product, but I’m not sure it’s the right one
     answer: |-

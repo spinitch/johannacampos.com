@@ -90,7 +90,7 @@ a { color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ph-tile, .photo-hero-panel { animation: none !important; opacity: 1 !important; transform: none !important; }
-  .chat-bubble, .chat-chip, .chat-typing span { animation: none !important; }
+  .chat-bubble, .chat-chip, .chat-input, .chat-typing span { animation: none !important; }
 }
 .photo-hero-panel {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%);
@@ -341,6 +341,13 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .chat-chip:hover { background: var(--coral-hot); color: #fff; }
   .chat-chip--quiet:hover { background: var(--rule); color: var(--ink); }
 }
+.chat-chip--note { border-color: var(--ink); }
+.chat-input { flex: 1 1 100%; display: flex; flex-direction: column; gap: 10px; animation: chat-in 0.25s ease-out; }
+.chat-field { width: 100%; font-family: var(--sans); font-size: 16px; line-height: 1.5; color: var(--text-strong); background: var(--white); border: 1px solid #CFCBC3; border-radius: 14px; padding: 10px 14px; resize: vertical; }
+.chat-field:focus { outline: none; border-color: var(--coral-hot); box-shadow: 0 0 0 3px rgba(240,81,46,0.15); }
+.chat-input-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+.chat-send { font-family: var(--sans); font-size: 14.5px; font-weight: 500; padding: 9px 20px; border: 0; border-radius: 20px; background: var(--coral-hot); color: #fff; cursor: pointer; transition: background 0.2s; }
+.chat-send:hover { background: var(--ink); }
 @keyframes chat-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @keyframes chat-dot { 0%, 60%, 100% { opacity: 0.35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
 /* Without JavaScript: a plain question-and-answer list instead. */

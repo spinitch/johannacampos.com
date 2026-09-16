@@ -35,6 +35,18 @@ export default function (eleventyConfig) {
       restart: chat.restart_label,
       avatar: String(chat.avatar ?? ""),
       book: { label: chat.book_label, url: site.booking_url },
+      note: chat.note && {
+        ...chat.note,
+        ask_name: bubbles(chat.note.ask_name),
+        ask_about: bubbles(chat.note.ask_about),
+        ask_email: bubbles(chat.note.ask_email),
+        ask_message: bubbles(chat.note.ask_message),
+        thanks: bubbles(chat.note.thanks),
+        error: bubbles(chat.note.error).map((h) => h.replace("{email}",
+          `<a href="mailto:${escapeHtml(site.contact_email)}">${escapeHtml(site.contact_email)}</a>`)),
+        // Same Formspree form as the Contact page.
+        endpoint: "https://formspree.io/f/myeygrkk",
+      },
       topics: (chat.topics ?? []).map((t) => ({
         question: t.question,
         answer: bubbles(t.answer),

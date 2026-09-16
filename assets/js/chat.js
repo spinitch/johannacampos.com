@@ -10,6 +10,7 @@
   var choices = root.querySelector('.chat-choices');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var asked = [];
+  var noteSent = false;
   var busy = false;
   var run = 0; // bumps on restart so an in-flight reply stops quietly
 
@@ -38,6 +39,17 @@
     node.querySelectorAll('a[href]').forEach(function (a) {
       a.setAttribute('href', resolve(a.getAttribute('href')));
     });
+  }
+
+  function escapeHtml(text) {
+    var d = document.createElement('div');
+    d.textContent = text;
+    return d.innerHTML;
+  }
+
+  // Copy can mention the visitor with {name}.
+  function fill(bubbles, name) {
+    return bubbles.map(function (html) { return html.split('{name}').join(escapeHtml(name || '')); });
   }
 
   function greeting() {
@@ -115,7 +127,98 @@
     data.topics.forEach(function (t, i) {
       if (asked.indexOf(i) === -1) choices.appendChild(chip(t.question, function () { choose(i); }));
     });
-    if (asked.length) choices.appendChild(chip(data.restart, restart, 'chat-chip--quiet'));
+    if (data.note && !noteSent) choices.appendChild(chip(data.note.chip, startNote, 'chat-chip--note'));
+    if (asked.length || noteSent) choices.appendChild(chip(data.restart, restart, 'chat-chip--quiet'));
+  }
+
+  // A text box in place of the choices. Resolves with the trimmed answer
+  // ('' when an optional question is skipped).
+  function ask(opts) {
+    return new Promise(function (done) {
+      var n = data.note;
+      choices.innerHTML = '';
+      var form = el('form', 'chat-input');
+      var field = el(opts.multiline ? 'textarea' : 'input', 'chat-field');
+      if (opts.multiline) field.rows = 3; else field.type = opts.type || 'text';
+      field.placeholder = opts.placeholder;
+      field.setAttribute('aria-label', opts.placeholder);
+      if (opts.autocomplete) field.setAttribute('autocomplete', opts.autocomplete);
+      field.required = !opts.optional;
+      form.appendChild(field);
+
+      var row = el('div', 'chat-input-actions');
+      row.appendChild(chip(data.restart, restart, 'chat-chip--quiet'));
+      if (opts.optional) row.appendChild(chip(n.skip_label, function () { done(''); }, 'chat-chip--quiet'));
+      var send = el('button', 'chat-send');
+      send.type = 'submit';
+      send.textContent = n.send_label;
+      row.appendChild(send);
+      form.appendChild(row);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = field.value.trim();
+        if (!opts.optional && !value) { field.focus(); return; }
+        done(value);
+      });
+      if (opts.multiline) {
+        field.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+        });
+      }
+      choices.appendChild(form);
+      field.focus({ preventScroll: true });
+    });
+  }
+
+  function startNote() {
+    if (busy) return;
+    busy = true;
+    var n = data.note;
+    var myRun = run;
+    var info = {};
+    function live() { if (myRun !== run) throw 'stale'; }
+    choices.innerHTML = '';
+    youSay(n.you_say);
+
+    wait(350)
+      .then(function () { return say(n.ask_name); })
+      .then(function () { live(); return ask({ placeholder: 'Your name', autocomplete: 'name' }); })
+      .then(function (name) {
+        live(); info.name = name; youSay(name); choices.innerHTML = '';
+        return say(fill(n.ask_about, name));
+      })
+      .then(function () { live(); return ask({ placeholder: 'e.g. Head of product at a health startup', autocomplete: 'organization-title', optional: true }); })
+      .then(function (about) {
+        live(); info.about = about; if (about) youSay(about); choices.innerHTML = '';
+        return say(fill(n.ask_email, info.name));
+      })
+      .then(function () { live(); return ask({ type: 'email', placeholder: 'you@example.com', autocomplete: 'email' }); })
+      .then(function (email) {
+        live(); info.email = email; youSay(email); choices.innerHTML = '';
+        return say(fill(n.ask_message, info.name));
+      })
+      .then(function () { live(); return ask({ multiline: true, placeholder: 'Write your note…' }); })
+      .then(function (message) {
+        live(); youSay(message); choices.innerHTML = '';
+        var body = new FormData();
+        body.append('_subject', 'Note from the chat on johannacampos.com/v2');
+        body.append('name', info.name);
+        body.append('email', info.email);
+        body.append('What they do', info.about || '(skipped)');
+        body.append('message', message);
+        return fetch(n.endpoint, { method: 'POST', body: body, headers: { Accept: 'application/json' } })
+          .then(function (res) { return res.ok; }, function () { return false; });
+      })
+      .then(function (ok) {
+        live();
+        if (ok) noteSent = true;
+        return say(fill(ok ? n.thanks : n.error, info.name));
+      })
+      .then(function () {
+        live(); busy = false; showChoices();
+      })
+      .catch(function (e) { if (e !== 'stale') throw e; });
   }
 
   function choose(i) {

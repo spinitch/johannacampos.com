@@ -82,6 +82,22 @@ collections:
           - {label: When every question has been asked, name: done_prompt, widget: text}
           - {label: Start-over button, name: restart_label, widget: string}
           - {label: Booking button, name: book_label, widget: string, hint: "Opens the Calendly link from Site settings."}
+          - label: Leave me a note
+            name: note
+            widget: object
+            collapsed: true
+            hint: "A short back-and-forth that emails you the visitor’s name, what they do, their email and their note (same form as the Contact page). {name} is replaced with the visitor’s name."
+            fields:
+              - {label: Button, name: chip, widget: string}
+              - {label: What the visitor says, name: you_say, widget: string}
+              - {label: Ask for their name, name: ask_name, widget: text}
+              - {label: Ask what they do (optional for them), name: ask_about, widget: text}
+              - {label: Ask for their email, name: ask_email, widget: text}
+              - {label: Ask for the note, name: ask_message, widget: text}
+              - {label: Thank-you, name: thanks, widget: text}
+              - {label: If sending fails, name: error, widget: text, hint: "{email} becomes your email address (from Site settings)."}
+              - {label: Skip button, name: skip_label, widget: string}
+              - {label: Send button, name: send_label, widget: string}
           - label: Questions
             name: topics
             widget: list
