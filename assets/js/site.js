@@ -17,6 +17,15 @@
     window.matchMedia('(min-width: 768px)').addEventListener('change', function (mq) { if (mq.matches) setOpen(false); });
   }
 
+  // Contact form: Formspree redirects back with ?sent=true after a successful
+  // send, so swap the form for the thank-you note.
+  var form = document.getElementById('contact-form');
+  if (form && /[?&]sent=true/.test(location.search)) {
+    var ok = document.getElementById('form-success');
+    form.hidden = true;
+    if (ok) { ok.hidden = false; ok.setAttribute('tabindex', '-1'); ok.focus(); }
+  }
+
   // Tabs (How I Can Help). Deep links use each panel's data-slug, e.g.
   // how-i-can-help.html#design-deliver. Slugs deliberately differ from element
   // ids so the browser doesn't jump-scroll past the tab bar on arrival.
