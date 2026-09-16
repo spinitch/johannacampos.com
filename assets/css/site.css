@@ -160,7 +160,7 @@ a { color: inherit; }
 .stat-grid { max-width: 830px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 16px; row-gap: 22px; }
 .stat-card { background: var(--white); min-height: 252px; padding: 28px 24px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .stat-num { font-family: var(--serif); font-variant-numeric: lining-nums; font-size: 88px; font-weight: 500; line-height: 1; color: var(--coral-hot); margin-bottom: 14px; }
-.stat-label { font-size: 14px; font-weight: 600; line-height: 1.35; color: #333; max-width: 180px; margin-bottom: 20px; }
+.stat-label { font-size: 16px; font-weight: 600; line-height: 1.35; color: #333; max-width: 200px; margin-bottom: 20px; }
 .stat-detail { font-size: 13.5px; line-height: 1.5; color: var(--text-soft); max-width: 215px; }
 .stat-product { width: 46px; height: auto; margin-top: -2px; }
 .stat-card--wide { grid-column: 1 / -1; min-height: 156px; flex-direction: row; justify-content: center; gap: 38px; padding: 24px 48px; margin-top: 0; }
@@ -183,7 +183,7 @@ a { color: inherit; }
 .js .help-panel:not(.is-active) { display: none; }
 .help-panel + .help-panel { margin-top: 96px; } /* no-JS fallback: panels stack */
 .js .help-panel + .help-panel { margin-top: 0; }
-.help-panel .help-preamble { font-size: 14.5px; font-weight: 300; line-height: 1.66; color: var(--slate); padding-left: 7px; margin-bottom: 42px; }
+.help-panel .help-preamble { font-size: 14.5px; font-weight: 400; line-height: 1.66; color: var(--text-strong); padding-left: 7px; margin-bottom: 42px; }
 .help-preamble strong { font-weight: 600; }
 .help-panel h3 { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; color: #000; margin-bottom: 14px; }
 .help-panel p, .help-panel li { font-size: 14.5px; line-height: 1.66; color: var(--text-strong); }
@@ -193,7 +193,7 @@ a { color: inherit; }
 .help-list strong { font-weight: 600; color: #000; }
 .text-link { color: var(--coral-hot); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .text-link:hover { color: var(--ink); }
-.case-card { background: var(--card-soft); border-radius: 40px; padding: 52px 56px 80px; margin: 58px 37px 0; }
+.case-card { background: var(--card-soft); padding: 52px 56px 80px; margin: 58px 37px 0; }
 .case-card h3 { font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: var(--coral-hot); text-align: center; margin-bottom: 36px; }
 .case-card p + p { margin-top: 27px; }
 
@@ -362,7 +362,7 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .tab .tab-line { display: block; }
   .help-body { padding: 44px 24px 48px; }
   .help-panel .help-preamble { padding-left: 0; }
-  .case-card { margin: 48px 0 0; padding: 40px 28px 48px; border-radius: 28px; }
+  .case-card { margin: 48px 0 0; padding: 40px 28px 48px; }
 
   .cs-hero { padding-top: 44px; }
   .cs-hero h1 { font-size: 30px; margin-bottom: 24px; }
