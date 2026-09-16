@@ -1,0 +1,32 @@
+---
+layout: base.njk
+permalink: lakatta.html
+eleventyComputed:
+  title: "{{ lakatta.page_title }}"
+  description: "{{ lakatta.description }}"
+---
+{%- import "cs-macros.njk" as cs_ -%}
+{%- set cs = lakatta %}{% set heroClass = "lakatta" %}{% set img = lakatta.images -%}
+{% include "cs-hero.njk" %}
+
+  <div class="cs-body">
+    {{- cs_.section(cs.problem) }}
+    {{- cs_.section(cs.role) }}
+    <div class="cs-split">
+      <figure class="cs-split-img cs-split-img--pair">
+        <img src="{{ img.phone_itinerary.src | asset }}" alt="{{ img.phone_itinerary.alt }}" width="266" height="676" loading="lazy" style="--w:266">
+        <img src="{{ img.phone_journey.src | asset }}" alt="{{ img.phone_journey.alt }}" width="340" height="676" loading="lazy" style="--w:340">
+      </figure>
+      {{- cs_.section(cs.metrics) }}
+    </div>
+    {{- cs_.section(cs.roadblocks) }}
+    <div class="cs-figure-pair">
+      <img src="{{ img.empty_states.src | asset }}" alt="{{ img.empty_states.alt }}" width="576" height="510" loading="lazy">
+      <img src="{{ img.category_labels.src | asset }}" alt="{{ img.category_labels.alt }}" width="606" height="510" loading="lazy">
+    </div>
+    <figure class="cs-figure cs-figure--lakatta-desktop">
+      <img src="{{ img.desktop.src | asset }}" alt="{{ img.desktop.alt }}" width="1380" height="948" loading="lazy">
+    </figure>
+  </div>
+
+{% include "other-work.njk" %}

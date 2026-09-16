@@ -1,0 +1,91 @@
+---
+layout: base.njk
+permalink: index.html
+eleventyComputed:
+  title: "{{ home.page_title }}"
+  description: "{{ home.description }}"
+  og:
+    url: https://johannacampos.com
+    description: "{{ home.share_description }}"
+---
+
+
+<!-- HERO — from johannacampos_redesign2.html (photo mosaic + North Star panel) -->
+<section id="top" class="photo-hero">
+  <div class="photo-hero-grid">
+    <img class="ph-tile" src="hero-photos/custom_0.jpeg" alt="" style="grid-column:1 / span 2; grid-row:1 / span 2; object-position:50% 50%; transform:scale(1.32); transform-origin:50% 50%; animation-delay:0.05s;">
+    <img class="ph-tile" src="hero-photos/custom_3.jpeg" alt="" style="grid-column:3 / span 2; grid-row:1 / span 1; object-position:48.92% 43.12%; transform:scale(1.48); transform-origin:48.92% 43.12%; animation-delay:0.12s;">
+    <img class="ph-tile" src="hero-photos/custom_4.jpeg" alt="" style="grid-column:5 / span 2; grid-row:1 / span 1; object-position:50.93% 30.09%; transform:scale(1); transform-origin:50.93% 30.09%; animation-delay:0.19s;">
+    <img class="ph-tile" src="hero-photos/cat_2311.jpg" alt="" style="grid-column:3 / span 1; grid-row:2 / span 2; object-position:48% 38%; transform:scale(1); transform-origin:48% 38%; animation-delay:0.26s;">
+    <img class="ph-tile" src="hero-photos/biking_road.jpg" alt="" style="grid-column:4 / span 2; grid-row:2 / span 1; object-position:50% 38%; transform:scale(1.3); transform-origin:50% 38%; animation-delay:0.33s;">
+    <img class="ph-tile" src="hero-photos/paddleboard.jpg" alt="" style="grid-column:6 / span 1; grid-row:2 / span 2; object-position:32% 55%; transform:scale(1); transform-origin:32% 55%; animation-delay:0.4s;">
+    <img class="ph-tile" src="hero-photos/custom_1.jpeg" alt="" style="grid-column:1 / span 2; grid-row:3 / span 1; object-position:49.77% 39.69%; transform:scale(1.4); transform-origin:49.77% 39.69%; animation-delay:0.47s;">
+    <img class="ph-tile" src="hero-photos/beach_bikes.jpg" alt="" style="grid-column:4 / span 2; grid-row:3 / span 1; object-position:50% 62%; transform:scale(1); transform-origin:50% 62%; animation-delay:0.54s;">
+    <img class="ph-tile" src="hero-photos/custom_2.jpeg" alt="" style="grid-column:1 / span 2; grid-row:4 / span 1; object-position:50.07% 81.97%; transform:scale(1); transform-origin:50.07% 81.97%; animation-delay:0.61s;">
+    <img class="ph-tile" src="hero-photos/sailing.jpg" alt="" style="grid-column:3 / span 1; grid-row:4 / span 1; object-position:55% 48%; transform:scale(1); transform-origin:55% 48%; animation-delay:0.68s;">
+    <img class="ph-tile" src="hero-photos/smile_3131.jpg" alt="" style="grid-column:4 / span 1; grid-row:4 / span 1; object-position:46% 40%; transform:scale(1.08); transform-origin:46% 40%; animation-delay:0.75s;">
+    <img class="ph-tile" src="hero-photos/overlook_8571.jpg" alt="" style="grid-column:5 / span 1; grid-row:4 / span 1; object-position:50% 58%; transform:scale(1); transform-origin:50% 58%; animation-delay:0.82s;">
+    <img class="ph-tile" src="hero-photos/selfie_0369.jpg" alt="" style="grid-column:6 / span 1; grid-row:4 / span 1; object-position:50% 38%; transform:scale(1.08); transform-origin:50% 38%; animation-delay:0.89s;">
+    <img class="ph-tile" src="hero-photos/summit.jpg" alt="" style="grid-column:1 / span 2; grid-row:5 / span 1; object-position:50% 58%; transform:scale(1); transform-origin:50% 58%; animation-delay:0.96s;">
+    <img class="ph-tile" src="hero-photos/custom_5.jpeg" alt="" style="grid-column:3 / span 2; grid-row:5 / span 1; object-position:50.13% 54.6%; transform:scale(1); transform-origin:50.13% 54.6%; animation-delay:1.03s;">
+    <img class="ph-tile" src="hero-photos/yoga.jpg" alt="" style="grid-column:5 / span 2; grid-row:5 / span 1; object-position:60% 45%; transform:scale(1); transform-origin:60% 45%; animation-delay:1.1s;">
+  </div>
+  <div class="photo-hero-panel">
+    <svg class="ph-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="4.0,50.0 44.46,47.7 33.03,33.03 47.7,44.46 50.0,4.0 52.3,44.46 66.97,33.03 55.54,47.7 96.0,50.0 55.54,52.3 66.97,66.97 52.3,55.54 50.0,96.0 47.7,55.54 33.03,66.97 44.46,52.3"/>
+    </svg>
+    <div class="ph-eyebrow">{{ home.north_star.eyebrow | upper }}</div>
+    <div class="ph-quote">{{ home.north_star.quote | accent("u-coral") | safe }}</div>
+    <div class="ph-attr">{{ home.north_star.attribution | upper }}</div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="home-intro">
+  {{ home.intro | md | safe }}
+</section>
+
+<!-- HOW I CAN HELP -->
+<section id="services" class="help-band" aria-labelledby="help-heading">
+  <h2 id="help-heading" class="eyebrow eyebrow--lg">{{ offerings.heading }}</h2>
+  <div class="help-cards">
+    {%- for o in offerings.items %}
+    <article class="help-card">
+      <h3>{{ o.name | plus | safe }}</h3>
+      <p>{{ o.card_summary | mdi | safe }}</p>
+      <a class="link-more" href="how-i-can-help.html#{{ o.slug }}" aria-label="Learn more about {{ o.name }}">Learn more <span aria-hidden="true">&rarr;</span></a>
+    </article>
+    {%- endfor %}
+  </div>
+  <div class="help-book">
+    <p class="eyebrow">{{ home.book.eyebrow }}</p>
+    <h3>{{ home.book.heading | heading | safe }}</h3>
+    <a class="btn-book" href="{{ site.booking_url }}" target="_blank" rel="noopener">{{ home.book.button }}</a>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section id="work" class="work" aria-labelledby="work-heading">
+  <h2 id="work-heading" class="eyebrow eyebrow--lg">{{ work.heading }}</h2>
+  <div class="work-grid">
+    {%- for card in work.cards %}
+    <a class="work-card" href="{{ card.page }}">
+      <div class="work-card-img"><img src="{{ card.thumbnail | asset }}" alt="{{ card.thumbnail_alt }}" width="1000" height="864" loading="lazy"></div>
+      <h3>{{ card.card_title }}</h3>
+      <p>{{ card.summary }}</p>
+    </a>
+    {%- endfor %}
+  </div>
+</section>
+
+<!-- ABOUT ME -->
+<section id="about" class="about-band" aria-labelledby="about-heading">
+  <div class="about-band-inner">
+    <div>
+      <h2 id="about-heading" class="eyebrow eyebrow--lg">{{ home.about.heading }}</h2>
+      {{ home.about.body | md | safe }}
+      <a class="btn-coral" href="about.html">{{ home.about.button }}</a>
+    </div>
+    <img class="about-band-photo" src="{{ home.about.photo | asset }}" alt="{{ home.about.photo_alt }}" width="300" height="300">
+  </div>
+</section>

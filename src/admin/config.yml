@@ -1,0 +1,428 @@
+# Decap CMS — the editor at johannacampos.com/admin
+# Saving in the editor commits to main on GitHub; Netlify then rebuilds and
+# publishes the site (about a minute).
+backend:
+  name: github
+  repo: spinitch/johannacampos.com
+  branch: main
+  commit_messages:
+    update: "Update {{slug}} (via CMS)"
+    uploadMedia: "Upload {{path}} (via CMS)"
+    deleteMedia: "Delete {{path}} (via CMS)"
+
+# `npm run cms` + `npm start` lets the editor run against local files instead.
+local_backend: true
+
+site_url: https://johannacampos.com
+display_url: https://johannacampos.com
+logo_url: /assets/img/logo-mark.png
+
+# New uploads land in assets/img; existing pictures live in its subfolders.
+media_folder: assets/img
+public_folder: /assets/img
+
+# The preview pane can't show the site's layout, so it's switched off.
+editor:
+  preview: false
+
+collections:
+  - label: Pages
+    name: pages
+    delete: false
+    files:
+      - label: Home
+        name: home
+        file: src/_data/home.yml
+        fields:
+          - {label: Browser tab title, name: page_title, widget: string}
+          - {label: Search description, name: description, widget: text, hint: "One or two sentences shown in Google results."}
+          - {label: Link-preview description, name: share_description, widget: text, hint: "Shown when the site is shared on LinkedIn, Slack, etc."}
+          - label: North Star (on the photo mosaic)
+            name: north_star
+            widget: object
+            fields:
+              - {label: Eyebrow, name: eyebrow, widget: string}
+              - {label: Quote, name: quote, widget: text, hint: "Wrap words in **double asterisks** to give them the orange underline."}
+              - {label: Attribution, name: attribution, widget: string}
+          - {label: Intro paragraph, name: intro, widget: text}
+          - label: Book a call (under the service cards)
+            name: book
+            widget: object
+            fields:
+              - {label: Eyebrow, name: eyebrow, widget: string}
+              - {label: Heading, name: heading, widget: string}
+              - {label: Button, name: button, widget: string, hint: "The booking link itself is in Site settings."}
+          - label: About Me (black band)
+            name: about
+            widget: object
+            fields:
+              - {label: Heading, name: heading, widget: string}
+              - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+              - {label: Button, name: button, widget: string}
+              - {label: Photo, name: photo, widget: image, hint: "Shown as a circle; use a square photo."}
+              - {label: Photo alt text, name: photo_alt, widget: string}
+
+      - label: How I Can Help (and the home page service cards)
+        name: services
+        file: src/_data/offerings.yml
+        fields:
+          - {label: Browser tab title, name: page_title, widget: string}
+          - {label: Search description, name: description, widget: text}
+          - {label: Heading, name: heading, widget: string}
+          - label: Services
+            name: items
+            widget: list
+            summary: "{{fields.name}}"
+            collapsed: true
+            hint: "Each service is a tab on How I Can Help and a card on the home page."
+            fields:
+              - {label: Name, name: name, widget: string, hint: "Written as “First + Second”; the + turns orange."}
+              - {label: Link name, name: slug, widget: string, pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers and dashes only"], hint: "Used in links like how-i-can-help.html#design-deliver. Changing it breaks old links."}
+              - {label: Home page card text, name: card_summary, widget: text}
+              - {label: Opening paragraph, name: preamble, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "One paragraph."}
+              - {label: Who it’s for, name: who_for, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: []}
+              - {label: What you get — intro sentence, name: what_intro, widget: text, required: false}
+              - label: What you get — list
+                name: what_items
+                widget: list
+                required: false
+                summary: "{{fields.title}}"
+                hint: "Leave the list empty to hide the whole What you get section."
+                fields:
+                  - {label: Title, name: title, widget: string, hint: "Bold, e.g. “Research:”"}
+                  - {label: Text, name: body, widget: text, hint: "Starts on the line below the title. Links: [words](page.html)"}
+              - {label: Case study, name: case_study, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+
+      - label: About
+        name: about
+        file: src/_data/about.yml
+        fields:
+          - {label: Browser tab title, name: page_title, widget: string}
+          - {label: Search description, name: description, widget: text}
+          - {label: Heading, name: heading, widget: string}
+          - label: Number cards
+            name: stats
+            widget: list
+            summary: "{{fields.number}} {{fields.label}}"
+            fields:
+              - {label: Number, name: number, widget: string}
+              - {label: Label, name: label, widget: string}
+              - {label: Details, name: detail, widget: string, required: false}
+              - {label: Small picture, name: image, widget: image, required: false, hint: "Optional, shown instead of details."}
+              - {label: Picture alt text, name: image_alt, widget: string, required: false}
+          - label: Closing card (wide)
+            name: closing
+            widget: object
+            fields:
+              - {label: Number, name: number, widget: string}
+              - {label: Text, name: text, widget: text, hint: "Wrap words in **double asterisks** to make them bold."}
+              - {label: Photo, name: photo, widget: image}
+              - {label: Photo alt text, name: photo_alt, widget: string}
+
+      - label: Contact
+        name: contact
+        file: src/_data/contact.yml
+        fields:
+          - {label: Browser tab title, name: page_title, widget: string}
+          - {label: Search description, name: description, widget: text}
+          - {label: Eyebrow, name: eyebrow, widget: string}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Intro, name: intro, widget: text}
+          - {label: Email line, name: email_prompt, widget: string, hint: "Your email address follows this (set it in Site settings)."}
+          - {label: “How did you hear about me?” choices, name: sources, widget: list, field: {label: Choice, name: choice, widget: string}}
+          - {label: Thank-you heading, name: thank_you_heading, widget: string}
+          - {label: Thank-you text, name: thank_you_text, widget: text, hint: "A LinkedIn link follows this."}
+
+  - label: Work
+    name: work
+    delete: false
+    files:
+      - label: Work cards (home page grid)
+        name: cards
+        file: src/_data/work.yml
+        fields:
+          - {label: Home page heading, name: heading, widget: string}
+          - {label: Heading on case studies, name: other_heading, widget: string}
+          - label: Cards
+            name: cards
+            widget: list
+            summary: "{{fields.card_title}}"
+            allow_add: false
+            hint: "Drag to reorder. New case studies need a page built first, so adding cards is switched off."
+            fields:
+              - {label: Page, name: page, widget: hidden}
+              - {label: Case study name, name: name, widget: string, hint: "Used in image descriptions."}
+              - {label: Card title, name: card_title, widget: string}
+              - {label: Card tags, name: summary, widget: string, hint: "Separate with ·"}
+              - {label: Thumbnail, name: thumbnail, widget: image, hint: "Shown at roughly 1000 × 864."}
+              - {label: Thumbnail alt text, name: thumbnail_alt, widget: string}
+
+  - label: Case studies
+    name: case_studies
+    delete: false
+    files:
+      - label: "Lakatta"
+        name: lakatta
+        file: "src/_data/lakatta.yml"
+        fields:
+            - {label: Browser tab title, name: page_title, widget: string}
+            - {label: Search description, name: description, widget: text, hint: "One or two sentences shown in Google results."}
+            - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
+            - {label: Title, name: title, widget: string}
+            - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
+            - label: "The Problem"
+              name: problem
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "My Role & Impact"
+              name: role
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Metrics & Outcomes"
+              name: metrics
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Navigating Roadblocks"
+              name: roadblocks
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: Images
+              name: images
+              widget: object
+              hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
+              fields:
+                - label: "Phone: day view (left)"
+                  name: phone_itinerary
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Phone: journey card (right)"
+                  name: phone_journey
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Design system: empty states"
+                  name: empty_states
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Design system: category labels"
+                  name: category_labels
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Desktop itinerary"
+                  name: desktop
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+      - label: "CancerCompass"
+        name: cancercompass
+        file: "src/_data/cancercompass.yml"
+        fields:
+            - {label: Browser tab title, name: page_title, widget: string}
+            - {label: Search description, name: description, widget: text, hint: "One or two sentences shown in Google results."}
+            - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
+            - {label: Title, name: title, widget: string}
+            - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
+            - label: "The Problem"
+              name: problem
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "My Role & Impact"
+              name: role
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Metrics & Outcomes"
+              name: metrics
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Navigating Roadblocks"
+              name: roadblocks
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - {label: Pull quote, name: quote, widget: text, hint: "Each line in the box is a line on the page. Wrap words in **double asterisks** to make them orange."}
+            - {label: Collage credit, name: collage_credit, widget: string, hint: "Small print under the brand collage."}
+            - label: Images
+              name: images
+              widget: object
+              hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
+              fields:
+                - label: "Compass AI phones"
+                  name: ai_phones
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Collage: website"
+                  name: website
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Collage: characters"
+                  name: characters
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Collage: brand tiles"
+                  name: brand_tiles
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Collage: social post"
+                  name: social
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+      - label: "Symptom Checker"
+        name: symptom-checker
+        file: "src/_data/symptomChecker.yml"
+        fields:
+            - {label: Browser tab title, name: page_title, widget: string}
+            - {label: Search description, name: description, widget: text, hint: "One or two sentences shown in Google results."}
+            - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
+            - {label: Title, name: title, widget: string}
+            - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
+            - label: "The Problem"
+              name: problem
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "My Role & Impact"
+              name: role
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Metrics & Outcomes"
+              name: metrics
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Navigating Roadblocks"
+              name: roadblocks
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: Images
+              name: images
+              widget: object
+              hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
+              fields:
+                - label: "Phone: body map (left)"
+                  name: phone_bodymap
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Phone: condition page (right)"
+                  name: phone_condition
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Desktop body map"
+                  name: bodymap
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+      - label: "CTCA Telehealth"
+        name: ctca-telehealth
+        file: "src/_data/ctcaTelehealth.yml"
+        fields:
+            - {label: Browser tab title, name: page_title, widget: string}
+            - {label: Search description, name: description, widget: text, hint: "One or two sentences shown in Google results."}
+            - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
+            - {label: Title, name: title, widget: string}
+            - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
+            - label: "The Problem"
+              name: problem
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "My Role & Impact"
+              name: role
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Metrics & Outcomes"
+              name: metrics
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Navigating Roadblocks"
+              name: roadblocks
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: Images
+              name: images
+              widget: object
+              hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
+              fields:
+                - label: "Three phones"
+                  name: phones
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+
+  - label: Site settings
+    name: settings
+    delete: false
+    files:
+      - label: Site settings
+        name: site
+        file: src/_data/site.yml
+        fields:
+          - {label: Booking link (Calendly), name: booking_url, widget: string, hint: "Every Book Now button uses this."}
+          - {label: LinkedIn link, name: linkedin_url, widget: string}
+          - {label: Contact email, name: contact_email, widget: string}
+          - {label: Footer copyright, name: copyright, widget: string}
+          - label: Footer band — left (email)
+            name: email_cta
+            widget: object
+            fields:
+              - {label: Eyebrow, name: eyebrow, widget: string}
+              - {label: Heading, name: heading, widget: text, hint: "Press Return for a line break."}
+              - {label: Button, name: button, widget: string}
+          - label: Footer band — right (book a call)
+            name: book_cta
+            widget: object
+            fields:
+              - {label: Eyebrow, name: eyebrow, widget: string}
+              - {label: Heading, name: heading, widget: text, hint: "Press Return for a line break."}
+              - {label: Button, name: button, widget: string}

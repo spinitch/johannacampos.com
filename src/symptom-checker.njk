@@ -1,0 +1,28 @@
+---
+layout: base.njk
+permalink: symptom-checker.html
+eleventyComputed:
+  title: "{{ symptomChecker.page_title }}"
+  description: "{{ symptomChecker.description }}"
+---
+{%- import "cs-macros.njk" as cs_ -%}
+{%- set cs = symptomChecker %}{% set heroClass = "symptom" %}{% set img = symptomChecker.images -%}
+{% include "cs-hero.njk" %}
+
+  <div class="cs-body">
+    {{- cs_.section(cs.problem) }}
+    {{- cs_.section(cs.role) }}
+    <div class="cs-split">
+      <figure class="cs-split-img cs-split-img--pair">
+        <img src="{{ img.phone_bodymap.src | asset }}" alt="{{ img.phone_bodymap.alt }}" width="273" height="777" loading="lazy" style="--w:273">
+        <img src="{{ img.phone_condition.src | asset }}" alt="{{ img.phone_condition.alt }}" width="398" height="777" loading="lazy" style="--w:398">
+      </figure>
+      {{- cs_.section(cs.metrics) }}
+    </div>
+    {{- cs_.section(cs.roadblocks) }}
+    <figure class="cs-figure cs-figure--bodymap">
+      <img src="{{ img.bodymap.src | asset }}" alt="{{ img.bodymap.alt }}" width="1140" height="987" loading="lazy">
+    </figure>
+  </div>
+
+{% include "other-work.njk" %}

@@ -1,0 +1,64 @@
+---
+layout: base.njk
+permalink: cancercompass.html
+eleventyComputed:
+  title: "{{ cancercompass.page_title }}"
+  description: "{{ cancercompass.description }}"
+---
+{%- import "cs-macros.njk" as cs_ -%}
+{%- set cs = cancercompass %}{% set heroClass = "cancercompass" %}{% set img = cancercompass.images -%}
+{% include "cs-hero.njk" %}
+
+  <div class="cs-body">
+    {{- cs_.section(cs.problem) }}
+    <figure class="cs-diagram">
+      <svg viewBox="0 0 440 190" role="img" aria-labelledby="cc-diagram-title" xmlns="http://www.w3.org/2000/svg">
+        <title id="cc-diagram-title">Where patients go for answers: Facebook groups, Google search, Reddit, TikTok, a hospital binder, and a 12-minute visit</title>
+        <rect width="440" height="190" fill="#FCFCFB"/>
+        <g stroke="#CFCCC6" stroke-width="0.8" stroke-dasharray="3 3" fill="none">
+          <line x1="230" y1="103" x2="96" y2="45"/>
+          <line x1="230" y1="103" x2="365" y2="42"/>
+          <line x1="230" y1="103" x2="46" y2="109"/>
+          <line x1="230" y1="103" x2="412" y2="109"/>
+          <line x1="230" y1="103" x2="95" y2="156"/>
+          <line x1="230" y1="103" x2="366" y2="156"/>
+        </g>
+        <g font-family="Inter, -apple-system, sans-serif" font-size="8.5" fill="#4A4A4A" text-anchor="middle">
+          <g fill="#F1F0EC" stroke="#C9C6BF" stroke-width="0.8">
+            <rect x="43" y="35" width="106" height="20" rx="10"/>
+            <rect x="318" y="32" width="94" height="20" rx="10"/>
+            <rect x="18" y="99" width="56" height="20" rx="10"/>
+            <rect x="385" y="99" width="54" height="20" rx="10"/>
+            <rect x="42" y="146" width="106" height="20" rx="10"/>
+            <rect x="322" y="146" width="88" height="20" rx="10"/>
+          </g>
+          <text x="96" y="48">Facebook groups</text>
+          <text x="365" y="45">Google search</text>
+          <text x="46" y="112">Reddit</text>
+          <text x="412" y="112">TikTok</text>
+          <text x="95" y="159">Hospital binder</text>
+          <text x="366" y="159">12-min visit</text>
+          <circle cx="230" cy="103" r="25" fill="#F9E9E4" stroke="#E2B3A6" stroke-width="0.9"/>
+          <text x="230" y="106" font-size="9" fill="#3A2A26">Patient</text>
+        </g>
+      </svg>
+    </figure>
+    <aside class="cs-quote">
+      <p>{{ cs.quote | replace("\n", "<br>") | accent("cs-quote-accent") | safe }}</p>
+    </aside>
+    {{- cs_.section(cs.role) }}
+    <div class="cs-split">
+      <figure class="cs-split-img"><img src="{{ img.ai_phones.src | asset }}" alt="{{ img.ai_phones.alt }}" width="588" height="736" loading="lazy"></figure>
+      {{- cs_.section(cs.metrics) }}
+    </div>
+    {{- cs_.section(cs.roadblocks) }}
+    <figure class="cs-collage">
+      <img class="c-web" src="{{ img.website.src | asset }}" alt="{{ img.website.alt }}" width="900" height="629" loading="lazy">
+      <img class="c-chars" src="{{ img.characters.src | asset }}" alt="{{ img.characters.alt }}" width="422" height="322" loading="lazy">
+      <img class="c-brand" src="{{ img.brand_tiles.src | asset }}" alt="{{ img.brand_tiles.alt }}" width="900" height="557" loading="lazy">
+      <img class="c-social" src="{{ img.social.src | asset }}" alt="{{ img.social.alt }}" width="502" height="302" loading="lazy">
+      <p class="cs-credit">{{ cs.collage_credit }}</p>
+    </figure>
+  </div>
+
+{% include "other-work.njk" %}

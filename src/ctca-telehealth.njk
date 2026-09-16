@@ -1,0 +1,23 @@
+---
+layout: base.njk
+permalink: ctca-telehealth.html
+eleventyComputed:
+  title: "{{ ctcaTelehealth.page_title }}"
+  description: "{{ ctcaTelehealth.description }}"
+---
+{%- import "cs-macros.njk" as cs_ -%}
+{%- set cs = ctcaTelehealth %}{% set heroClass = "telehealth" %}{% set img = ctcaTelehealth.images -%}
+{% include "cs-hero.njk" %}
+
+  <div class="cs-body">
+    {{- cs_.section(cs.problem) }}
+    {{- cs_.section(cs.role) }}
+    {{- cs_.section(cs.metrics) }}
+    {{- cs_.section(cs.roadblocks) }}
+
+    <figure class="cs-figure cs-figure--telehealth">
+      <img src="{{ img.phones.src | asset }}" alt="{{ img.phones.alt }}" width="1228" height="1341" loading="lazy">
+    </figure>
+  </div>
+
+{% include "other-work.njk" %}

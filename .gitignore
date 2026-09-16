@@ -1,5 +1,5 @@
 # Working files kept beside the site but never deployed.
-# Anything committed here is served publicly on Netlify.
+# (Only the built _site/ folder is published, but keep these out of GitHub too.)
 
 # Figma frame exports (reference only)
 /Home.png
@@ -12,3 +12,7 @@
 /CLAUDE.md
 
 .DS_Store
+
+# Build output and dependencies
+/_site/
+/node_modules/

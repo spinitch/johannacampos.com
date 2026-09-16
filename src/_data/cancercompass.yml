@@ -1,0 +1,48 @@
+page_title: CancerCompass — Johanna Campos
+description: "Case study: CancerCompass, an AI-supported care navigation product taken from concept through MVP."
+eyebrow: Selected Work
+title: CancerCompass
+tags:
+  - executive leadership
+  - 0→1 product strategy
+  - clinical stakeholder alignment
+  - patient research
+  - AI product integration
+problem:
+  heading: The Problem
+  body: |-
+    Cancer patients face fragmented supportive care, symptom management, care navigation, emotional support, and practical needs like transportation or childcare, scattered across disconnected channels and often invisible until a crisis forces the question. One patient canceled a chemo appointment simply because she didn’t know transportation assistance existed. Research surfaced the same pattern again and again: patients weren’t just short on information, they were short on timely, trustworthy information, appointments moved too fast to absorb, and the biggest questions always came up later, at home, with nowhere reliable to take them. Clinical teams had no scalable way to close that gap between visits.
+quote: |-
+  Information is everywhere.
+  Timely, trustworthy help, right when it’s needed, **is not.**
+role:
+  heading: My Role & Impact
+  body: |-
+    Owned product strategy, design, and roadmap from concept through MVP as Executive Director. Led patient research and clinical-expert workshops to translate clinical complexity into an intuitive patient experience. Aligned engineering, clinical operations, and executive leadership; partnered with internal data scientists and technical leads on AI model integration, care-pathway logic, and Epic-native implementation.
+
+    Managed the outside brand designer and animation partner who built CancerCompass’s visual identity, while I directed the brand strategy and where that identity showed up across the product.
+metrics:
+  heading: Metrics & Outcomes
+  body: |-
+    Research depth and go-to-market groundwork: 25+ patient/caregiver interviews and 20+ hours of clinical observation completed, two rounds of prototypes (usability/stakeholder alignment, then AI-integration validation), 20+ pieces of patient education content in development, 3+ ongoing strategic partnership conversations, and a filed USPTO trademark for the CancerCompass name and brand.
+roadblocks:
+  heading: Navigating Roadblocks
+  body: |-
+    The roadmap went through repeated pauses and pivots. Part of the job was managing internal and external relationships carefully enough to keep everyone aligned without burning bridges, and steering the team through sustained ambiguity — a project like this rarely moves in a straight line, and the leadership work was as much about the pauses as the progress.
+collage_credit: "*Visual identity, illustration, and campaign creative by an outside brand designer, art-directed by Johanna"
+images:
+  ai_phones:
+    src: /assets/img/cancercompass/cancercompass-ai-phones.png
+    alt: "Two phones showing Compass AI in dark mode: a personalized home screen and a chat preparing for an oncology visit"
+  website:
+    src: /assets/img/cancercompass/cancercompass-website.png
+    alt: "CancerCompass website home page: “A place for you and your loved ones to get a second opinion”"
+  characters:
+    src: /assets/img/cancercompass/cancercompass-characters.png
+    alt: CancerCompass illustrated characters
+  brand_tiles:
+    src: /assets/img/cancercompass/cancercompass-brand-tiles.png
+    alt: "CancerCompass brand system tiles: Your Health Companion, Together we find the way, Personalized & Supportive Care, and illustrations"
+  social:
+    src: /assets/img/cancercompass/cancercompass-social.png
+    alt: CancerCompass social content on a phone with printed patient guides

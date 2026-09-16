@@ -1,0 +1,29 @@
+# Case-study cards: the Selected Work grid on the home page, and the
+# "Other Selected Work" row at the bottom of each case study.
+heading: Selected Work
+other_heading: Other Selected Work
+cards:
+  - page: lakatta.html
+    name: Lakatta
+    card_title: Lakatta
+    summary: solo founder-designer · AI-assisted development · 0→1 build · brand & design system
+    thumbnail: /assets/img/work/lakatta-thumb.jpg
+    thumbnail_alt: Lakatta travel app on desktop and two phones
+  - page: cancercompass.html
+    name: CancerCompass
+    card_title: CancerCompass
+    summary: executive leadership · 0→1 product strategy · clinical stakeholder alignment · patient research · AI product integration
+    thumbnail: /assets/img/work/cancercompass-thumb.jpg
+    thumbnail_alt: CancerCompass website and Compass AI app screens
+  - page: symptom-checker.html
+    name: Symptom Checker
+    card_title: Symptom Checker
+    summary: design team leadership · design mentorship · cross-functional alignment · research-driven design
+    thumbnail: /assets/img/work/symptom-checker-thumb.jpg
+    thumbnail_alt: WebMD Symptom Checker with body map on desktop and phones
+  - page: ctca-telehealth.html
+    name: CTCA Telehealth
+    card_title: Telehealth
+    summary: service design · workflow audit · cross-functional partnership · patient interviews
+    thumbnail: /assets/img/work/ctca-telehealth-thumb.jpg
+    thumbnail_alt: CTCA Telehealth video visit screens on three phones

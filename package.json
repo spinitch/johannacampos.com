@@ -1,0 +1,15 @@
+{
+  "name": "johannacampos.com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "cms": "npx decap-server"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "js-yaml": "^5.4.2",
+    "markdown-it": "^15.0.2"
+  }
+}

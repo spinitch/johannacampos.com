@@ -1,0 +1,43 @@
+page_title: Lakatta — Johanna Campos
+description: "Case study: Lakatta, a travel app built solo from brand to AI-assisted code."
+eyebrow: Selected Work
+title: Lakatta
+tags:
+  - solo-builder
+  - ai-assisted development
+  - 0→1 build
+  - brand & design system
+  - product strategy
+  - user research
+problem:
+  heading: The Problem
+  body: |-
+    Existing travel-planning tools are cluttered and reactive — travelers spend more time scrolling and reconciling bookings than actually planning. Lakatta reimagines the category around what travelers need, when they need it.
+role:
+  heading: My Role & Impact
+  body: |-
+    Owning every dimension solo: brand identity and logo, concept development, UX research, information architecture, visual design, and AI-assisted development using Claude Code, Claude Design, and Figma. The counterweight to the leadership story in the other three case studies — proof that the same judgment scales down to zero-team execution.
+metrics:
+  heading: Metrics & Outcomes
+  body: |-
+    Still early testing. What’s held up: the day view is simple to scan, with weather, transport cost, and directions all in one place instead of stitched together across separate apps for weather, maps, and bookings.
+roadblocks:
+  heading: Navigating Roadblocks
+  body: |-
+    A lot of time went into QAing AI-generated code, and the same bugs kept resurfacing. The fix wasn’t catching every regression by hand — it was building a dedicated QA agent in Claude and formalizing a design system, so the AI tooling had guardrails instead of just output to review.
+images:
+  phone_itinerary:
+    src: /assets/img/lakatta/lakatta-phone-itinerary.png
+    alt: Lakatta day view with flights, hotel and weather
+  phone_journey:
+    src: /assets/img/lakatta/lakatta-phone-journey.png
+    alt: "Lakatta journey card: home to airport with cost, duration and a route map"
+  empty_states:
+    src: /assets/img/lakatta/lakatta-empty-states.png
+    alt: "Lakatta design system: empty-state patterns"
+  category_labels:
+    src: /assets/img/lakatta/lakatta-category-labels.png
+    alt: "Lakatta design system: card and category labels"
+  desktop:
+    src: /assets/img/lakatta/lakatta-desktop.png
+    alt: Lakatta desktop itinerary for a US and Europe trip, with a city list, day timeline, and map

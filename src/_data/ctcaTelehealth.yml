@@ -1,0 +1,29 @@
+page_title: CTCA Telehealth — Johanna Campos
+description: "Case study: service design and workflow audit that cut dropped telehealth appointments by 10%."
+eyebrow: Selected Work
+title: CTCA Telehealth
+tags:
+  - service design
+  - workflow audit
+  - cross-functional partnership
+  - patient and stakeholder interviews
+problem:
+  heading: The Problem
+  body: |-
+    The telehealth platform itself wasn’t actually the problem — the communication around it was. A deep dive into every patient touchpoint showed a flood of near-identical emails and texts: similar messaging and subject lines for confirming an appointment, reminding about it, and joining it. On top of that, proactive “tech calls” meant to get patients set up before their visit added yet another touchpoint. What was designed to help became a source of confusion. And even when setup went smoothly, patients often joined from a car or another low-connectivity spot, so the call dropped anyway.
+role:
+  heading: My Role & Impact
+  body: |-
+    Audited the current-state workflow end to end and ran patient interviews to find where the experience actually broke down. Aligned stakeholders across clinical and engineering, then partnered directly with engineering through redesign and rollout.
+metrics:
+  heading: Metrics & Outcomes
+  body: |-
+    10% reduction in dropped telehealth appointments.
+roadblocks:
+  heading: Navigating Roadblocks
+  body: |-
+    Getting teams to actually change established process was the real challenge. What consistently moved things forward was putting direct patient feedback and interview findings in front of them — people are set in their ways, so managing those relationships well was the key to getting alignment.
+images:
+  phones:
+    src: /assets/img/ctca-telehealth/telehealth-phones.webp
+    alt: "Three phones showing the redesigned telehealth visit: waiting room, live video call with Dr. Carol Jameson, and a countdown to the appointment"

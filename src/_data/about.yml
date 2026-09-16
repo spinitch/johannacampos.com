@@ -1,0 +1,29 @@
+page_title: About Me — Johanna Campos
+description: 25+ years in different creative roles — AI builder, VP of design, director, UX, product, graphic and interior designer.
+heading: About Me
+# Each card: a big number, a label, and either a line of detail or a small picture.
+stats:
+  - number: 25+
+    label: years in different creative roles
+    detail: ai builder, innovator, vp of design, director, ux, product designer, graphic designer, interior designer
+  - number: "1"
+    label: product I sold in Apple Stores in the US
+    image: /assets/img/about/apple-store-product.png
+    image_alt: "The product: a folding media-player stand"
+  - number: "4"
+    label: cities I have lived in
+    detail: new york, san francisco, bacolod city, manila
+  - number: "2"
+    label: fur babies i co-parented
+    detail: Agatha and Swee Pea
+  - number: "10"
+    label: ways I like to move
+    detail: pickleball, pingpong, swimming, yoga, cycling, lifting, kayaking, hiking, walking, scuba diving
+  - number: "7"
+    label: analog modes
+    detail: watercolor, sewing, punch needle, sketching, sashiko, acrylic, pen and ink
+closing:
+  number: "1"
+  text: "**long (hopefully) journey**, made better by the people in it, spent trying to make the world a little less frustrating, one experience at a time."
+  photo: /assets/img/johanna-portrait.png
+  photo_alt: Johanna Campos

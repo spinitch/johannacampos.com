@@ -1,0 +1,29 @@
+---
+layout: base.njk
+permalink: about.html
+current: about
+mainClass: about-page
+eleventyComputed:
+  title: "{{ about.page_title }}"
+  description: "{{ about.description }}"
+---
+  <h1>{{ about.heading }}</h1>
+  <div class="stat-grid">
+    {%- for s in about.stats %}
+    <div class="stat-card">
+      <p class="stat-num">{{ s.number }}</p>
+      <h2 class="stat-label">{{ s.label }}</h2>
+      {%- if s.detail %}
+      <p class="stat-detail">{{ s.detail }}</p>
+      {%- endif %}
+      {%- if s.image %}
+      <img class="stat-product" src="{{ s.image | asset }}" alt="{{ s.image_alt }}" width="40" height="42">
+      {%- endif %}
+    </div>
+    {%- endfor %}
+    <div class="stat-card stat-card--wide">
+      <p class="stat-num">{{ about.closing.number }}</p>
+      <p class="stat-text">{{ about.closing.text | mdi | safe }}</p>
+      <img src="{{ about.closing.photo | asset }}" alt="{{ about.closing.photo_alt }}" width="300" height="300">
+    </div>
+  </div>

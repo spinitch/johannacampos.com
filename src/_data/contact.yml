@@ -1,0 +1,16 @@
+page_title: Contact — Johanna Campos
+description: Tell me what you're working on and what you need — product strategy, design execution, or fractional design leadership.
+eyebrow: Let’s Work Together
+heading: Ready to build something that matters?
+intro: Tell me what you’re working on and what you need. I read every message and reply within one to two business days.
+email_prompt: Prefer email?
+# Choices in the "How did you hear about me?" dropdown
+sources:
+  - LinkedIn
+  - Referral
+  - Google
+  - UXPA NYC
+  - Social media
+  - Other
+thank_you_heading: Thank you for reaching out.
+thank_you_text: I’ll be in touch within 1–2 business days. In the meantime, feel free to connect on

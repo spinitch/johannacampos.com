@@ -1,0 +1,62 @@
+---
+layout: base.njk
+permalink: contact.html
+current: contact
+mainClass: contact-page
+hideCta: true
+eleventyComputed:
+  title: "{{ contact.page_title }}"
+  description: "{{ contact.description }}"
+---
+  <div class="contact-inner">
+    <div>
+      <p class="eyebrow">{{ contact.eyebrow }}</p>
+      <h1>{{ contact.heading | heading | safe }}</h1>
+      <p class="contact-lede">{{ contact.intro | mdi | safe }}</p>
+      <p class="contact-direct">{{ contact.email_prompt }} <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></p>
+    </div>
+
+    <div>
+      <form id="contact-form" action="https://formspree.io/f/myeygrkk" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from johannacampos.com">
+        <input type="hidden" name="_next" value="https://johannacampos.com/contact.html?sent=true">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-name">Name</label>
+            <input type="text" class="form-input" id="f-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-email">Email</label>
+            <input type="email" class="form-input" id="f-email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-source">How did you hear about me?</label>
+          <select class="form-input" id="f-source" name="How did you hear about me">
+            <option value="" disabled selected>Select one</option>
+            {%- for src in contact.sources %}
+            <option>{{ src }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <fieldset class="form-group" style="border:0;">
+          <legend class="form-label">What are you interested in?</legend>
+          <div class="form-checks">
+            {%- for o in offerings.items %}
+            <label class="form-check"><input type="checkbox" name="Interested in" value="{{ o.name }}"> {{ o.name }}</label>
+            {%- endfor %}
+            <label class="form-check"><input type="checkbox" name="Interested in" value="Something else"> Something else</label>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <label class="form-label" for="f-message">Tell me more</label>
+          <textarea class="form-input form-textarea" id="f-message" name="message" placeholder="What are you working on? What do you need?" rows="4"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
+      <div id="form-success" class="form-success" hidden>
+        <strong style="display:block;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:10px;">{{ contact.thank_you_heading }}</strong>
+        {{ contact.thank_you_text }} <a href="{{ site.linkedin_url }}" target="_blank" rel="noopener" style="color:var(--coral);">LinkedIn</a>.
+      </div>
+    </div>
+  </div>

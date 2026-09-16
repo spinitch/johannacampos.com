@@ -1,0 +1,10 @@
+  <section class="other-work" aria-labelledby="other-work-heading">
+    <h2 id="other-work-heading">{{ work.other_heading }}</h2>
+    <div class="work-grid work-grid--three">
+    {%- for card in work.cards %}{% if card.page != page.fileSlug + ".html" %}
+    <a class="work-card" href="{{ card.page }}">
+      <div class="work-card-img"><img src="{{ card.thumbnail | asset }}" alt="{{ card.name }} case study" width="1000" height="864" loading="lazy"></div>
+    </a>
+    {%- endif %}{% endfor %}
+    </div>
+  </section>

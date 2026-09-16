@@ -1,0 +1,55 @@
+---
+layout: base.njk
+permalink: how-i-can-help.html
+current: services
+tabs: true
+eleventyComputed:
+  title: "{{ offerings.page_title }}"
+  description: "{{ offerings.description }}"
+---
+  <section class="help-hero">
+    <h1 class="eyebrow eyebrow--lg">{{ offerings.heading }}</h1>
+    <div class="tablist" role="tablist" aria-label="Offerings">
+      {%- for o in offerings.items %}
+      {%- set parts = o.name | splitPlus %}
+      <button class="tab" role="tab" id="tab-{{ o.slug }}" aria-controls="panel-{{ o.slug }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %}>
+        {%- for part in parts -%}
+        {%- if not loop.last %}<span class="tab-line">{{ part }} <span class="plus">+</span></span> {% else %}<span class="tab-line">{{ part }}</span>{% endif -%}
+        {%- endfor -%}
+      </button>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <div class="help-body">
+    {%- for o in offerings.items %}
+
+    <!-- TAB {{ loop.index }}: {{ o.name }} -->
+    <section class="help-panel{% if loop.first %} is-active{% endif %}" role="tabpanel" id="panel-{{ o.slug }}" data-slug="{{ o.slug }}" aria-labelledby="tab-{{ o.slug }}" tabindex="0">
+      <p class="help-preamble">{{ o.preamble | mdi | safe }}</p>
+
+      <div class="help-section">
+        <h3>Who it&rsquo;s for</h3>
+        {{ o.who_for | md | safe }}
+      </div>
+      {%- if o.what_items and o.what_items.length %}
+
+      <div class="help-section">
+        <h3>What you get</h3>
+        {{ o.what_intro | md | safe }}
+        <ul class="help-list">
+          {%- for item in o.what_items %}
+          <li><strong>{{ item.title }}</strong><br>{{ item.body | mdi | safe }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+
+      <div class="case-card">
+        <h3>Case Study</h3>
+        {{ o.case_study | md | safe }}
+      </div>
+    </section>
+    {%- endfor %}
+
+  </div>

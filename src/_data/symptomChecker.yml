@@ -1,0 +1,35 @@
+page_title: Symptom Checker — Johanna Campos
+description: "Case study: leading the WebMD Symptom Checker redesign and the design team practice around it."
+eyebrow: Selected Work
+title: Symptom Checker
+tags:
+  - design team leadership
+  - design mentorship
+  - cross-functional alignment
+  - research-driven design
+problem:
+  heading: The Problem
+  body: |-
+    Design practices weren’t scaled or consistent across WebMD/Medscape’s flagship products, limiting retention, engagement, and conversion. Accuracy was also a perception problem — WebMD had become a punchline on late-night TV and comedy shows (“it’s always cancer”), and that reputation wasn’t something a visual redesign alone was going to fix.
+role:
+  heading: My Role & Impact
+  body: |-
+    Led the redesign of the Symptom Checker while building the process and team practice around it, including a “design buddy” mentorship structure. To address the trust problem directly, the team developed an accuracy meter and made it easier to add new symptoms — more data in, more accurate results out.
+metrics:
+  heading: Metrics & Outcomes
+  body: |-
+    The accuracy meter and expanded symptom-input tooling became the direct answer to the trust problem, and the underlying design system was later adopted across WebMD’s other properties.
+roadblocks:
+  heading: Navigating Roadblocks
+  body: |-
+    Leading the team felt like whack-a-mole — there was always something new to deal with. Getting comfortable being uncomfortable, and helping the team understand the business value of design, was the ongoing work.
+images:
+  phone_bodymap:
+    src: /assets/img/symptom-checker/symptom-checker-phone-bodymap.png
+    alt: "Mobile Symptom Checker: body-map symptom entry"
+  phone_condition:
+    src: /assets/img/symptom-checker/symptom-checker-phone-condition.png
+    alt: "Mobile Symptom Checker: the Chondromalacia Patella condition page"
+  bodymap:
+    src: /assets/img/symptom-checker/symptom-checker-bodymap.png
+    alt: "WebMD Symptom Checker with body map: symptom entry, a list of added symptoms, and a 3D body figure"

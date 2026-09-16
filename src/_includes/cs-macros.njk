@@ -1,0 +1,6 @@
+{% macro section(s) %}
+    <section class="cs-section">
+      <h2>{{ s.heading }}</h2>
+      {{ s.body | md | safe }}
+    </section>
+{%- endmacro %}

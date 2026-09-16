@@ -1,0 +1,12 @@
+  <!-- Case-study hero band -->
+  <section class="cs-hero cs-hero--{{ heroClass }}">
+    <p class="cs-eyebrow">{{ cs.eyebrow }}</p>
+    <h1>{{ cs.title }}</h1>
+    <div class="cs-tagbox">
+      <ul class="cs-tags" aria-label="Role and skills">
+      {%- for tag in cs.tags %}
+        <li>{{ tag }}</li>
+      {%- endfor %}
+      </ul>
+    </div>
+  </section>
