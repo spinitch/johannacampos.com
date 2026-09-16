@@ -34,8 +34,6 @@ items:
         body: Wireframes, prototypes, and high-fidelity UI, tested and refined with real users along the way rather than delivered cold.
       - title: 'Deliver:'
         body: A design system and production-ready files, handed off with the specs and rationale your engineering team needs to build it right, with support through implementation.
-      - title: 'Add-on (optional) — a working prototype:'
-        body: Instead of static files, I build the design out into a working, clickable prototype using AI-native tools, the same approach behind [Lakatta](lakatta.html). Useful when you need something real to test with users or show investors, not just a design to hand off.
     case_study: |-
       I’ve watched the same scene play out on every family trip: one person holds all the information, and everyone else is texting them for the Airbnb code, the flight number, which terminal to go to. I’ve stood in an airport digging through my own inbox trying to find a terminal number while stressed and short on time. There had to be a better way to handle information that’s already sitting in your email.
 
