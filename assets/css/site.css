@@ -166,6 +166,7 @@ a { color: inherit; }
 .stat-card--wide { grid-column: 1 / -1; min-height: 156px; flex-direction: row; justify-content: center; gap: 38px; padding: 24px 48px; margin-top: 0; }
 .stat-card--wide .stat-num { font-size: 102px; margin: 0; flex: none; width: 96px; text-align: center; }
 .stat-card--wide .stat-text { font-size: 13.5px; line-height: 1.5; color: #333; text-align: left; max-width: 380px; }
+.stat-card--wide .stat-text strong { font-weight: 600; }
 .stat-card--wide img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; margin-left: 34px; }
 
 /* ==========================================================================
