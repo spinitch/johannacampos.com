@@ -1,21 +1,19 @@
-# The three services. Used by the home page cards and the How I Can Help tabs.
 page_title: How I Can Help — Johanna Campos
-description: "Three ways to work together: Dissect + Diagnose, Design + Deliver, and Direct + Develop."
+description: 'Three ways to work together: Dissect + Diagnose, Design + Deliver, and Direct + Develop.'
 heading: How I Can Help
 items:
   - name: Dissect + Diagnose
     slug: dissect-diagnose
     card_summary: A fixed-scope audit using human-centered design methods. You’ll walk away knowing exactly what to prioritize next.
-    preamble: |-
-      **Dissect + Diagnose** is for teams who need clarity before they commit further resources. I developed this package after being brought onto the commercialization effort for an AI clinical platform — the team had built something technically strong, but nobody had stopped to ask who it was actually for. That gap between “it works” and “it’s ready” is what this audit is built to find.
+    preamble: '**Dissect + Diagnose** is for teams who need clarity before they commit further resources. I developed this package after being brought onto the commercialization effort for an AI clinical platform — the team had built something technically strong, but nobody had stopped to ask who it was actually for. That gap between “it works” and “it’s ready” is what this audit is built to find.'
     who_for: Founders and teams ready to move to the next phase and want an outside, senior perspective to make sure they’re building on solid ground, as well as those who sense something’s off but can’t quite pinpoint what.
-    what_intro: "The exact mix depends on where you are and what you’re trying to learn, but the work generally moves through three stages:"
+    what_intro: 'The exact mix depends on where you are and what you’re trying to learn, but the work generally moves through three stages:'
     what_items:
-      - title: "Research:"
+      - title: 'Research:'
         body: Interviews with the right stakeholders and users, journey mapping, and a blueprint of how the experience actually works across touchpoints and environments.
-      - title: "Diagnosis:"
+      - title: 'Diagnosis:'
         body: A clear-eyed evaluation of what’s working and what isn’t, with findings named and ranked by impact.
-      - title: "Recommendations:"
+      - title: 'Recommendations:'
         body: Fixes you can act on immediately, and the bigger strategic moves worth considering, delivered as a written report with an optional debrief.
     case_study: |-
       For an AI clinical platform preparing to commercialize, I was brought in to assess its commercial viability. The team had already done strong work tuning the model for accuracy, working with talented data scientists to get the numbers right. What hadn’t been tested was direction.
@@ -23,36 +21,36 @@ items:
       Physician interviews told a different story than the model metrics did. The tool didn’t have a clear point of view on who it was for or what problem it solved first. People used it anyway, mostly because it was there and it was free, but the frustration was real and consistent across roles. My recommendation was to treat product strategy and user experience as the next phase of the work, not an afterthought to a technically strong model.
 
       I delivered a prioritized roadmap alongside the audit findings, with clear next steps the team could act on immediately versus plan for later. We kept regular check-ins through the engagement so nothing sat in a report unread — recommendations got discussed and adjusted as the team’s own thinking evolved.
-
   - name: Design + Deliver
     slug: design-deliver
     card_summary: You’ve got a product that works. This gets it to the level that impresses investors, converts users, and wins partners.
-    preamble: |-
-      **Design + Deliver** is for teams who have proven the concept and now need it to hold up in front of real users, investors, or partners. I developed this package out of my own experience building [Lakatta](lakatta.html) from an idea into a working product — knowing firsthand what it takes to go from “this could work” to something people actually trust and use.
+    preamble: '**Design + Deliver** is for teams who have proven the concept and now need it to hold up in front of real users, investors, or partners. I developed this package out of my own experience building [Lakatta](lakatta.html) from an idea into a working product — knowing firsthand what it takes to go from “this could work” to something people actually trust and use.'
     who_for: Teams with a working product who need senior design execution, not just direction, to close the gap between functional and great.
-    what_intro: "The exact mix depends on the product and where it is in its lifecycle, but the work generally moves through three stages:"
+    what_intro: 'The exact mix depends on the product and where it is in its lifecycle, but the work generally moves through three stages:'
     what_items:
-      - title: "Define:"
+      - title: 'Define:'
         body: Understanding the users, the constraints, and what good looks like for this product, translated into a direction the whole team can build against.
-      - title: "Design:"
+      - title: 'Design:'
         body: Wireframes, prototypes, and high-fidelity UI, tested and refined with real users along the way rather than delivered cold.
-      - title: "Deliver:"
+      - title: 'Deliver:'
         body: A design system and production-ready files, handed off with the specs and rationale your engineering team needs to build it right, with support through implementation.
-      - title: "Add-on (optional) — a working prototype:"
+      - title: 'Add-on (optional) — a working prototype:'
         body: Instead of static files, I build the design out into a working, clickable prototype using AI-native tools, the same approach behind [Lakatta](lakatta.html). Useful when you need something real to test with users or show investors, not just a design to hand off.
     case_study: |-
       I’ve watched the same scene play out on every family trip: one person holds all the information, and everyone else is texting them for the Airbnb code, the flight number, which terminal to go to. I’ve stood in an airport digging through my own inbox trying to find a terminal number while stressed and short on time. There had to be a better way to handle information that’s already sitting in your email.
 
       I looked at what existed. TripIt, Wanderlog, they solve the aggregation problem, but not the simplicity problem. I thought I could build something better, something simpler. So [Lakatta](lakatta.html) pulls your confirmation emails into one itinerary that shows you only what you need for right now, with the rest of the trip a tap away. Weather’s built in. Shared trips and split expenses mean nobody’s re-sending hotel details in a group chat for the fifth time.
-
   - name: Direct + Develop
     slug: direct-develop
     card_summary: Design executive for teams that need someone who’s already navigated clinical, engineering, and exec stakeholders, without the headcount.
-    preamble: |-
-      **Direct + Develop** is for teams that need a senior design voice at the leadership table but aren’t ready to hire one full-time. I developed this offering after years sitting in that seat myself — scaling design orgs and navigating clinical, marketing, product, and engineering stakeholders across health platforms serving millions of users. I know what that seat requires, and I take it fractionally now so you don’t have to fill it with a full-time hire before you’re ready.
-    who_for: Funded startups and small businesses that need a design executive but aren’t ready to hire one full-time.
-    # "What you get" not drafted yet — the section is hidden while the list is empty.
-    what_intro: ""
-    what_items: []
-    case_study: |-
-      I’ve led design orgs and sat at the table with clinical, marketing, product, and engineering stakeholders across health platforms serving millions of users. Scaling the org, building the processes that get roadmap-critical work in front of the right people, and staying in the room through the trade-offs. That’s the same seat I take fractionally now, just without the full-time headcount.
+    preamble: '**Direct + Develop** is for teams that need a senior design voice at the leadership table but aren’t ready to hire one full-time. After years sitting in that seat myself — scaling design orgs and navigating clinical, marketing, product, and engineering stakeholders across health platforms serving millions of users. I know what that seat requires, and I take it fractionally now so you don’t have to fill it with a full-time hire before you’re ready.'
+    who_for: Early or late stage startups who need a design partner to help build their product and get it to the next level. I help founders and established companies work through the messy and fun part of ideation, uncovering what users need and want, and how that translates into business outcomes.
+    what_intro: 'The exact mix depends on your team and stage. The engagement generally covers three things:'
+    what_items:
+      - title: 'Embed:'
+        body: I fold into how your team actually works. Standups, roadmap reviews, stakeholder meetings. Direction comes from inside the work.
+      - title: 'Direct:'
+        body: I help you shape the product and design strategy, make the calls that keep design and engineering moving together, and represent the user in every room where decisions get made, including with clinical or executive stakeholders.
+      - title: 'Develop:'
+        body: "I build what outlasts the engagement: design systems, workflows, a practice your team can run on its own once it's time to bring someone in full-time."
+    case_study: I’ve led design orgs and sat at the table with clinical, marketing, product, and engineering stakeholders across health platforms serving millions of users. Scaling the org, building the processes that get roadmap-critical work in front of the right people, and staying in the room through the trade-offs. That’s the same seat I take fractionally now, just without the full-time headcount.
