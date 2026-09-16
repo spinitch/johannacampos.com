@@ -249,25 +249,25 @@ a { color: inherit; }
 .cs-quote p { font-size: 18.5px; font-weight: 600; line-height: 1.65; color: #fff; }
 .cs-quote + .cs-section { margin-top: 104px; }
 
-/* CancerCompass collage (positions measured from the Figma frame) */
-.cs-collage { position: relative; max-width: 700px; margin: 72px auto 0; aspect-ratio: 700 / 500; }
+/* CancerCompass collage (positions measured from the Figma frame, 709x536) */
+.cs-collage { position: relative; max-width: 709px; margin: 72px auto 0; aspect-ratio: 709 / 536; }
 .cs-collage img { position: absolute; height: auto; }
 /* The website and brand-tile exports carry their own drop shadows as
    transparent padding, so these offsets are negative to line the visible card
    edges up with the Figma positions. */
-.cs-collage .c-web { left: -6.5%; top: -9.1%; width: 74.9%; }
-.cs-collage .c-brand { left: 36.1%; top: 32.8%; width: 70.6%; }
-.cs-collage .c-social { left: 2.9%; top: 68.8%; width: 36.4%; }
+.cs-collage .c-web { left: -6.0%; top: -1.0%; width: 73.9%; }
+.cs-collage .c-chars { left: 70.5%; top: 0; width: 29.3%; }
+.cs-collage .c-brand { left: 35.7%; top: 38.0%; width: 69.7%; }
+.cs-collage .c-social { left: 2.8%; top: 72.2%; width: 35.8%; }
+.cs-credit { position: absolute; left: 44.4%; top: 91.8%; width: 52%; margin: 0; font-size: 11px; line-height: 1.62; color: var(--text-strong); }
 
 /* ==========================================================================
    8. OTHER SELECTED WORK (bottom of every case study)
    ========================================================================== */
-.other-work { background: var(--white); padding: 96px 24px 84px; }
-.other-work > * { max-width: 830px; margin-left: auto; margin-right: auto; }
-.other-work .eyebrow { text-align: center; margin-bottom: 40px; }
-.work-grid--three { grid-template-columns: repeat(3, 1fr); column-gap: 32px; row-gap: 36px; }
-.work-grid--three .work-card h3 { font-size: 15px; margin-top: 12px; }
-.work-grid--three .work-card p { font-size: 11.5px; }
+.other-work { background: var(--white); padding: 0 24px 66px; }
+.other-work > * { max-width: 692px; margin-left: auto; margin-right: auto; }
+.other-work h2 { border-top: 1px solid #C5C5C5; padding-top: 44px; font-size: 18px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000; text-align: center; margin-bottom: 45px; }
+.work-grid--three { grid-template-columns: repeat(3, 1fr); column-gap: 29px; row-gap: 29px; }
 
 /* ==========================================================================
    9. CONTACT
@@ -341,11 +341,9 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
 
   .cta-band { padding: 64px 24px 68px; }
 
-  .other-work { padding: 64px 24px 60px; }
-  .other-work .eyebrow { margin-bottom: 28px; }
-  .work-grid--three { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; row-gap: 32px; }
-  .work-grid--three .work-card h3 { font-size: 17px; }
-  .work-grid--three .work-card p { font-size: 13px; }
+  .other-work { padding: 0 24px 52px; }
+  .other-work h2 { padding-top: 40px; margin-bottom: 30px; font-size: 16px; }
+  .work-grid--three { grid-template-columns: 1fr 1fr; max-width: 420px; margin-left: auto; margin-right: auto; gap: 16px; }
   .contact-page { padding: 56px 24px 64px; }
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
@@ -379,7 +377,9 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .cs-quote + .cs-section { margin-top: 64px; }
   .cs-collage { aspect-ratio: auto; max-width: 480px; padding: 0 24px; display: grid; gap: 20px; }
   .cs-collage img { position: static; width: 100% !important; }
+  .cs-collage .c-chars { width: 78% !important; justify-self: center; }
   .cs-collage .c-social { width: 72% !important; justify-self: center; }
+  .cs-credit { position: static; width: auto; }
 }
 
 @media (max-width: 480px) {
