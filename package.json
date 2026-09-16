@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "eleventy",
-    "start": "eleventy --serve",
-    "cms": "npx decap-server"
+    "start": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",

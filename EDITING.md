@@ -27,7 +27,7 @@ Layouts, colours and new sections are in code: `src/*.njk` (page layouts), `asse
 
 - `src/_data/*.yml`: all page copy. This is what the CMS edits.
 - `src/*.njk` and `src/_includes/`: page layouts, plus the shared nav, footer band and footer.
-- `src/admin/`: the CMS (Decap CMS) and its field definitions (`config.yml`).
+- `src/admin/`: the CMS ([Sveltia CMS](https://sveltiacms.app), which uses the Decap CMS config format) and its field definitions (`config.yml`).
 - Netlify runs `npm run build` (Eleventy), which writes the finished site to `_site/`. Only `_site/` is published, so working files in this folder stay private.
 
 Run it locally:
@@ -35,5 +35,6 @@ Run it locally:
 ```
 npm install
 npm start          # site at http://localhost:8080
-npm run cms        # in a second terminal: lets /admin edit local files without logging in
 ```
+
+To edit local files without logging in, open http://localhost:8080/admin in Chrome, choose **Work with Local Repository**, and pick this folder.

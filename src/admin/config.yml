@@ -1,4 +1,4 @@
-# Decap CMS — the editor at johannacampos.com/admin
+# Sveltia CMS (reads Decap CMS config) — the editor at johannacampos.com/admin
 # Saving in the editor commits to main on GitHub; Netlify then rebuilds and
 # publishes the site (about a minute).
 backend:
@@ -10,8 +10,8 @@ backend:
     uploadMedia: "Upload {{path}} (via CMS)"
     deleteMedia: "Delete {{path}} (via CMS)"
 
-# `npm run cms` + `npm start` lets the editor run against local files instead.
-local_backend: true
+# To edit local files instead: `npm start`, open localhost:8080/admin and
+# choose "Work with Local Repository".
 
 site_url: https://johannacampos.com
 display_url: https://johannacampos.com
@@ -28,7 +28,6 @@ editor:
 collections:
   - label: Pages
     name: pages
-    delete: false
     files:
       - label: Home
         name: home
@@ -135,7 +134,6 @@ collections:
 
   - label: Work
     name: work
-    delete: false
     files:
       - label: Work cards (home page grid)
         name: cards
@@ -159,7 +157,6 @@ collections:
 
   - label: Case studies
     name: case_studies
-    delete: false
     files:
       - label: "Lakatta"
         name: lakatta
@@ -402,7 +399,6 @@ collections:
 
   - label: Site settings
     name: settings
-    delete: false
     files:
       - label: Site settings
         name: site
