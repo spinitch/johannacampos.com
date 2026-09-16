@@ -155,18 +155,18 @@ a { color: inherit; }
 /* ==========================================================================
    5. ABOUT ME
    ========================================================================== */
-.about-page { background: var(--about-bg); padding: 50px 24px 50px; }
-.about-page h1 { font-family: var(--sans); font-size: 19px; font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase; text-align: center; color: #000; margin-bottom: 50px; }
-.stat-grid { max-width: 675px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 13px; row-gap: 18px; }
-.stat-card { background: var(--white); min-height: 228px; padding: 18px 18px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.stat-num { font-family: var(--serif); font-variant-numeric: lining-nums; font-size: 84px; font-weight: 500; line-height: 1; color: var(--coral-hot); margin-bottom: 10px; }
-.stat-label { font-size: 12.5px; font-weight: 600; line-height: 1.25; color: #333; max-width: 150px; margin-bottom: 18px; }
-.stat-detail { font-size: 12.5px; line-height: 1.22; color: var(--text-soft); max-width: 170px; }
-.stat-product { width: 40px; height: auto; margin-top: -4px; }
-.stat-card--wide { grid-column: 1 / -1; min-height: 137px; flex-direction: row; justify-content: center; gap: 30px; padding: 16px 40px; margin-top: -4px; }
-.stat-card--wide .stat-num { font-size: 96px; margin: 0; flex: none; width: 90px; text-align: center; }
-.stat-card--wide .stat-text { font-size: 12.5px; line-height: 1.22; color: #333; text-align: left; max-width: 310px; }
-.stat-card--wide img { width: 57px; height: 57px; border-radius: 50%; object-fit: cover; flex: none; margin-left: 30px; }
+.about-page { background: var(--about-bg); padding: 60px 24px 58px; }
+.about-page h1 { font-family: var(--sans); font-size: 21px; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; text-align: center; color: #000; margin-bottom: 56px; }
+.stat-grid { max-width: 830px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 16px; row-gap: 22px; }
+.stat-card { background: var(--white); min-height: 252px; padding: 28px 24px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.stat-num { font-family: var(--serif); font-variant-numeric: lining-nums; font-size: 88px; font-weight: 500; line-height: 1; color: var(--coral-hot); margin-bottom: 14px; }
+.stat-label { font-size: 14px; font-weight: 600; line-height: 1.35; color: #333; max-width: 180px; margin-bottom: 20px; }
+.stat-detail { font-size: 13.5px; line-height: 1.5; color: var(--text-soft); max-width: 215px; }
+.stat-product { width: 46px; height: auto; margin-top: -2px; }
+.stat-card--wide { grid-column: 1 / -1; min-height: 156px; flex-direction: row; justify-content: center; gap: 38px; padding: 24px 48px; margin-top: 0; }
+.stat-card--wide .stat-num { font-size: 102px; margin: 0; flex: none; width: 96px; text-align: center; }
+.stat-card--wide .stat-text { font-size: 13.5px; line-height: 1.5; color: #333; text-align: left; max-width: 380px; }
+.stat-card--wide img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; margin-left: 34px; }
 
 /* ==========================================================================
    6. HOW I CAN HELP (tabbed)
