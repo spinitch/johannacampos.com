@@ -124,7 +124,8 @@ a { color: inherit; }
    The hero fills the window under the nav, and its bottom is the frame's
    bottom edge (where the phone is cut off). The frame's 1024×480 hero area
    is scaled to fit, so --u is one Figma pixel; portrait windows use a
-   stacked 390×610 layout instead. --p is one Figma pixel inside the photo stage.
+   stacked 390×610 layout instead. --p is one Figma pixel inside the photo stage,
+   and --px is the phone's left edge in the stage.
    Base styles are the finished state; the animations run from the phone
    state to it, so reduced motion shows the grid.
    Timeline: phone + "Less time" in (0–0.6s) · all 16 photos fade in over
@@ -132,7 +133,7 @@ a { color: inherit; }
    "being human." starts black and a sparkle sweep turns it orange (3.4s) ·
    the photos float out into the grid (5–6.8s) · button (6.6s). */
 .hero3 { position: relative; height: calc(100vh - var(--nav-h)); height: calc(100svh - var(--nav-h)); min-height: 320px; background: var(--white); overflow: hidden; container-type: size; }
-.hero3-inner { --u: min(100cqw / 1024, 100cqh / 480); --p: var(--u); position: absolute; left: 50%; bottom: 0; width: calc(1024 * var(--u)); height: calc(480 * var(--u)); transform: translateX(-50%); }
+.hero3-inner { --u: min(100cqw / 1024, 100cqh / 480); --p: var(--u); --px: 18; position: absolute; left: 50%; bottom: 0; width: calc(1024 * var(--u)); height: calc(480 * var(--u)); transform: translateX(-50%); }
 .hero3-copy { position: absolute; left: calc(117 * var(--u)); top: calc(168 * var(--u)); }
 .hero3-title { display: grid; font-family: var(--sans); font-size: calc(44 * var(--u)); font-weight: 500; line-height: calc(50 * var(--u)); color: #000; white-space: nowrap; }
 .hero3-before, .hero3-after { grid-area: 1 / 1; }
@@ -154,18 +155,17 @@ a { color: inherit; }
 .hero3-after .hero3-accent::before { left: 30%; top: -0.3em; width: 0.36em; height: 0.36em; animation: hero3-twinkle 0.8s ease-out 3.8s; }
 .hero3-after .hero3-accent::after { right: -0.5em; top: -0.22em; width: 0.52em; height: 0.52em; animation: hero3-twinkle 0.9s ease-out 4.2s; }
 .hero3-stage { position: absolute; left: calc(523 * var(--u)); top: calc(32 * var(--u)); width: calc(396 * var(--p)); height: calc(396 * var(--p)); }
-.hero3-phone { position: absolute; left: calc(18 * var(--p)); top: calc(73 * var(--p)); width: calc(273 * var(--p)); height: auto; max-width: none; opacity: 0; animation: hero3-phone 4.8s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+.hero3-phone { position: absolute; left: calc(var(--px) * var(--p)); top: calc(73 * var(--p)); width: calc(273 * var(--p)); height: auto; max-width: none; opacity: 0; animation: hero3-phone 4.8s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
 .hero3-tile {
   position: absolute; width: calc(88 * var(--p)); height: calc(88 * var(--p)); object-fit: cover; border-radius: calc(20 * var(--p));
   left: calc(var(--c) * 102.67 * var(--p)); top: calc(var(--r) * 102.67 * var(--p));
   animation:
-    hero3-pop 0.9s ease-in-out calc(1.8s + var(--i) * 0.14s) both,
+    hero3-in 0.9s ease-in-out calc(1.8s + var(--i) * 0.14s) both,
     hero3-float 1.2s cubic-bezier(0.6, 0, 0.2, 1) calc(5s + var(--i) * 0.04s) both;
 }
 @keyframes hero3-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes hero3-out { to { opacity: 0; } }
 @keyframes hero3-rise { from { opacity: 0; transform: translateY(12px) scale(0.94); } to { opacity: 1; transform: none; } }
-@keyframes hero3-pop { from { opacity: 0; scale: 0.85; filter: blur(3px); } to { opacity: 1; scale: 1; filter: none; } }
 @keyframes hero3-shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes hero3-twinkle { 0% { scale: 0; rotate: 0deg; } 45% { scale: 1; } 100% { scale: 0; rotate: 90deg; } }
 /* 0.6s in, holds to 1.6s, fades out behind the photos by 4.8s. */
@@ -175,24 +175,28 @@ a { color: inherit; }
   82% { opacity: 0.12; }
   100% { opacity: 0; }
 }
-/* Centre of the app icon at (sc, sr) (38px icons, 55px/65.33px apart, first
-   at 53,133) to the centre of the grid cell at (c, r) (88px tiles, 102.67px
-   apart), shrunk to icon size. */
+/* From the app icon at (sc, sr) (38px icons, 55px/65.33px apart, the first
+   35px in from the phone's edge and 133px down) to the tile's own grid cell.
+   Size and position animate rather than transform: scale, which phones
+   (Safari especially) leave blurry at full size. */
 @keyframes hero3-float {
-  from { transform: translate(calc((28 + 55 * var(--sc) - 102.67 * var(--c)) * var(--p)), calc((108 + 65.33 * var(--sr) - 102.67 * var(--r)) * var(--p))) scale(0.4318); }
-  to { transform: none; }
+  from {
+    left: calc((var(--px) + 35 + 55 * var(--sc)) * var(--p)); top: calc((133 + 65.33 * var(--sr)) * var(--p));
+    width: calc(38 * var(--p)); height: calc(38 * var(--p)); border-radius: calc(8.6 * var(--p));
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero3 *, .hero3 *::before, .hero3 *::after { animation: none !important; }
   .hero3-phone, .hero3-before { opacity: 0; }
 }
 /* Portrait and near-square windows (phones, tablets): headline and button
-   at the top, photos at the bottom edge, as one centred 390-wide column. */
+   centred at the top, photos at the bottom edge with the phone centred on
+   the grid. */
 @container (max-aspect-ratio: 7 / 5) {
-  .hero3-inner { --u: min(100cqw / 390, 100cqh / 610); --p: calc(var(--u) * 342 / 396); position: static; width: auto; height: auto; transform: none; }
-  .hero3-copy { left: calc(50% - 171 * var(--u)); top: calc(36 * var(--u)); }
+  .hero3-inner { --u: min(100cqw / 390, 100cqh / 610); --p: calc(var(--u) * 342 / 396); --px: 61.5; position: static; width: auto; height: auto; transform: none; }
+  .hero3-copy { left: 50%; top: calc(36 * var(--u)); transform: translateX(-50%); text-align: center; }
   .hero3-title { font-size: calc(38 * var(--u)); line-height: calc(43 * var(--u)); }
-  .hero3-btn { top: calc(106 * var(--u)); }
+  .hero3-btn { left: 50%; top: calc(106 * var(--u)); translate: -50% 0; }
   .hero3-stage { left: 50%; top: auto; bottom: calc(52 * var(--p)); transform: translateX(-50%); }
 }
 
