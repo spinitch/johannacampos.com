@@ -75,52 +75,11 @@ a { color: inherit; }
 /* ==========================================================================
    4. HOME
    ========================================================================== */
-/* PHOTO HERO — verbatim from johannacampos_redesign2.html, except margin-top
-   (the nav is now sticky rather than fixed, so no offset is needed). */
-.photo-hero { position: relative; width: 100%; aspect-ratio: 2400 / 1350; overflow: hidden; background: #0a0a14; margin-top: 0; }
-.photo-hero-grid { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(5, 1fr); gap: 3px; background: #0a0a14; }
-.ph-tile {
-  width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; display: block;
-  filter: grayscale(1) contrast(1.1) brightness(0.98);
-  opacity: 0; animation: ph-fade-in 0.9s ease forwards;
-}
-@keyframes ph-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .ph-tile, .photo-hero-panel { animation: none !important; opacity: 1 !important; transform: none !important; }
   .chat-bubble, .chat-chip, .chat-input, .chat-typing span { animation: none !important; }
 }
-.photo-hero-panel {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%);
-  width: 64%; background: rgba(10,10,18,0.62);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-  border-radius: 22px; border: 1px solid rgba(255,255,255,0.09);
-  padding: 5.2% 6%; text-align: center;
-  opacity: 0; animation: ph-panel-in 1s ease forwards; animation-delay: 1.15s;
-}
-@keyframes ph-panel-in {
-  from { opacity: 0; transform: translate(-50%, -46%); }
-  to   { opacity: 1; transform: translate(-50%, -50%); }
-}
-.ph-star { width: clamp(22px, 2.4vw, 34px); height: clamp(22px, 2.4vw, 34px); margin: 0 auto 14px; display: block; }
-.ph-star polygon { fill: var(--coral); }
-.ph-eyebrow { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(10px, 1.15vw, 17px); letter-spacing: 0.22em; color: var(--coral); margin-bottom: 16px; }
-.ph-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 3vw, 46px); line-height: 1.34; color: #f8f7f4; }
-.ph-quote .u-coral { text-decoration: underline; text-decoration-color: var(--coral); text-decoration-thickness: 0.06em; text-underline-offset: 0.18em; }
-  .ph-attr { font-family: 'Inter', sans-serif; font-size: clamp(8px, 0.72vw, 11px); letter-spacing: 0.18em; color: var(--coral); margin-top: 18px; }
 
-@media (max-width: 900px) {
-  .photo-hero { aspect-ratio: 4 / 5; }
-  .photo-hero-panel { width: 86%; padding: 7% 6%; }
-}
-@media (max-width: 520px) {
-  .photo-hero { aspect-ratio: 3 / 4; }
-  .photo-hero-panel { width: 90%; padding: 8% 6%; }
-}
-
-/* ANIMATED HERO (/v3) — from the homev3.1–3 Figma frames (1024px wide).
+/* HOME HERO — from the homev3.1–3 Figma frames (1024px wide).
    The hero fills the window under the nav, and its bottom is the frame's
    bottom edge (where the phone is cut off). The frame's 1024×480 hero area
    is scaled to fit, so --u is one Figma pixel; portrait windows use a
@@ -347,8 +306,6 @@ a { color: inherit; }
 .cs-figure-pair { max-width: 690px; margin: 72px auto 0; padding: 0 24px; display: grid; grid-template-columns: 292fr 307fr; column-gap: 50px; align-items: start; }
 .cs-figure-pair img { width: 100%; height: auto; }
 .cs-figure-pair + .cs-figure { margin-top: 62px; }
-.cs-diagram { max-width: 488px; margin: 6px auto 0; padding: 0 24px; }
-.cs-diagram svg { width: 100%; height: auto; display: block; }
 
 /* CancerCompass pull-quote band */
 .cs-quote { max-width: 697px; margin: 70px auto 0; border-top: 1px solid #C9C9C9; border-bottom: 1px solid #C9C9C9; padding: 52px 24px 58px; text-align: center; }

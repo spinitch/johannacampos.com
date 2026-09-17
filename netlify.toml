@@ -5,3 +5,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# /v3 was the test version of the new home page; it is now the home page.
+[[redirects]]
+  from = "/v3/*"
+  to = "/"
+  status = 301

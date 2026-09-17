@@ -11,38 +11,6 @@ eleventyComputed:
 
   <div class="cs-body">
     {{- cs_.section(cs.problem) }}
-    <figure class="cs-diagram">
-      <svg viewBox="0 0 440 190" role="img" aria-labelledby="cc-diagram-title" xmlns="http://www.w3.org/2000/svg">
-        <title id="cc-diagram-title">Where patients go for answers: Facebook groups, Google search, Reddit, TikTok, a hospital binder, and a 12-minute visit</title>
-        <rect width="440" height="190" fill="#FCFCFB"/>
-        <g stroke="#CFCCC6" stroke-width="0.8" stroke-dasharray="3 3" fill="none">
-          <line x1="230" y1="103" x2="96" y2="45"/>
-          <line x1="230" y1="103" x2="365" y2="42"/>
-          <line x1="230" y1="103" x2="46" y2="109"/>
-          <line x1="230" y1="103" x2="412" y2="109"/>
-          <line x1="230" y1="103" x2="95" y2="156"/>
-          <line x1="230" y1="103" x2="366" y2="156"/>
-        </g>
-        <g font-family="Inter, -apple-system, sans-serif" font-size="8.5" fill="#4A4A4A" text-anchor="middle">
-          <g fill="#F1F0EC" stroke="#C9C6BF" stroke-width="0.8">
-            <rect x="43" y="35" width="106" height="20" rx="10"/>
-            <rect x="318" y="32" width="94" height="20" rx="10"/>
-            <rect x="18" y="99" width="56" height="20" rx="10"/>
-            <rect x="385" y="99" width="54" height="20" rx="10"/>
-            <rect x="42" y="146" width="106" height="20" rx="10"/>
-            <rect x="322" y="146" width="88" height="20" rx="10"/>
-          </g>
-          <text x="96" y="48">Facebook groups</text>
-          <text x="365" y="45">Google search</text>
-          <text x="46" y="112">Reddit</text>
-          <text x="412" y="112">TikTok</text>
-          <text x="95" y="159">Hospital binder</text>
-          <text x="366" y="159">12-min visit</text>
-          <circle cx="230" cy="103" r="25" fill="#F9E9E4" stroke="#E2B3A6" stroke-width="0.9"/>
-          <text x="230" y="106" font-size="9" fill="#3A2A26">Patient</text>
-        </g>
-      </svg>
-    </figure>
     <aside class="cs-quote">
       <p>{{ cs.quote | replace("\n", "<br>") | accent("cs-quote-accent") | safe }}</p>
     </aside>
