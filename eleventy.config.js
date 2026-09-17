@@ -34,7 +34,8 @@ export default function (eleventyConfig) {
       done: bubbles(chat.done_prompt),
       restart: chat.restart_label,
       avatar: String(chat.avatar ?? ""),
-      book: { label: chat.book_label, url: site.booking_url },
+      // Book Now goes to the short form first (src/book.njk).
+      book: { label: chat.book_label, url: "/book.html" },
       note: chat.note && {
         ...chat.note,
         ask_name: bubbles(chat.note.ask_name),

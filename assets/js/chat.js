@@ -231,7 +231,7 @@
     youSay(t.question);
 
     var actions = t.buttons.slice();
-    if (t.book) actions.push({ label: data.book.label, url: data.book.url, external: true });
+    if (t.book) actions.push({ label: data.book.label, url: data.book.url });
 
     wait(350)
       .then(function () { return say(t.answer, actions); })
@@ -240,7 +240,7 @@
         var left = data.topics.length - asked.length;
         if (left) return wait(500).then(function () { return say(data.more); });
         return wait(500).then(function () {
-          return say(data.done, [{ label: data.book.label, url: data.book.url, external: true }]);
+          return say(data.done, [{ label: data.book.label, url: data.book.url }]);
         });
       })
       .then(function () {

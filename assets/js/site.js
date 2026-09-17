@@ -26,6 +26,38 @@
     if (ok) { ok.hidden = false; ok.setAttribute('tabindex', '-1'); ok.focus(); }
   }
 
+  // Book a call: send the answers to Formspree, then continue to Calendly
+  // with name, email and the "what to talk about" answer filled in (a1 is
+  // Calendly's first extra question, "Please share anything that will help
+  // prepare for our meeting"). If sending fails, offer Calendly anyway.
+  var book = document.getElementById('book-form');
+  if (book) {
+    book.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = book.querySelector('.form-submit');
+      var err = book.querySelector('.form-error');
+      var label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      err.hidden = true;
+      var data = new FormData(book);
+      fetch(book.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          var url = new URL(book.dataset.booking);
+          url.searchParams.set('name', data.get('name'));
+          url.searchParams.set('email', data.get('email'));
+          url.searchParams.set('a1', data.get('What they want to discuss'));
+          location.href = url.toString();
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = label;
+          err.hidden = false;
+        });
+    });
+  }
+
   // Tabs (How I Can Help). Deep links use each panel's data-slug, e.g.
   // how-i-can-help.html#design-deliver. Slugs deliberately differ from element
   // ids so the browser doesn't jump-scroll past the tab bar on arrival.

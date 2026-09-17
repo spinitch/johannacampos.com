@@ -197,6 +197,20 @@ collections:
           - {label: Thank-you heading, name: thank_you_heading, widget: string}
           - {label: Thank-you text, name: thank_you_text, widget: text, hint: "A LinkedIn link follows this."}
 
+      - label: Book a call (form before Calendly)
+        name: book
+        file: src/_data/book.yml
+        fields:
+          - {label: Browser tab title, name: page_title, widget: string}
+          - {label: Search description, name: description, widget: text}
+          - {label: Eyebrow, name: eyebrow, widget: string}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Intro, name: intro, widget: text}
+          - {label: Email line, name: email_prompt, widget: string, hint: "Your email address follows this (set it in Site settings)."}
+          - {label: Button, name: button, widget: string, hint: "After this, visitors go to your Calendly with their name and email filled in. The service checkboxes and “How did you hear about me?” choices come from How I Can Help and the Contact page."}
+          - {label: Error message, name: error, widget: string, hint: "Shown if the answers fail to send."}
+          - {label: Error link, name: error_link, widget: string, hint: "Follows the error message and opens your Calendly."}
+
   - label: Work
     name: work
     files:
@@ -232,6 +246,14 @@ collections:
             - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
             - {label: Title, name: title, widget: string}
             - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
+            - label: Animation video (beside “My Role & Impact”)
+              name: video
+              widget: object
+              collapsed: true
+              fields:
+                - {label: Video file, name: src, widget: file, media_library: {config: {media_folder: assets/video, public_folder: /assets/video}}, hint: "An MP4. Keep it small — large files are slow to load and use up Netlify credits."}
+                - {label: Still image before it plays, name: poster, widget: image}
+                - {label: Credit line, name: credit, widget: string, required: false}
             - label: "The Problem"
               name: problem
               widget: object
@@ -469,7 +491,7 @@ collections:
         name: site
         file: src/_data/site.yml
         fields:
-          - {label: Booking link (Calendly), name: booking_url, widget: string, hint: "Every Book Now button uses this."}
+          - {label: Booking link (Calendly), name: booking_url, widget: string, hint: "Every Book Now button opens the short form at /book.html first; it then sends people here."}
           - {label: LinkedIn link, name: linkedin_url, widget: string}
           - {label: Contact email, name: contact_email, widget: string}
           - {label: Footer copyright, name: copyright, widget: string}

@@ -1,0 +1,67 @@
+---
+# The short form every Book Now button opens. Answers go to the same
+# Formspree form as Contact, then the visitor continues to Calendly with
+# their name and email filled in (see the book-form code in site.js).
+layout: base.njk
+permalink: book.html
+mainClass: contact-page
+hideCta: true
+eleventyComputed:
+  title: "{{ book.page_title }}"
+  description: "{{ book.description }}"
+---
+  <div class="contact-inner">
+    <div>
+      <p class="eyebrow">{{ book.eyebrow }}</p>
+      <h1>{{ book.heading | heading | safe }}</h1>
+      <p class="contact-lede">{{ book.intro | mdi | safe }}</p>
+      <p class="contact-direct">{{ book.email_prompt }} <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></p>
+    </div>
+
+    <div>
+      {#- Without JavaScript, Formspree sends the visitor on to Calendly itself. #}
+      <form id="book-form" action="https://formspree.io/f/myeygrkk" method="POST" data-booking="{{ site.booking_url }}">
+        <input type="hidden" name="_subject" value="New call request from johannacampos.com">
+        <input type="hidden" name="_next" value="{{ site.booking_url }}">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="b-name">Name</label>
+            <input type="text" class="form-input" id="b-name" name="name" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="b-email">Email</label>
+            <input type="email" class="form-input" id="b-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="b-company">Company and role</label>
+          <input type="text" class="form-input" id="b-company" name="Company and role" placeholder="e.g. Head of Product at Acme" autocomplete="organization-title">
+        </div>
+        <fieldset class="form-group" style="border:0;">
+          <legend class="form-label">What are you interested in?</legend>
+          <div class="form-checks">
+            {%- for o in offerings.items %}
+            <label class="form-check"><input type="checkbox" name="Interested in" value="{{ o.name }}"> {{ o.name }}</label>
+            {%- endfor %}
+            <label class="form-check"><input type="checkbox" name="Interested in" value="Not sure yet"> Not sure yet</label>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <label class="form-label" for="b-message">What would you like to talk about?</label>
+          <textarea class="form-input form-textarea" id="b-message" name="What they want to discuss" placeholder="What are you working on? What do you need?" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="b-source">How did you hear about me?</label>
+          <select class="form-input" id="b-source" name="How did you hear about me">
+            <option value="" selected>Select one</option>
+            {%- for src in contact.sources %}
+            <option>{{ src }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <button type="submit" class="form-submit">{{ book.button }}</button>
+        <p class="form-error" role="alert" hidden>{{ book.error }} <a href="{{ site.booking_url }}">{{ book.error_link }} <span aria-hidden="true">&rarr;</span></a></p>
+      </form>
+    </div>
+  </div>

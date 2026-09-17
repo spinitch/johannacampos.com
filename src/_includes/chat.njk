@@ -20,7 +20,7 @@
         <summary>{{ t.question }}</summary>
         {{ t.answer | md | safe }}
         {%- for b in t.buttons %} <a class="chat-action" href="{{ b.link }}">{{ b.label }}</a>{% endfor %}
-        {%- if t.book %} <a class="chat-action" href="{{ site.booking_url }}" target="_blank" rel="noopener">{{ chat.book_label }}</a>{% endif %}
+        {%- if t.book %} <a class="chat-action" href="book.html">{{ chat.book_label }}</a>{% endif %}
       </details>
       {%- endfor %}
       {%- if chat.note %}
