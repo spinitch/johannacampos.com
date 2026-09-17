@@ -21,6 +21,10 @@ role:
     Owned product strategy, design, and roadmap from concept through MVP as Executive Director. Led patient research and clinical-expert workshops to translate clinical complexity into an intuitive patient experience. Aligned engineering, clinical operations, and executive leadership; partnered with internal data scientists and technical leads on AI model integration, care-pathway logic, and Epic-native implementation.
 
     Managed the outside brand designer and animation partner who built CancerCompass’s visual identity, while I directed the brand strategy and where that identity showed up across the product.
+video:
+  src: /assets/video/cancercompass.mp4
+  poster: /assets/img/cancercompass/cancercompass-video-poster.jpg
+  credit: "*Provided art and creative direction, partnered with an external animation studio."
 metrics:
   heading: Metrics & Outcomes
   body: |-

@@ -46,7 +46,18 @@ eleventyComputed:
     <aside class="cs-quote">
       <p>{{ cs.quote | replace("\n", "<br>") | accent("cs-quote-accent") | safe }}</p>
     </aside>
-    {{- cs_.section(cs.role) }}
+    <div class="cs-video-split">
+      {{- cs_.section(cs.role) }}
+      {%- if cs.video and cs.video.src %}
+      <figure class="cs-video">
+        {#- preload="metadata" so the file only downloads when someone presses play. #}
+        <video controls playsinline preload="metadata" poster="{{ cs.video.poster | asset }}" width="1280" height="720">
+          <source src="{{ cs.video.src | asset }}" type="video/mp4">
+        </video>
+        {%- if cs.video.credit %}<figcaption>{{ cs.video.credit }}</figcaption>{% endif %}
+      </figure>
+      {%- endif %}
+    </div>
     <div class="cs-split">
       <figure class="cs-split-img"><img src="{{ img.ai_phones.src | asset }}" alt="{{ img.ai_phones.alt }}" width="588" height="736" loading="lazy"></figure>
       {{- cs_.section(cs.metrics) }}
