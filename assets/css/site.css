@@ -121,57 +121,82 @@ a { color: inherit; }
 }
 
 /* ANIMATED HERO (/v3) — from the homev3.1–3 Figma frames (1024px wide).
-   The stage is a size container, so 100cqw = the 396px of the frame's photo
-   grid and every position below is a frame measurement in those units
-   (1 frame px = 0.2525cqw). Base styles are the finished state; the
-   animations run from the phone state to it, so reduced motion shows the grid.
-   Timeline: phone + "Less time" in (0–0.6s) · screen fades and the first ten
-   photos land on the app icons (2.2–3.3s) · phone goes and the photos float
-   out into the grid while the rest fade in (4.4–6s) · button (5.6s). */
-.hero3 { background: var(--white); overflow: hidden; }
-.hero3-inner { width: min(100% - 2 * var(--gutter), 78vw, 960px); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-.hero3-title { display: grid; font-family: var(--sans); font-size: clamp(34px, 4.3vw, 54px); font-weight: 500; line-height: 1.14; letter-spacing: -0.01em; color: #000; }
+   The hero fills the window under the nav, and its bottom is the frame's
+   bottom edge (where the phone is cut off). The frame's 1024×480 hero area
+   is scaled to fit, so --u is one Figma pixel; portrait windows use a
+   stacked 390×610 layout instead. --p is one Figma pixel inside the photo stage.
+   Base styles are the finished state; the animations run from the phone
+   state to it, so reduced motion shows the grid.
+   Timeline: phone + "Less time" in (0–0.6s) · photos fade in over the apps
+   one by one while the phone fades out behind them (1.8–4.4s) · "being
+   human." starts black and a sparkle sweep turns it orange (3.4s) · the
+   photos float out into the grid while the rest fade in (4.8–6.8s) · button
+   (6.2s). */
+.hero3 { position: relative; height: calc(100vh - var(--nav-h)); height: calc(100svh - var(--nav-h)); min-height: 320px; background: var(--white); overflow: hidden; container-type: size; }
+.hero3-inner { --u: min(100cqw / 1024, 100cqh / 480); --p: var(--u); position: absolute; left: 50%; bottom: 0; width: calc(1024 * var(--u)); height: calc(480 * var(--u)); transform: translateX(-50%); }
+.hero3-copy { position: absolute; left: calc(117 * var(--u)); top: calc(168 * var(--u)); }
+.hero3-title { display: grid; font-family: var(--sans); font-size: calc(44 * var(--u)); font-weight: 500; line-height: calc(50 * var(--u)); color: #000; white-space: nowrap; }
 .hero3-before, .hero3-after { grid-area: 1 / 1; }
-.hero3-accent { color: var(--coral-hot); }
 .hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 2.4s forwards; }
 .hero3-after { animation: hero3-in 0.8s ease 2.7s both; }
-.hero3-btn { margin-top: 36px; animation: hero3-rise 0.6s ease 5.6s both; }
-.hero3-stage { flex: 0 0 clamp(260px, 38.7vw, 480px); container-type: inline-size; }
-.hero3-canvas { position: relative; width: 100cqw; height: 100cqw; margin: 8.08cqw 0 13.13cqw; }
-.hero3-phone { position: absolute; left: 4.545cqw; top: 18.43cqw; width: 68.94cqw; height: auto; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); opacity: 0; animation: hero3-phone 5.6s ease both; }
+.hero3-btn { position: absolute; left: 0; top: calc(135 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.6s ease 6.2s both; }
+/* The sparkle sweep: a gold glint slides across the black text, leaving it
+   orange, and two small stars twinkle as it passes. */
+.hero3-accent { position: relative; color: var(--coral-hot); }
+.hero3-after .hero3-accent {
+  background: linear-gradient(105deg, var(--coral-hot) 40%, #FFB36B 46%, #FFF4E0 50%, #FFB36B 54%, #000 60%) 0 0 / 300% 100% no-repeat;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: hero3-shine 1.3s ease-in-out 3.4s both;
+}
+.hero3-after .hero3-accent::before, .hero3-after .hero3-accent::after {
+  content: ""; position: absolute; scale: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23FF9A3D' d='M10 0c.8 5.6 4.4 9.2 10 10-5.6.8-9.2 4.4-10 10-.8-5.6-4.4-9.2-10-10 5.6-.8 9.2-4.4 10-10z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.hero3-after .hero3-accent::before { left: 30%; top: -0.3em; width: 0.36em; height: 0.36em; animation: hero3-twinkle 0.8s ease-out 3.8s; }
+.hero3-after .hero3-accent::after { right: -0.5em; top: -0.22em; width: 0.52em; height: 0.52em; animation: hero3-twinkle 0.9s ease-out 4.2s; }
+.hero3-stage { position: absolute; left: calc(523 * var(--u)); top: calc(32 * var(--u)); width: calc(396 * var(--p)); height: calc(396 * var(--p)); }
+.hero3-phone { position: absolute; left: calc(18 * var(--p)); top: calc(73 * var(--p)); width: calc(273 * var(--p)); height: auto; max-width: none; opacity: 0; animation: hero3-phone 4.4s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
 .hero3-tile {
-  position: absolute; width: 22.22cqw; height: 22.22cqw; object-fit: cover; border-radius: 5.05cqw;
-  left: calc(var(--c) * 25.93cqw); top: calc(var(--r) * 25.93cqw);
-  transform-origin: 0 0;
+  position: absolute; width: calc(88 * var(--p)); height: calc(88 * var(--p)); object-fit: cover; border-radius: calc(20 * var(--p));
+  left: calc(var(--c) * 102.67 * var(--p)); top: calc(var(--r) * 102.67 * var(--p));
   animation:
-    hero3-in 0.5s ease calc(2.4s + var(--i) * 0.09s) both,
-    hero3-float 1.2s cubic-bezier(0.6, 0, 0.2, 1) calc(4.4s + var(--i) * 0.04s) both;
+    hero3-pop 0.9s ease-in-out calc(1.8s + var(--i) * 0.18s) both,
+    hero3-float 1.2s cubic-bezier(0.6, 0, 0.2, 1) calc(4.8s + var(--i) * 0.04s) both;
 }
 /* The six that weren't on the phone drift up into place. */
-.hero3-tile--late { animation: hero3-rise 0.8s ease calc(4.3s + var(--i) * 0.08s) both; }
+.hero3-tile--late { animation: hero3-rise 0.8s ease calc(4.8s + var(--i) * 0.08s) both; }
 @keyframes hero3-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes hero3-out { to { opacity: 0; } }
 @keyframes hero3-rise { from { opacity: 0; transform: translateY(12px) scale(0.94); } to { opacity: 1; transform: none; } }
+@keyframes hero3-pop { from { opacity: 0; scale: 0.85; filter: blur(3px); } to { opacity: 1; scale: 1; filter: none; } }
+@keyframes hero3-shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
+@keyframes hero3-twinkle { 0% { scale: 0; rotate: 0deg; } 45% { scale: 1; } 100% { scale: 0; rotate: 90deg; } }
+/* 0.6s in, holds to 1.6s, fades out behind the photos by 4.4s. */
 @keyframes hero3-phone {
   0% { opacity: 0; }
-  11%, 39% { opacity: 1; }
-  57%, 79% { opacity: 0.35; }
+  13.6%, 36.4% { opacity: 1; }
+  80% { opacity: 0.12; }
   100% { opacity: 0; }
 }
-/* From the app icon at (sc, sr) (38px icons, 55px/65.33px apart, first at
-   53,133) to the grid cell at (c, r) (88px tiles, 102.67px apart). */
+/* Centre of the app icon at (sc, sr) (38px icons, 55px/65.33px apart, first
+   at 53,133) to the centre of the grid cell at (c, r) (88px tiles, 102.67px
+   apart), shrunk to icon size. */
 @keyframes hero3-float {
-  from { transform: translate(calc((53 + 55 * var(--sc) - 102.67 * var(--c)) * 0.2525cqw), calc((133 + 65.33 * var(--sr) - 102.67 * var(--r)) * 0.2525cqw)) scale(0.4318); }
+  from { transform: translate(calc((28 + 55 * var(--sc) - 102.67 * var(--c)) * var(--p)), calc((108 + 65.33 * var(--sr) - 102.67 * var(--r)) * var(--p))) scale(0.4318); }
   to { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero3 * { animation: none !important; }
+  .hero3 *, .hero3 *::before, .hero3 *::after { animation: none !important; }
   .hero3-phone, .hero3-before { opacity: 0; }
 }
-@media (max-width: 767px) {
-  .hero3-inner { width: calc(100% - 2 * var(--gutter)); flex-direction: column; align-items: stretch; gap: 0; padding-top: 44px; }
-  .hero3-btn { margin-top: 24px; }
-  .hero3-stage { flex: none; width: min(100%, 400px); margin: 0 auto; }
+/* Portrait and near-square windows (phones, tablets): headline and button
+   at the top, photos at the bottom edge, as one centred 390-wide column. */
+@container (max-aspect-ratio: 7 / 5) {
+  .hero3-inner { --u: min(100cqw / 390, 100cqh / 610); --p: calc(var(--u) * 342 / 396); position: static; width: auto; height: auto; transform: none; }
+  .hero3-copy { left: calc(50% - 171 * var(--u)); top: calc(36 * var(--u)); }
+  .hero3-title { font-size: calc(38 * var(--u)); line-height: calc(43 * var(--u)); }
+  .hero3-btn { top: calc(106 * var(--u)); }
+  .hero3-stage { left: 50%; top: auto; bottom: calc(52 * var(--p)); transform: translateX(-50%); }
 }
 
 /* Intro */
