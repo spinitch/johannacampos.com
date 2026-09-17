@@ -58,10 +58,10 @@ export default function (eleventyConfig) {
     return JSON.stringify(data).replace(/</g, "\\u003c");
   });
 
-  // Pages in subfolders (/v2/) share templates written with relative links,
+  // Pages in subfolders (/v2/, /v3/) share templates written with relative links,
   // so point those links at the site root instead.
   eleventyConfig.addTransform("rootLinks", function (content) {
-    if (!(this.page.outputPath || "").match(/\/v2\//)) return content;
+    if (!(this.page.outputPath || "").match(/\/v\d+\//)) return content;
     return content.replace(/\b(href|src)="(?![a-z]+:|\/|#)/g, '$1="/');
   });
 

@@ -5,6 +5,15 @@ north_star:
   eyebrow: My North Star
   quote: '**Simpler products** mean less time on a screen, **more time being human**. That’s what I design toward, for a Fortune 500 platform or a startup’s first release.'
   attribution: Johanna Campos
+hero_v3:
+  before: |-
+    Less time
+    on screen.
+  after: |-
+    More time
+    **being human.**
+  button: Learn more
+  button_link: '#intro'
 intro: Most products keep you scrolling, either on purpose or by accident, through friction and confusion dressed up as features. I like simple, intuitive designs;  you get what you need and move on. Great design involves a meticulous dissection of what problem is it solving for, the ideation and execution. It doesn't happen like magic but an orchestration of people, processes and understanding what technology to leverage.  I've spent the last 25+ years building, creating and collaborating with amazing humans. I feel like I'm just getting started.
 intro_align: left
 book:

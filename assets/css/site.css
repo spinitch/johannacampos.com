@@ -120,6 +120,60 @@ a { color: inherit; }
   .photo-hero-panel { width: 90%; padding: 8% 6%; }
 }
 
+/* ANIMATED HERO (/v3) — from the homev3.1–3 Figma frames (1024px wide).
+   The stage is a size container, so 100cqw = the 396px of the frame's photo
+   grid and every position below is a frame measurement in those units
+   (1 frame px = 0.2525cqw). Base styles are the finished state; the
+   animations run from the phone state to it, so reduced motion shows the grid.
+   Timeline: phone + "Less time" in (0–0.6s) · screen fades and the first ten
+   photos land on the app icons (2.2–3.3s) · phone goes and the photos float
+   out into the grid while the rest fade in (4.4–6s) · button (5.6s). */
+.hero3 { background: var(--white); overflow: hidden; }
+.hero3-inner { width: min(100% - 2 * var(--gutter), 78vw, 960px); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.hero3-title { display: grid; font-family: var(--sans); font-size: clamp(34px, 4.3vw, 54px); font-weight: 500; line-height: 1.14; letter-spacing: -0.01em; color: #000; }
+.hero3-before, .hero3-after { grid-area: 1 / 1; }
+.hero3-accent { color: var(--coral-hot); }
+.hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 2.4s forwards; }
+.hero3-after { animation: hero3-in 0.8s ease 2.7s both; }
+.hero3-btn { margin-top: 36px; animation: hero3-rise 0.6s ease 5.6s both; }
+.hero3-stage { flex: 0 0 clamp(260px, 38.7vw, 480px); container-type: inline-size; }
+.hero3-canvas { position: relative; width: 100cqw; height: 100cqw; margin: 8.08cqw 0 13.13cqw; }
+.hero3-phone { position: absolute; left: 4.545cqw; top: 18.43cqw; width: 68.94cqw; height: auto; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); opacity: 0; animation: hero3-phone 5.6s ease both; }
+.hero3-tile {
+  position: absolute; width: 22.22cqw; height: 22.22cqw; object-fit: cover; border-radius: 5.05cqw;
+  left: calc(var(--c) * 25.93cqw); top: calc(var(--r) * 25.93cqw);
+  transform-origin: 0 0;
+  animation:
+    hero3-in 0.5s ease calc(2.4s + var(--i) * 0.09s) both,
+    hero3-float 1.2s cubic-bezier(0.6, 0, 0.2, 1) calc(4.4s + var(--i) * 0.04s) both;
+}
+/* The six that weren't on the phone drift up into place. */
+.hero3-tile--late { animation: hero3-rise 0.8s ease calc(4.3s + var(--i) * 0.08s) both; }
+@keyframes hero3-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero3-out { to { opacity: 0; } }
+@keyframes hero3-rise { from { opacity: 0; transform: translateY(12px) scale(0.94); } to { opacity: 1; transform: none; } }
+@keyframes hero3-phone {
+  0% { opacity: 0; }
+  11%, 39% { opacity: 1; }
+  57%, 79% { opacity: 0.35; }
+  100% { opacity: 0; }
+}
+/* From the app icon at (sc, sr) (38px icons, 55px/65.33px apart, first at
+   53,133) to the grid cell at (c, r) (88px tiles, 102.67px apart). */
+@keyframes hero3-float {
+  from { transform: translate(calc((53 + 55 * var(--sc) - 102.67 * var(--c)) * 0.2525cqw), calc((133 + 65.33 * var(--sr) - 102.67 * var(--r)) * 0.2525cqw)) scale(0.4318); }
+  to { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero3 * { animation: none !important; }
+  .hero3-phone, .hero3-before { opacity: 0; }
+}
+@media (max-width: 767px) {
+  .hero3-inner { width: calc(100% - 2 * var(--gutter)); flex-direction: column; align-items: stretch; gap: 0; padding-top: 44px; }
+  .hero3-btn { margin-top: 24px; }
+  .hero3-stage { flex: none; width: min(100%, 400px); margin: 0 auto; }
+}
+
 /* Intro */
 .home-intro { background: var(--white); padding: 88px 24px 92px; }
 .home-intro p { max-width: 840px; margin: 0 auto; text-align: center; font-size: 18px; font-weight: 300; line-height: 1.82; color: var(--slate); }

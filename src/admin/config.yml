@@ -43,6 +43,15 @@ collections:
               - {label: Eyebrow, name: eyebrow, widget: string}
               - {label: Quote, name: quote, widget: text, hint: "Wrap words in **double asterisks** to give them the orange underline."}
               - {label: Attribution, name: attribution, widget: string}
+          - label: Animated hero (test home page at /v3)
+            name: hero_v3
+            widget: object
+            collapsed: true
+            fields:
+              - {label: Headline beside the phone, name: before, widget: text, hint: "Press Return for a line break."}
+              - {label: Headline beside the photos, name: after, widget: text, hint: "Press Return for a line break. Wrap words in **double asterisks** to make them orange."}
+              - {label: Button, name: button, widget: string}
+              - {label: Button link, name: button_link, widget: string, hint: "#intro scrolls to the intro paragraph below the hero."}
           - {label: Intro, name: intro, widget: text, hint: "Press Return for a line break; leave a blank line to start a new paragraph."}
           - {label: Intro alignment, name: intro_align, widget: select, default: center, options: [{label: Centered, value: center}, {label: Left, value: left}, {label: Right, value: right}], hint: "On phones the intro is always left-aligned so it's easier to read."}
           - label: Book a call (under the service cards)

@@ -1,3 +1,6 @@
+{%- if heroV3 %}
+{% include "hero-v3.njk" %}
+{%- else %}
 <!-- HERO — from johannacampos_redesign2.html (photo mosaic + North Star panel) -->
 <section id="top" class="photo-hero">
   <div class="photo-hero-grid">
@@ -27,13 +30,14 @@
     <div class="ph-attr">{{ home.north_star.attribution | upper }}</div>
   </div>
 </section>
+{%- endif %}
 
 {%- if showChat %}
 {% include "chat.njk" %}
 {% endif %}
 
 <!-- INTRO -->
-<section class="home-intro home-intro--{{ home.intro_align or 'center' }}">
+<section id="intro" class="home-intro home-intro--{{ home.intro_align or 'center' }}">
   {{ home.intro | md | safe }}
 </section>
 
