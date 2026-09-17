@@ -202,7 +202,7 @@ a { color: inherit; }
 
 /* Intro */
 .home-intro { background: var(--white); padding: 88px 24px 92px; }
-.home-intro p { max-width: 840px; margin: 0 auto; text-align: center; font-size: 18px; font-weight: 300; line-height: 1.82; color: var(--slate); }
+.home-intro p { max-width: 840px; margin: 0 auto; text-align: center; font-size: 22px; font-weight: 300; line-height: 1.7; color: var(--slate); }
 .home-intro p + p { margin-top: 1.4em; }
 /* Alignment is chosen in the CMS; phones always get left-aligned text (see 767px block). */
 .home-intro--left p { text-align: left; }
@@ -477,7 +477,7 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .chat-log { height: 380px; padding: 18px 14px 6px; }
   .chat-stack { max-width: 88%; }
   .chat-choices { padding: 10px 14px 18px; }
-  .home-intro p { font-size: 17px; text-align: left; }
+  .home-intro p { font-size: 20px; text-align: left; }
   .help-band { padding: 44px var(--gutter) 56px; }
   .help-band .eyebrow, .work .eyebrow { margin-bottom: 32px; }
   .help-cards { grid-template-columns: 1fr; max-width: 480px; }
