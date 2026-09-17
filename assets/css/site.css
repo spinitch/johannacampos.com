@@ -127,11 +127,10 @@ a { color: inherit; }
    stacked 390×610 layout instead. --p is one Figma pixel inside the photo stage.
    Base styles are the finished state; the animations run from the phone
    state to it, so reduced motion shows the grid.
-   Timeline: phone + "Less time" in (0–0.6s) · photos fade in over the apps
-   one by one while the phone fades out behind them (1.8–4.4s) · "being
-   human." starts black and a sparkle sweep turns it orange (3.4s) · the
-   photos float out into the grid while the rest fade in (4.8–6.8s) · button
-   (6.2s). */
+   Timeline: phone + "Less time" in (0–0.6s) · all 16 photos fade in over
+   the apps one by one while the phone fades out behind them (1.8–4.8s) ·
+   "being human." starts black and a sparkle sweep turns it orange (3.4s) ·
+   the photos float out into the grid (5–6.8s) · button (6.6s). */
 .hero3 { position: relative; height: calc(100vh - var(--nav-h)); height: calc(100svh - var(--nav-h)); min-height: 320px; background: var(--white); overflow: hidden; container-type: size; }
 .hero3-inner { --u: min(100cqw / 1024, 100cqh / 480); --p: var(--u); position: absolute; left: 50%; bottom: 0; width: calc(1024 * var(--u)); height: calc(480 * var(--u)); transform: translateX(-50%); }
 .hero3-copy { position: absolute; left: calc(117 * var(--u)); top: calc(168 * var(--u)); }
@@ -139,7 +138,7 @@ a { color: inherit; }
 .hero3-before, .hero3-after { grid-area: 1 / 1; }
 .hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 2.4s forwards; }
 .hero3-after { animation: hero3-in 0.8s ease 2.7s both; }
-.hero3-btn { position: absolute; left: 0; top: calc(135 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.6s ease 6.2s both; }
+.hero3-btn { position: absolute; left: 0; top: calc(135 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.6s ease 6.6s both; }
 /* The sparkle sweep: a gold glint slides across the black text, leaving it
    orange, and two small stars twinkle as it passes. */
 .hero3-accent { position: relative; color: var(--coral-hot); }
@@ -155,27 +154,25 @@ a { color: inherit; }
 .hero3-after .hero3-accent::before { left: 30%; top: -0.3em; width: 0.36em; height: 0.36em; animation: hero3-twinkle 0.8s ease-out 3.8s; }
 .hero3-after .hero3-accent::after { right: -0.5em; top: -0.22em; width: 0.52em; height: 0.52em; animation: hero3-twinkle 0.9s ease-out 4.2s; }
 .hero3-stage { position: absolute; left: calc(523 * var(--u)); top: calc(32 * var(--u)); width: calc(396 * var(--p)); height: calc(396 * var(--p)); }
-.hero3-phone { position: absolute; left: calc(18 * var(--p)); top: calc(73 * var(--p)); width: calc(273 * var(--p)); height: auto; max-width: none; opacity: 0; animation: hero3-phone 4.4s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+.hero3-phone { position: absolute; left: calc(18 * var(--p)); top: calc(73 * var(--p)); width: calc(273 * var(--p)); height: auto; max-width: none; opacity: 0; animation: hero3-phone 4.8s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
 .hero3-tile {
   position: absolute; width: calc(88 * var(--p)); height: calc(88 * var(--p)); object-fit: cover; border-radius: calc(20 * var(--p));
   left: calc(var(--c) * 102.67 * var(--p)); top: calc(var(--r) * 102.67 * var(--p));
   animation:
-    hero3-pop 0.9s ease-in-out calc(1.8s + var(--i) * 0.18s) both,
-    hero3-float 1.2s cubic-bezier(0.6, 0, 0.2, 1) calc(4.8s + var(--i) * 0.04s) both;
+    hero3-pop 0.9s ease-in-out calc(1.8s + var(--i) * 0.14s) both,
+    hero3-float 1.2s cubic-bezier(0.6, 0, 0.2, 1) calc(5s + var(--i) * 0.04s) both;
 }
-/* The six that weren't on the phone drift up into place. */
-.hero3-tile--late { animation: hero3-rise 0.8s ease calc(4.8s + var(--i) * 0.08s) both; }
 @keyframes hero3-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes hero3-out { to { opacity: 0; } }
 @keyframes hero3-rise { from { opacity: 0; transform: translateY(12px) scale(0.94); } to { opacity: 1; transform: none; } }
 @keyframes hero3-pop { from { opacity: 0; scale: 0.85; filter: blur(3px); } to { opacity: 1; scale: 1; filter: none; } }
 @keyframes hero3-shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes hero3-twinkle { 0% { scale: 0; rotate: 0deg; } 45% { scale: 1; } 100% { scale: 0; rotate: 90deg; } }
-/* 0.6s in, holds to 1.6s, fades out behind the photos by 4.4s. */
+/* 0.6s in, holds to 1.6s, fades out behind the photos by 4.8s. */
 @keyframes hero3-phone {
   0% { opacity: 0; }
-  13.6%, 36.4% { opacity: 1; }
-  80% { opacity: 0.12; }
+  12.5%, 33.3% { opacity: 1; }
+  82% { opacity: 0.12; }
   100% { opacity: 0; }
 }
 /* Centre of the app icon at (sc, sr) (38px icons, 55px/65.33px apart, first

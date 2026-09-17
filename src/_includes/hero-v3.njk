@@ -1,13 +1,13 @@
 {#- Hero for the /v3 test page: the phone's apps fade into photos, which then
     float out into a grid. The animation is CSS only (see .hero3 in site.css);
     reduced-motion visitors get the finished grid. Each tile is
-    [photo, grid column, grid row, app-icon column, app-icon row]; the ten
-    with an icon start on the phone (as in homev3.2), the rest fade in late. #}
+    [photo, grid column, grid row, app-icon column, app-icon row]; every
+    photo starts on an app icon (the first ten as in homev3.2). #}
 {%- set tiles = [
   ["01-yoga", 0, 0, 0, 0], ["02-cat", 1, 0, 1, 0], ["03-biking", 2, 0, 2, 0], ["04-sailing", 3, 0, 3, 0],
-  ["05-arches", 0, 1, 0, 1], ["06-waving", 1, 1], ["07-group", 2, 1, 1, 1], ["08-friends", 3, 1, 2, 1],
-  ["09-smile", 0, 2, 0, 2], ["10-paddleboard", 1, 2, 1, 2], ["11-summit", 2, 2, 3, 1], ["12-tree", 3, 2],
-  ["13-sunset-friends", 0, 3], ["14-sketch", 1, 3], ["15-snow-angel", 2, 3], ["16-run", 3, 3]
+  ["05-arches", 0, 1, 0, 1], ["06-waving", 1, 1, 2, 2], ["07-group", 2, 1, 1, 1], ["08-friends", 3, 1, 2, 1],
+  ["09-smile", 0, 2, 0, 2], ["10-paddleboard", 1, 2, 1, 2], ["11-summit", 2, 2, 3, 1], ["12-tree", 3, 2, 3, 2],
+  ["13-sunset-friends", 0, 3, 0, 3], ["14-sketch", 1, 3, 1, 3], ["15-snow-angel", 2, 3, 2, 3], ["16-run", 3, 3, 3, 3]
 ] %}
 <section id="top" class="hero3">
   <div class="hero3-inner">
@@ -22,11 +22,7 @@
       <div class="hero3-canvas">
         <img class="hero3-phone" src="assets/img/hero-v3/phone.webp" alt="" width="640" height="879">
         {%- for t in tiles %}
-        {%- if t.length > 3 %}
         <img class="hero3-tile" src="hero-photos/v3/{{ t[0] }}.jpg" alt="" width="320" height="320" style="--i:{{ t[4] * 4 + t[3] }};--c:{{ t[1] }};--r:{{ t[2] }};--sc:{{ t[3] }};--sr:{{ t[4] }}">
-        {%- else %}
-        <img class="hero3-tile hero3-tile--late" src="hero-photos/v3/{{ t[0] }}.jpg" alt="" width="320" height="320" style="--i:{{ loop.index0 }};--c:{{ t[1] }};--r:{{ t[2] }}">
-        {%- endif %}
         {%- endfor %}
       </div>
     </div>
