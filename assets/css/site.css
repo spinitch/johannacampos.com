@@ -99,7 +99,7 @@ a { color: inherit; }
    arrives with it (5–6.4s) · a sparkle sweep turns "being human." orange (5s). */
 .hero3 { position: relative; height: calc(100vh - var(--nav-h)); height: calc(100svh - var(--nav-h)); min-height: 320px; background: var(--white); overflow: hidden; container-type: size; }
 .hero3-inner {
-  --u: min((100cqh - 112px) / 396, (100cqw - 112px) / 752, 1.7px);
+  --u: min((100cqh - 112px) / 396, (100cqw - 112px) / 752, 1.45px);
   --m: max(56px, calc((100cqh - 396 * var(--u)) / 2));
   /* 286 text + 70 gap + 396 grid: the side margin takes whatever width is left
      over, so the gap between the text and the photos never closes up. */
