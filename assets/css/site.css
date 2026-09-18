@@ -80,41 +80,60 @@ a { color: inherit; }
 }
 
 /* HOME HERO — from the homev3.1–3 Figma frames (1024px wide).
-   The hero fills the window under the nav, and its bottom is the frame's
-   bottom edge (where the phone is cut off). The frame's 1024×480 hero area
-   is scaled to fit, so --u is one Figma pixel; portrait windows use a
-   stacked 390×610 layout instead. --p is one Figma pixel inside the photo stage,
-   and --px is the phone's left edge in the stage.
+   The hero fills the window under the nav with the same white margin --m on
+   every side: the photo grid spans the height between the top and bottom
+   margins, the text starts at the left margin, the grid ends at the right one,
+   and the gap between them flexes with the window. --u is one Figma pixel,
+   sized so the grid fits that height (capped so it can't get silly on very
+   large screens). The phone sits at the right of the stage, so its right edge
+   lines up with the grid's, and hangs past the bottom where it's clipped.
+   Portrait windows
+   use a stacked 390×610 layout instead. --p is one Figma pixel inside the photo
+   stage, and --px is the phone's left edge in the stage.
    Base styles are the finished state; the animations run from the phone
    state to it, so reduced motion shows the grid.
    Timeline: phone + "Less time" in (0–0.6s) · all 16 photos fade in over
    the apps one by one while the phone fades out behind them (1.8–4.8s) ·
-   "being human." starts black and a sparkle sweep turns it orange (3.4s) ·
-   the photos float out into the grid (5–6.8s) · button (6.6s). */
+   the headline changes to "More time being human." as the phone goes (3.9–4.9s)
+   · the photos float out into the grid while the copy rises and the button
+   arrives with it (5–6.4s) · a sparkle sweep turns "being human." orange (5s). */
 .hero3 { position: relative; height: calc(100vh - var(--nav-h)); height: calc(100svh - var(--nav-h)); min-height: 320px; background: var(--white); overflow: hidden; container-type: size; }
-.hero3-inner { --u: min(100cqw / 1024, 100cqh / 480); --p: var(--u); --px: 18; position: absolute; left: 50%; bottom: 0; width: calc(1024 * var(--u)); height: calc(480 * var(--u)); transform: translateX(-50%); }
-.hero3-copy { position: absolute; left: calc(117 * var(--u)); top: calc(168 * var(--u)); }
+.hero3-inner {
+  --u: min((100cqh - 112px) / 396, (100cqw - 112px) / 752, 1.7px);
+  --m: max(56px, calc((100cqh - 396 * var(--u)) / 2));
+  /* 286 text + 70 gap + 396 grid: the side margin takes whatever width is left
+     over, so the gap between the text and the photos never closes up. */
+  --mx: max(56px, calc((100cqw - 752 * var(--u)) / 2));
+  /* The phone is scaled to the grid's own width (396 / 273) and sits in the same
+     footprint, so the phone state and the finished grid keep identical margins. */
+  --p: var(--u); --px: 0; --py: -10; --k: 1.4505;
+  position: absolute; inset: 0;
+}
+/* Sits centred on the phone's app icons, then rises as the photos land so it
+   ends up centred on the grid. */
+.hero3-copy { position: absolute; left: var(--mx); top: calc(var(--m) + 107 * var(--u)); animation: hero3-copy-rise 1.1s cubic-bezier(0.6, 0, 0.2, 1) 5.1s both; }
+@keyframes hero3-copy-rise { from { transform: translateY(calc(62 * var(--u))); } to { transform: none; } }
 .hero3-title { display: grid; font-family: var(--sans); font-size: calc(44 * var(--u)); font-weight: 500; line-height: calc(50 * var(--u)); color: #000; white-space: nowrap; }
 .hero3-before, .hero3-after { grid-area: 1 / 1; }
-.hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 2.4s forwards; }
-.hero3-after { animation: hero3-in 0.8s ease 2.7s both; }
-.hero3-btn { position: absolute; left: 0; top: calc(135 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.6s ease 6.6s both; }
+.hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 3.9s forwards; }
+.hero3-after { animation: hero3-in 0.8s ease 4.1s both; }
+.hero3-btn { position: absolute; left: 0; top: calc(135 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.8s ease 5.2s both; }
 /* The sparkle sweep: a gold glint slides across the black text, leaving it
    orange, and two small stars twinkle as it passes. */
 .hero3-accent { position: relative; color: var(--coral-hot); }
 .hero3-after .hero3-accent {
   background: linear-gradient(105deg, var(--coral-hot) 40%, #FFB36B 46%, #FFF4E0 50%, #FFB36B 54%, #000 60%) 0 0 / 300% 100% no-repeat;
   -webkit-background-clip: text; background-clip: text; color: transparent;
-  animation: hero3-shine 1.3s ease-in-out 3.4s both;
+  animation: hero3-shine 1.3s ease-in-out 5s both;
 }
 .hero3-after .hero3-accent::before, .hero3-after .hero3-accent::after {
   content: ""; position: absolute; scale: 0; pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23FF9A3D' d='M10 0c.8 5.6 4.4 9.2 10 10-5.6.8-9.2 4.4-10 10-.8-5.6-4.4-9.2-10-10 5.6-.8 9.2-4.4 10-10z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
-.hero3-after .hero3-accent::before { left: 30%; top: -0.3em; width: 0.36em; height: 0.36em; animation: hero3-twinkle 0.8s ease-out 3.8s; }
-.hero3-after .hero3-accent::after { right: -0.5em; top: -0.22em; width: 0.52em; height: 0.52em; animation: hero3-twinkle 0.9s ease-out 4.2s; }
-.hero3-stage { position: absolute; left: calc(523 * var(--u)); top: calc(32 * var(--u)); width: calc(396 * var(--p)); height: calc(396 * var(--p)); }
-.hero3-phone { position: absolute; left: calc(var(--px) * var(--p)); top: calc(73 * var(--p)); width: calc(273 * var(--p)); height: auto; max-width: none; opacity: 0; animation: hero3-phone 4.8s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+.hero3-after .hero3-accent::before { left: 30%; top: -0.3em; width: 0.36em; height: 0.36em; animation: hero3-twinkle 0.8s ease-out 5.4s; }
+.hero3-after .hero3-accent::after { right: -0.5em; top: -0.22em; width: 0.52em; height: 0.52em; animation: hero3-twinkle 0.9s ease-out 5.8s; }
+.hero3-stage { position: absolute; right: var(--mx); top: var(--m); width: calc(396 * var(--p)); height: calc(396 * var(--p)); }
+.hero3-phone { position: absolute; left: calc(var(--px) * var(--p)); top: calc(var(--py) * var(--p)); width: calc(273 * var(--k) * var(--p)); height: auto; max-width: none; opacity: 0; transform-origin: 50% 32%; animation: hero3-phone 4.8s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
 .hero3-tile {
   position: absolute; width: calc(88 * var(--p)); height: calc(88 * var(--p)); object-fit: cover; border-radius: calc(20 * var(--p));
   left: calc(var(--c) * 102.67 * var(--p)); top: calc(var(--r) * 102.67 * var(--p));
@@ -129,19 +148,22 @@ a { color: inherit; }
 @keyframes hero3-twinkle { 0% { scale: 0; rotate: 0deg; } 45% { scale: 1; } 100% { scale: 0; rotate: 90deg; } }
 /* 0.6s in, holds to 1.6s, fades out behind the photos by 4.8s. */
 @keyframes hero3-phone {
-  0% { opacity: 0; }
+  0% { opacity: 0; scale: 1; }
   12.5%, 33.3% { opacity: 1; }
-  82% { opacity: 0.12; }
-  100% { opacity: 0; }
+  82% { opacity: 0.12; scale: 1; }
+  100% { opacity: 0; scale: 0.86; }
 }
-/* From the app icon at (sc, sr) (38px icons, 55px/65.33px apart, the first
-   35px in from the phone's edge and 133px down) to the tile's own grid cell.
+/* From the app icon at (sc, sr) to the tile's own grid cell. The icon grid was
+   measured off phone.webp itself: 38.4px icons 55.45px/64.9px apart, the first
+   35px in from the phone's left edge and 60px below its top; the tile is a
+   touch larger so no sliver of the icon shows around it. --px/--py place the phone and --k sizes it, so portrait layouts
+   can sit it higher and larger without the icons drifting off it.
    Size and position animate rather than transform: scale, which phones
    (Safari especially) leave blurry at full size. */
 @keyframes hero3-float {
   from {
-    left: calc((var(--px) + 35 + 55 * var(--sc)) * var(--p)); top: calc((133 + 65.33 * var(--sr)) * var(--p));
-    width: calc(38 * var(--p)); height: calc(38 * var(--p)); border-radius: calc(8.6 * var(--p));
+    left: calc((var(--px) + (34.8 + 55.45 * var(--sc)) * var(--k)) * var(--p)); top: calc((var(--py) + (59.8 + 64.9 * var(--sr)) * var(--k)) * var(--p));
+    width: calc(38.8 * var(--k) * var(--p)); height: calc(38.8 * var(--k) * var(--p)); border-radius: calc(8.8 * var(--k) * var(--p));
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -152,11 +174,22 @@ a { color: inherit; }
    centred at the top, photos at the bottom edge with the phone centred on
    the grid. */
 @container (max-aspect-ratio: 7 / 5) {
-  .hero3-inner { --u: min(100cqw / 390, 100cqh / 610); --p: calc(var(--u) * 342 / 396); --px: 61.5; position: static; width: auto; height: auto; transform: none; }
-  .hero3-copy { left: 50%; top: calc(36 * var(--u)); transform: translateX(-50%); text-align: center; }
+  .hero3-inner {
+    --u: min(100cqw / 390, 100cqh / 610, 2.2px); --p: calc(var(--u) * 342 / 396); --px: 0; --py: 25; --k: 1.4505;
+    /* One spacing --s sits above the headline, between headline and photos,
+       between photos and button, and below the button: 4 gaps plus the headline
+       (86), the grid (396 stage units) and the button (47) fill the height. */
+    --s: max(24px, calc((100cqh - 133 * var(--u) - 396 * var(--p)) / 4));
+    --gt: calc(2 * var(--s) + 86 * var(--u));
+    position: static; width: auto; height: auto; transform: none;
+  }
+  .hero3-copy { animation: none; left: 50%; top: calc(var(--s) + 43 * var(--u)); transform: translate(-50%, -50%); text-align: center; }
+  /* Under the photos rather than under the headline, so no space is held open
+     for it while the phone is up. It still lives inside .hero3-copy, so its
+     offset is measured back from the bottom of the hero. */
+  .hero3-btn { left: 50%; top: calc(2 * var(--s) + 86 * var(--u) + 396 * var(--p)); translate: -50% 0; }
   .hero3-title { font-size: calc(38 * var(--u)); line-height: calc(43 * var(--u)); }
-  .hero3-btn { left: 50%; top: calc(106 * var(--u)); translate: -50% 0; }
-  .hero3-stage { left: 50%; top: auto; bottom: calc(52 * var(--p)); transform: translateX(-50%); }
+  .hero3-stage { left: 50%; right: auto; top: var(--gt); bottom: auto; transform: translateX(-50%); }
 }
 
 /* Intro */
