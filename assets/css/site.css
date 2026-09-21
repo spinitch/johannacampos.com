@@ -132,7 +132,7 @@ a { color: inherit; }
 }
 .hero3-after .hero3-accent::before { left: 30%; top: -0.3em; width: 0.36em; height: 0.36em; animation: hero3-twinkle 0.8s ease-out 5.4s; }
 .hero3-after .hero3-accent::after { right: -0.5em; top: -0.22em; width: 0.52em; height: 0.52em; animation: hero3-twinkle 0.9s ease-out 5.8s; }
-.hero3-stage { position: absolute; right: var(--mx); top: var(--m); width: calc(396 * var(--p)); height: calc(396 * var(--p)); }
+.hero3-stage { position: absolute; right: var(--mx); top: var(--m); width: calc(396 * var(--p)); height: calc(396 * var(--p)); pointer-events: none; }
 .hero3-phone { position: absolute; left: calc(var(--px) * var(--p)); top: calc(var(--py) * var(--p)); width: calc(273 * var(--k) * var(--p)); height: auto; max-width: none; opacity: 0; transform-origin: 50% 32%; animation: hero3-phone 4.8s linear both; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
 .hero3-tile {
   position: absolute; width: calc(88 * var(--p)); height: calc(88 * var(--p)); object-fit: cover; border-radius: calc(20 * var(--p));
