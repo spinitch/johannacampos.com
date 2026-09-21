@@ -25,7 +25,7 @@ items:
     slug: design-deliver
     card_summary: You’ve got a product that works. This gets it to the level that impresses investors, converts users, and wins partners.
     preamble: '**Design + Deliver** is for products with a proven concept and needs to go from good to great for users, investors, or partners.'
-    who_for: Early or late state startups with a working product who need senior design execution, not just direction.
+    who_for: Early or late state startups with a working product who need senior design execution, not just direction — and founders with just an idea, ready to go from validated concept to a first working version.
     what_intro: 'The exact mix depends on the product and where it is in its lifecycle, but the work generally moves through three stages:'
     what_items:
       - title: 'Define:'
@@ -33,7 +33,7 @@ items:
       - title: 'Design:'
         body: Wireframes, prototypes, and high-fidelity UI, tested and refined with real users along the way rather than delivered cold.
       - title: 'Deliver:'
-        body: A design system and production-ready files, handed off with the specs and rationale your engineering team needs to build it right, with support through implementation.
+        body: A design system and production-ready files, handed off with the specs and rationale your engineering team needs to build it right, with support through implementation. I can build the first version — brand, UX, and working product, using Claude Code and Claude Design.
     case_study: |-
       Traveling with Ease
 
