@@ -1,0 +1,38 @@
+# One-click publish: takes whatever is on the `preview` branch — the version
+# Johanna has just checked at preview--stellar-blini-8eaa94.netlify.app — and
+# moves it to `main`, which is what Netlify publishes to johannacampos.com.
+# Run it from the repo's Actions tab: "Publish to live" > Run workflow.
+name: Publish to live
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Move preview onto main
+        run: |
+          git config user.name "spinitch"
+          git config user.email "spinitch@gmail.com"
+          git fetch origin preview
+          if git merge-base --is-ancestor origin/preview HEAD; then
+            echo "Nothing new on preview — the live site already has these edits."
+            exit 0
+          fi
+          # Fast-forward when main hasn't moved; otherwise merge and put the
+          # result back on preview so the two branches stay identical.
+          if ! git merge --ff-only origin/preview; then
+            git merge --no-edit origin/preview
+            git push origin HEAD:preview
+          fi
+          git push origin HEAD:main
+          echo "Published. Netlify builds johannacampos.com in about a minute."
