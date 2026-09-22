@@ -15,7 +15,7 @@ hero_v3:
   button: Learn more
   button_link: '#intro'
 lead:
-  text: I’m your design partner. I turn complex problems into simple to use experiences.
+  text: '**I’m your design partner. I turn complex problems into simple to use experiences.**'
   size: xl
 intro: |-
   Most products keep you scrolling, either on purpose or by accident, through friction and confusion dressed up as features. I create simple, intuitive designs;  you get what you need and move on. 
