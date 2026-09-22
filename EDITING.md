@@ -9,9 +9,15 @@ Go to **https://johannacampos.com/admin** and log in with GitHub.
 - **Pages → Book a call**: the short form at johannacampos.com/book.html that every Book Now button opens. Answers are emailed to you through the same Formspree form as the Contact page (subject “New call request”), then the visitor goes on to your Calendly with their name and email filled in. The service checkboxes come from How I Can Help and the “How did you hear about me?” choices from Contact.
 - **Work**: the case-study cards on the home page (title, tags, thumbnail, order).
 - **Case studies**: text, tags and images for each case study.
+- **Home → Opening paragraph**: the larger paragraph above the intro, with a size (26/30/36px). Leave it empty to hide it.
 - **Site settings**: Calendly link (where the Book a call form sends people), LinkedIn, email, footer band, copyright.
 
-Press **Publish → Publish now**. The site updates in about a minute.
+Press **Publish → Publish now**. That saves to the **preview** branch and updates
+**https://preview--stellar-blini-8eaa94.netlify.app** in about a minute — free, as
+often as you like. The real site doesn't change yet.
+
+When the preview looks right, say "publish to the live site" and it goes to
+johannacampos.com (that build is the one that costs Netlify credits).
 
 Text tips:
 - Leave a blank line between paragraphs.

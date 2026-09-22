@@ -1,14 +1,12 @@
 # Sveltia CMS (reads Decap CMS config) — the editor at johannacampos.com/admin
-# Saving in the editor commits to main on GitHub. skip_ci adds [skip ci] to
-# those commits so Netlify does NOT rebuild on every save (each build costs
-# Netlify credits); press "Publish Changes" in the editor when you're done and
-# it rebuilds once. That button needs a Netlify build hook URL, pasted into the
-# editor under Account > Settings > Advanced.
+# Saving in the editor commits to the `preview` branch, which Netlify rebuilds
+# at https://preview--stellar-blini-8eaa94.netlify.app. Branch builds don't cost
+# Netlify credits, so saving as often as you like is free. The live site only
+# changes when `preview` is merged into `main` (that build does cost credits).
 backend:
   name: github
   repo: spinitch/johannacampos.com
-  branch: main
-  skip_ci: true
+  branch: preview
   commit_messages:
     update: "Update {{slug}} (via CMS)"
     uploadMedia: "Upload {{path}} (via CMS)"
