@@ -6,6 +6,9 @@
 
 <!-- INTRO -->
 <section id="intro" class="home-intro home-intro--{{ home.intro_align or 'center' }}">
+  {%- if home.lead and home.lead.text %}
+  <p class="home-lead home-lead--{{ home.lead.size or 'xl' }}">{{ home.lead.text | mdi | safe }}</p>
+  {%- endif %}
   {{ home.intro | md | safe }}
 </section>
 

@@ -14,6 +14,9 @@ hero_v3:
     **being human.**
   button: Learn more
   button_link: '#intro'
+lead:
+  text: ''
+  size: xl
 intro: |-
   I’m your design partner. I turn complex problems into simple to use experiences.
 
