@@ -5,8 +5,8 @@ items:
   - name: Dissect + Diagnose
     slug: dissect-diagnose
     card_summary: A fixed-scope audit using human-centered design methods. You’ll walk away knowing exactly what to prioritize next.
-    preamble: "**Dissect + Diagnose** is designed to help you get clarity on where your product is and where it needs to be. Have you fallen in love with your customers problems? I'll do a deep dive into your current process, research and metrics. I'll help you validate some of the assumptions using human centered design methodologies."
-    who_for: Founders and teams ready to move to the next phase and want an outside, senior perspective to make sure they’re building on solid ground, as well as those who sense something’s off but can’t quite pinpoint what, and founders with an idea who want to pressure-test it before writing a line of code.
+    preamble: "**Dissect + Diagnose** is designed to help you get clarity on where your product is and where it needs to be. Have you fallen in love with your customer's problems? I'll do a deep dive into your current process, research and metrics. I'll help you validate some of the assumptions using human centered design methodologies."
+    who_for: Founders and teams ready to move to the next phase and want an insider's senior perspective to make sure they’re building on solid ground, as well as those who sense something’s off but can’t quite pinpoint what, and founders with an idea who want to pressure-test it before writing a line of code.
     what_intro: 'The exact mix depends on where you are and what you’re trying to learn, but the work generally moves through three stages:'
     what_items:
       - title: 'Research:'
@@ -23,9 +23,9 @@ items:
       I delivered a prioritized roadmap alongside the audit findings, with clear next steps the team could act on immediately versus plan for later. We kept regular check-ins through the engagement so nothing sat in a report unread — recommendations got discussed and adjusted as the team’s own thinking evolved.
   - name: Design + Deliver
     slug: design-deliver
-    card_summary: You’ve got a product that works. This gets it to the level that impresses investors, converts users, and wins partners.
-    preamble: '**Design + Deliver** is for products with a proven concept and needs to go from good to great for users, investors, or partners.'
-    who_for: Early or late state startups with a working product who need senior design execution, not just direction — and founders with just an idea, ready to go from validated concept to a first working version.
+    card_summary: 'Your product works and your pitch is strong. This builds what comes next: real user evidence and an experience that holds up under scrutiny.'
+    preamble: '**Design + Deliver** is for products that work and pitch well, and now need the proof: an experience refined with real users, strong enough to hold up with investors, customers, and partners.'
+    who_for: Early or late stage startups with a working product who need senior design execution, not just direction — and founders with just an idea, ready to go from validated concept to a first working version.
     what_intro: 'The exact mix depends on the product and where it is in its lifecycle, but the work generally moves through three stages:'
     what_items:
       - title: 'Define:'
@@ -43,7 +43,7 @@ items:
   - name: Direct + Develop
     slug: direct-develop
     card_summary: Design executive for teams that need someone who’s already navigated clinical, engineering, and exec stakeholders, without the headcount.
-    preamble: '**Direct + Develop** is about having a senior design voice at your leadership table without the overhead of one. After years sitting in that seat myself — scaling design orgs and navigating clinical, marketing, product, and engineering stakeholders across health platforms serving millions of users. I am opening this to companies needing design leadership guidance, mentorship and creating design processes that help your business grow efficiently.'
+    preamble: "**Direct + Develop** is about having a senior design voice at your leadership table without the overhead of one. I've spent years in that seat myself, scaling design orgs and navigating clinical, marketing, product, and engineering stakeholders across health platforms serving millions of users. Now I'm opening it up to companies that need design leadership, mentorship, and processes that help the business grow efficiently."
     who_for: Early or late stage startups who need a design partner to help build their product and get it to the next level. I help founders and established companies work through the messy and fun part of ideation, uncovering what users need and want, and how that translates into business outcomes.
     what_intro: 'The exact mix depends on your team and stage. The engagement generally covers three things:'
     what_items:
