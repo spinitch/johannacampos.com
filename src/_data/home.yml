@@ -15,16 +15,18 @@ hero_v3:
   button: Learn more
   button_link: '#intro'
 lead:
-  text: '**I’m your design partner who understands the complexities of the healthcare system. I will diagnose, design and direct alongside you.**'
+  text: '**Your design partner for the complexities of healthcare.**'
   size: xxl
 intro: |-
-  I've sat on the health system side of the table. I join your team to build what actually holds up there: real user evidence, workflows that fit. Most products keep you scrolling, either on purpose or by accident, through friction and confusion dressed up as features. I create simple, intuitive designs;  you get what you need and move on. 
+  I diagnose, design, and direct, right alongside you.
 
-  Great design involves a meticulous dissection of what problem it's solving for, the ideation and execution. It doesn't happen like magic but an orchestration of people, processes and understanding what technology to leverage.  
+  I've sat on both sides of the table. I've been in the trenches with clinicians, product and engineering teams, and operations leaders, building internal tools and evaluating which systems to bring in. I've also led teams that built consumer health tools used by millions. Internal or external, for people or for businesses, I ask the same simple question: does it work, or does it create more friction?
 
-  I've built for people and for businesses. External and internal tools. Same simple question: does it work or does it create more friction?
+  Most products keep you scrolling, on purpose or by accident, through friction and confusion dressed up as features. I help teams figure out what actually needs to exist, then make sure it's simple enough that people get what they need and move on.
 
-  I've spent the last 25+ years building, creating and collaborating with amazing humans. I feel like I'm just getting started. [Let's build something together!](#services)
+  Great design doesn't happen like magic. It starts with a meticulous dissection of the problem, then moves through ideation and execution. It's an orchestration of people, process, and knowing which technology to leverage.
+
+  I bring 25+ years of healthcare experience, the judgment to know what matters, and a deep love for the people who use these tools. I've spent those years building alongside amazing humans, and I feel like I'm just getting started. [Let's build something together!](#services)
 intro_align: left
 book:
   eyebrow: Not Sure What You Need?
