@@ -1,14 +1,6 @@
-# Case-study cards: the Selected Work grid on the home page, and the
-# "Other Selected Work" row at the bottom of each case study.
 heading: Selected Work
 other_heading: Other Selected Work
 cards:
-  - page: lakatta.html
-    name: Lakatta
-    card_title: Lakatta
-    summary: solo founder-designer · AI-assisted development · 0→1 build · brand & design system
-    thumbnail: /assets/img/work/lakatta-thumb.jpg
-    thumbnail_alt: Lakatta travel app on desktop and two phones
   - page: cancercompass.html
     name: CancerCompass
     card_title: CancerCompass
@@ -27,3 +19,9 @@ cards:
     summary: service design · workflow audit · cross-functional partnership · patient interviews
     thumbnail: /assets/img/work/ctca-telehealth-thumb.jpg
     thumbnail_alt: CTCA Telehealth video visit screens on three phones
+  - page: lakatta.html
+    name: Lakatta
+    card_title: Lakatta
+    summary: solo founder-designer · AI-assisted development · 0→1 build · brand & design system
+    thumbnail: /assets/img/work/lakatta-thumb.jpg
+    thumbnail_alt: Lakatta travel app on desktop and two phones
