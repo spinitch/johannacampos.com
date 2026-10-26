@@ -16,6 +16,9 @@
         <span class="hero3-before">{{ home.hero_v3.before | accent("hero3-accent") | safe }}</span>
         <span class="hero3-after">{{ home.hero_v3.after | accent("hero3-accent") | safe }}</span>
       </h1>
+      {%- if home.hero_v3.sub %}
+      <p class="hero3-sub">{{ home.hero_v3.sub | mdi | safe }}</p>
+      {%- endif %}
       <a class="btn-primary hero3-btn" href="{{ home.hero_v3.button_link }}">{{ home.hero_v3.button }}</a>
     </div>
     <div class="hero3-stage" aria-hidden="true">

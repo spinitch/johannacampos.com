@@ -12,7 +12,8 @@ hero_v3:
   after: |-
     More time
     **being human.**
-  button: Learn more
+  sub: I help health tech teams build products clinicians and patients actually use.
+  button: See how I can help
   button_link: '#intro'
 lead:
   text: '**Your design partner for the complexities of healthcare.**'
