@@ -37,11 +37,13 @@ a { color: inherit; }
 .site-nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); background: var(--nav-bg); display: flex; align-items: center; justify-content: space-between; padding: 0 38px 0 48px; }
 .nav-brand { display: flex; align-items: center; gap: 50px; text-decoration: none; }
 .nav-mark { width: 27px; height: auto; }
-/* Name over tagline: the tagline is tracked out so both lines read as one
-   lockup of roughly the same width. */
-.nav-lockup { display: grid; gap: 4px; }
-.nav-wordmark { font-weight: 600; font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); white-space: nowrap; }
-.nav-tagline { font-weight: 400; font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.82); white-space: nowrap; }
+/* Name over tagline, set to the same width: at 17px/0.12em the name measures
+   191px, which the tagline matches at 9px tracked 0.063em. Both sizes are in
+   px and the tracking in em, so the two lines stay equal at any breakpoint —
+   scale them together, and re-measure if the tagline text changes. */
+.nav-lockup { display: grid; gap: 1px; }
+.nav-wordmark { font-weight: 600; font-size: 17px; line-height: 1.15; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); white-space: nowrap; }
+.nav-tagline { font-weight: 400; font-size: 9px; line-height: 1.15; letter-spacing: 0.063em; text-transform: uppercase; color: rgba(255,255,255,0.82); white-space: nowrap; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: #FFFFFF; text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--coral); }
@@ -220,6 +222,8 @@ a { color: inherit; }
 /* How I can help band */
 .help-band { background: var(--black); padding: 44px var(--gutter) 80px; }
 .help-band .eyebrow { text-align: center; margin-bottom: 44px; }
+/* Sits between the heading and the cards on the home page only. */
+.help-blurb { max-width: 900px; margin: 0 auto 48px; text-align: center; font-size: 18px; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,0.88); }
 .help-cards { max-width: 928px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 29px; }
 .help-card { background: var(--white); padding: 44px 32px 50px; display: flex; flex-direction: column; min-height: 286px; }
 .help-card h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; color: #000; line-height: 1.3; margin-bottom: 14px; }
@@ -504,6 +508,7 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .home-intro p { font-size: 20px; text-align: left; }
   .help-band { padding: 44px var(--gutter) 56px; }
   .help-band .eyebrow, .work .eyebrow { margin-bottom: 32px; }
+  .help-blurb { font-size: 17px; margin-bottom: 36px; }
   .help-cards { grid-template-columns: 1fr; max-width: 480px; }
   .help-card { min-height: 0; }
   .work { padding: 52px var(--gutter) 60px; }
@@ -556,8 +561,6 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
 }
 
 @media (max-width: 480px) {
-  .nav-wordmark { font-size: 13px; letter-spacing: 0.1em; }
-  .nav-tagline { font-size: 8px; letter-spacing: 0.06em; }
   .stat-grid { grid-template-columns: 1fr; max-width: 340px; }
   .stat-card { min-height: 0; padding: 24px 20px 28px; }
   .stat-card--wide { flex-direction: column; text-align: center; }

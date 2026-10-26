@@ -142,6 +142,7 @@ collections:
           - {label: Browser tab title, name: page_title, widget: string}
           - {label: Search description, name: description, widget: text}
           - {label: Heading, name: heading, widget: string}
+          - {label: Line under the heading, name: blurb, widget: text, required: false, hint: "Shown under HOW I CAN HELP on the home page, above the three cards. Leave empty to hide it."}
           - label: Services
             name: items
             widget: list
