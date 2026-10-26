@@ -126,8 +126,9 @@ a { color: inherit; }
 .hero3-before, .hero3-after { grid-area: 1 / 1; }
 .hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 3.9s forwards; }
 .hero3-after { animation: hero3-in 0.8s ease 4.1s both; }
-/* Arrives with the finished headline, a beat before the copy rises. */
-.hero3-sub { margin-top: calc(12 * var(--u)); font-size: calc(15 * var(--u)); line-height: calc(22 * var(--u)); font-weight: 400; color: var(--text-strong); animation: hero3-in 0.8s ease 4.3s both; }
+/* Last to arrive: holds back until the photos have landed and the button is
+   in place (6.4s), then fades in on its own. */
+.hero3-sub { margin-top: calc(12 * var(--u)); font-size: calc(15 * var(--u)); line-height: calc(22 * var(--u)); font-weight: 400; color: var(--text-strong); animation: hero3-in 1s ease 6.5s both; }
 .hero3-btn { margin-top: calc(30 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.8s ease 5.2s both; }
 /* The sparkle sweep: a gold glint slides across the black text, leaving it
    orange, and two small stars twinkle as it passes. */
