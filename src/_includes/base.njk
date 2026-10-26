@@ -30,7 +30,10 @@
 <header class="site-nav">
   <a href="index.html" class="nav-brand" aria-label="Johanna Campos — home">
     <img class="nav-mark" src="assets/img/logo-mark.png" alt="" width="27" height="24">
-    <span class="nav-wordmark">Johanna Campos</span>
+    <span class="nav-lockup">
+      <span class="nav-wordmark">Johanna Campos</span>
+      {%- if site.tagline %}<span class="nav-tagline">{{ site.tagline }}</span>{% endif %}
+    </span>
   </a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span><span></span></button>
   <nav aria-label="Main">

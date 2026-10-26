@@ -37,7 +37,13 @@ a { color: inherit; }
 .site-nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); background: var(--nav-bg); display: flex; align-items: center; justify-content: space-between; padding: 0 38px 0 48px; }
 .nav-brand { display: flex; align-items: center; gap: 50px; text-decoration: none; }
 .nav-mark { width: 27px; height: auto; }
-.nav-wordmark { font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); white-space: nowrap; }
+/* Name over tagline, set to the same width: at 17px/0.12em the name measures
+   191px, which the tagline matches at 9px tracked 0.063em. Both sizes are in
+   px and the tracking in em, so the two lines stay equal at any breakpoint —
+   scale them together, and re-measure if the tagline text changes. */
+.nav-lockup { display: grid; gap: 1px; }
+.nav-wordmark { font-weight: 600; font-size: 17px; line-height: 1.15; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); white-space: nowrap; }
+.nav-tagline { font-weight: 400; font-size: 9px; line-height: 1.15; letter-spacing: 0.063em; text-transform: uppercase; color: rgba(255,255,255,0.82); white-space: nowrap; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: #FFFFFF; text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--coral); }
@@ -111,13 +117,19 @@ a { color: inherit; }
 }
 /* Sits centred on the phone's app icons, then rises as the photos land so it
    ends up centred on the grid. */
-.hero3-copy { position: absolute; left: var(--mx); top: calc(var(--m) + 107 * var(--u)); animation: hero3-copy-rise 1.1s cubic-bezier(0.6, 0, 0.2, 1) 5.1s both; }
-@keyframes hero3-copy-rise { from { transform: translateY(calc(62 * var(--u))); } to { transform: none; } }
+.hero3-copy { position: absolute; left: var(--mx); top: calc(var(--m) + 198 * var(--u)); width: calc(286 * var(--u)); transform: translateY(-50%); animation: hero3-copy-rise 1.1s cubic-bezier(0.6, 0, 0.2, 1) 5.1s both; }
+/* Centred on the grid, so the headline, the line under it and the button stay
+   balanced however many lines that line wraps to. The rise is measured from
+   there: 87u lower puts the headline back on the phone's app icons. */
+@keyframes hero3-copy-rise { from { transform: translateY(calc(-50% + 87 * var(--u))); } to { transform: translateY(-50%); } }
 .hero3-title { display: grid; font-family: var(--sans); font-size: calc(44 * var(--u)); font-weight: 500; line-height: calc(50 * var(--u)); color: #000; white-space: nowrap; }
 .hero3-before, .hero3-after { grid-area: 1 / 1; }
 .hero3-before { opacity: 0; animation: hero3-in 0.6s ease both, hero3-out 0.6s ease 3.9s forwards; }
 .hero3-after { animation: hero3-in 0.8s ease 4.1s both; }
-.hero3-btn { position: absolute; left: 0; top: calc(135 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.8s ease 5.2s both; }
+/* Last to arrive: holds back until the photos have landed and the button is
+   in place (6.4s), then fades in on its own. */
+.hero3-sub { margin-top: calc(12 * var(--u)); font-size: calc(15 * var(--u)); line-height: calc(22 * var(--u)); font-weight: 400; color: var(--text-strong); animation: hero3-in 1s ease 6.5s both; }
+.hero3-btn { margin-top: calc(30 * var(--u)); padding: calc(13.6 * var(--u)) calc(32 * var(--u)); font-size: calc(12 * var(--u)); line-height: calc(20 * var(--u)); white-space: nowrap; animation: hero3-rise 0.8s ease 5.2s both; }
 /* The sparkle sweep: a gold glint slides across the black text, leaving it
    orange, and two small stars twinkle as it passes. */
 .hero3-accent { position: relative; color: var(--coral-hot); }
@@ -176,18 +188,21 @@ a { color: inherit; }
 @container (max-aspect-ratio: 7 / 5) {
   .hero3-inner {
     --u: min(100cqw / 390, 100cqh / 610, 2.2px); --p: calc(var(--u) * 342 / 396); --px: 0; --py: 25; --k: 1.4505;
-    /* One spacing --s sits above the headline, between headline and photos,
-       between photos and button, and below the button: 4 gaps plus the headline
-       (86), the grid (396 stage units) and the button (47) fill the height. */
-    --s: max(24px, calc((100cqh - 133 * var(--u) - 396 * var(--p)) / 4));
-    --gt: calc(2 * var(--s) + 86 * var(--u));
+    /* One spacing --s sits above the headline, between the copy and photos,
+       between photos and button, and below the button: 4 gaps plus the copy
+       (86 headline + 12 gap + 44 for the two lines under it = 142), the grid
+       (396 stage units) and the button (47) fill the height. */
+    --s: max(24px, calc((100cqh - 189 * var(--u) - 396 * var(--p)) / 4));
+    --gt: calc(2 * var(--s) + 142 * var(--u));
     position: static; width: auto; height: auto; transform: none;
   }
-  .hero3-copy { animation: none; left: 50%; top: calc(var(--s) + 43 * var(--u)); transform: translate(-50%, -50%); text-align: center; }
+  /* Centred in the space above the photos, so an extra wrapped line grows
+     evenly rather than pushing into the grid. */
+  .hero3-copy { animation: none; left: 50%; top: calc(var(--gt) / 2); width: min(calc(340 * var(--u)), calc(100cqw - 48px)); transform: translate(-50%, -50%); text-align: center; }
   /* Under the photos rather than under the headline, so no space is held open
      for it while the phone is up. It still lives inside .hero3-copy, so its
      offset is measured back from the bottom of the hero. */
-  .hero3-btn { left: 50%; top: calc(2 * var(--s) + 86 * var(--u) + 396 * var(--p)); translate: -50% 0; }
+  .hero3-btn { position: absolute; margin-top: 0; left: 50%; top: calc(var(--gt) + 396 * var(--p)); translate: -50% 0; }
   .hero3-title { font-size: calc(38 * var(--u)); line-height: calc(43 * var(--u)); }
   .hero3-stage { left: 50%; right: auto; top: var(--gt); bottom: auto; transform: translateX(-50%); }
 }
@@ -208,6 +223,8 @@ a { color: inherit; }
 /* How I can help band */
 .help-band { background: var(--black); padding: 44px var(--gutter) 80px; }
 .help-band .eyebrow { text-align: center; margin-bottom: 44px; }
+/* Sits between the heading and the cards on the home page only. */
+.help-blurb { max-width: 900px; margin: 0 auto 48px; text-align: center; font-size: 18px; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,0.88); }
 .help-cards { max-width: 928px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 29px; }
 .help-card { background: var(--white); padding: 44px 32px 50px; display: flex; flex-direction: column; min-height: 286px; }
 .help-card h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; color: #000; line-height: 1.3; margin-bottom: 14px; }
@@ -492,6 +509,7 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
   .home-intro p { font-size: 20px; text-align: left; }
   .help-band { padding: 44px var(--gutter) 56px; }
   .help-band .eyebrow, .work .eyebrow { margin-bottom: 32px; }
+  .help-blurb { font-size: 17px; margin-bottom: 36px; }
   .help-cards { grid-template-columns: 1fr; max-width: 480px; }
   .help-card { min-height: 0; }
   .work { padding: 52px var(--gutter) 60px; }
@@ -544,7 +562,6 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
 }
 
 @media (max-width: 480px) {
-  .nav-wordmark { font-size: 12px; letter-spacing: 0.1em; }
   .stat-grid { grid-template-columns: 1fr; max-width: 340px; }
   .stat-card { min-height: 0; padding: 24px 20px 28px; }
   .stat-card--wide { flex-direction: column; text-align: center; }

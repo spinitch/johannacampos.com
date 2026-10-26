@@ -15,6 +15,9 @@
 <!-- HOW I CAN HELP -->
 <section id="services" class="help-band" aria-labelledby="help-heading">
   <h2 id="help-heading" class="eyebrow eyebrow--lg">{{ offerings.heading }}</h2>
+  {%- if offerings.blurb %}
+  <p class="help-blurb">{{ offerings.blurb | mdi | safe }}</p>
+  {%- endif %}
   <div class="help-cards">
     {%- for o in offerings.items %}
     <article class="help-card">
