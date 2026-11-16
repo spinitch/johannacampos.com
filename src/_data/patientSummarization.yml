@@ -1,0 +1,74 @@
+page_title: AI Patient Summarization — Johanna Campos
+description: "Case study: a UX audit and readiness assessment for an AI tool that summarizes patient records for clinicians."
+eyebrow: Selected Work
+title: AI Patient Summarization
+tags:
+  - UX audit
+  - readiness assessment
+  - clinician research
+  - accessibility audit
+  - AI product strategy
+situation:
+  heading: The Situation
+  body: |-
+    An AI tool built to speed up new patient onboarding by summarizing EHR records for clinicians. Before going to market, the team needed to know if it was commercially viable, and what it would take to get there.
+role:
+  heading: What I Did
+  body: |-
+    Interviewed clinicians and staff across five roles — intake physician, medical oncologist, nurse practitioner, patient access, and new patient abstractor. Ran a heuristic evaluation and a WCAG 2.1 accessibility audit, then turned the findings into wireframe concepts.
+findings:
+  heading: What We Found → What I Designed
+  items:
+    - tag: Trust
+      found: Trust in the output
+      fix: Honest about the AI
+      detail: Shows how many documents each summary draws on, links to sources, and asks clinicians to check key values.
+    - tag: Scanning
+      found: Hard to scan
+      fix: Built for scanning
+      detail: Disease status at a glance, plus a timeline grouped by treatments, imaging, procedures, and labs.
+    - tag: Adoption
+      found: Outside the workflow
+      fix: Fits the clinical day
+      detail: Single sign-on with Epic, a record field that takes a paste, and alerts that open the summary directly.
+    - tag: Workflow
+      found: Opened on an FAQ page
+      fix: Opens on the work
+      detail: Unread summaries first, sorted by appointment date, in the order clinicians see patients.
+    - tag: Scale
+      found: One view for every role
+      fix: Role-based views
+      detail: Oncologists see pathology and treatment first, social workers see goals of care.
+    - tag: Process
+      found: Feedback went nowhere
+      fix: A feedback process
+      detail: Low ratings capture an issue type and feed a biweekly triage into planning.
+takeaway:
+  heading: The Takeaway for Model-First Teams
+  body: |-
+    Clinicians already saw the value. Adoption depended as much on output quality, workflow fit, WCAG 2.1 accessibility — table stakes for selling into health systems — and a working feedback loop as on the model itself.
+concept:
+  heading: From Audit to Design
+  body: |-
+    High-fidelity concepts built from the audit, with placeholder data.
+roadmap:
+  heading: Prioritized Roadmap
+  items:
+    - when: Now
+      label: Quick wins
+      body: Formatting fixes, grouping, WCAG 2.1 AA, and alerts that open the summary.
+    - when: Next
+      label: Workflow
+      body: Single sign-on with Epic, smarter deduplication, and a feedback process.
+    - when: Later
+      label: Scale
+      body: Role-based views, specialty templates, and readiness for external pilots.
+images:
+  home:
+    src: /assets/img/patient-summarization/patient-summary-home.webp
+    alt: "Clinician home screen: the next patient, summaries that need a look, counts for ready-to-review, trial matches and sources read, and today's clinic in appointment order"
+    caption: Opens on the clinician’s day — the next patient, summaries that need a look, and today’s clinic in appointment order.
+  detail:
+    src: /assets/img/patient-summarization/patient-summary-detail.webp
+    alt: "Patient summary screen with disease status at a glance, results in plain words, a source-cited timeline, goals of care, and trial matches"
+    caption: Honest about the AI — disease status at a glance, results in plain words first, a source-cited timeline, goals of care, and trial matches.

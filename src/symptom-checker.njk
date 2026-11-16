@@ -23,6 +23,14 @@ eleventyComputed:
     <figure class="cs-figure cs-figure--bodymap">
       <img src="{{ img.bodymap.src | asset }}" alt="{{ img.bodymap.alt }}" width="1140" height="987" loading="lazy">
     </figure>
+    {#- A present-day concept, kept clearly apart from the shipped WebMD work above. #}
+    {{- cs_.section(cs.concept) }}
+    <figure class="cs-figure cs-figure--concept">
+      <img src="{{ img.concept_desktop.src | asset }}" alt="{{ img.concept_desktop.alt }}" width="3052" height="1896" loading="lazy">
+    </figure>
+    <figure class="cs-figure cs-figure--concept">
+      <img src="{{ img.concept_mobile.src | asset }}" alt="{{ img.concept_mobile.alt }}" width="2724" height="1959" loading="lazy">
+    </figure>
   </div>
 
 {% include "other-work.njk" %}

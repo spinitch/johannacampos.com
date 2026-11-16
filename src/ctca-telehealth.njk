@@ -18,6 +18,14 @@ eleventyComputed:
     <figure class="cs-figure cs-figure--telehealth">
       <img src="{{ img.phones.src | asset }}" alt="{{ img.phones.alt }}" width="1228" height="1341" loading="lazy">
     </figure>
+    {#- A present-day concept, kept clearly apart from the shipped work above. #}
+    {{- cs_.section(cs.concept) }}
+    <figure class="cs-figure cs-figure--concept">
+      <img src="{{ img.concept_desktop.src | asset }}" alt="{{ img.concept_desktop.alt }}" width="3052" height="2058" loading="lazy">
+    </figure>
+    <figure class="cs-figure cs-figure--concept">
+      <img src="{{ img.concept_mobile.src | asset }}" alt="{{ img.concept_mobile.alt }}" width="3006" height="1988" loading="lazy">
+    </figure>
   </div>
 
 {% include "other-work.njk" %}

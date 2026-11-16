@@ -14,10 +14,29 @@ eleventyComputed:
     <aside class="cs-quote">
       <p>{{ cs.quote | replace("\n", "<br>") | accent("cs-quote-accent") | safe }}</p>
     </aside>
-    <div class="cs-video-split">
+    {#- Role sits beside the product shot: the marketing site with two app
+        screens overlapping its lower-left corner. #}
+    <div class="cs-split cs-split--flip">
       {{- cs_.section(cs.role) }}
+      <figure class="cs-stack">
+        <img class="k-web" src="{{ img.website.src | asset }}" alt="{{ img.website.alt }}" width="900" height="629" loading="lazy">
+        <img class="k-phone k-p1" src="{{ img.screen_benefits.src | asset }}" alt="{{ img.screen_benefits.alt }}" width="828" height="1736" loading="lazy">
+        <img class="k-phone k-p2" src="{{ img.screen_article.src | asset }}" alt="{{ img.screen_article.alt }}" width="828" height="1736" loading="lazy">
+      </figure>
+    </div>
+    <div class="cs-split">
+      <figure class="cs-split-img cs-split-img--pair cs-split-img--bleed">
+        <img style="--w: 828" src="{{ img.screen_home.src | asset }}" alt="{{ img.screen_home.alt }}" width="828" height="1736" loading="lazy">
+        <img style="--w: 828" src="{{ img.screen_wellness.src | asset }}" alt="{{ img.screen_wellness.alt }}" width="828" height="1736" loading="lazy">
+      </figure>
+      {{- cs_.section(cs.metrics) }}
+    </div>
+    {{- cs_.section(cs.roadblocks) }}
+    {#- The animation takes the slot the website shot used to hold, top-left of
+        the brand collage; the other three keep their Figma positions. #}
+    <figure class="cs-collage">
       {%- if cs.video and cs.video.src %}
-      <figure class="cs-video">
+      <figure class="cs-video c-video">
         {#- preload="metadata" so the file only downloads when someone presses play. #}
         <video controls playsinline preload="metadata" poster="{{ cs.video.poster | asset }}" width="1280" height="720">
           <source src="{{ cs.video.src | asset }}" type="video/mp4">
@@ -25,14 +44,6 @@ eleventyComputed:
         {%- if cs.video.credit %}<figcaption>{{ cs.video.credit }}</figcaption>{% endif %}
       </figure>
       {%- endif %}
-    </div>
-    <div class="cs-split">
-      <figure class="cs-split-img"><img src="{{ img.ai_phones.src | asset }}" alt="{{ img.ai_phones.alt }}" width="588" height="736" loading="lazy"></figure>
-      {{- cs_.section(cs.metrics) }}
-    </div>
-    {{- cs_.section(cs.roadblocks) }}
-    <figure class="cs-collage">
-      <img class="c-web" src="{{ img.website.src | asset }}" alt="{{ img.website.alt }}" width="900" height="629" loading="lazy">
       <img class="c-chars" src="{{ img.characters.src | asset }}" alt="{{ img.characters.alt }}" width="422" height="322" loading="lazy">
       <img class="c-brand" src="{{ img.brand_tiles.src | asset }}" alt="{{ img.brand_tiles.alt }}" width="900" height="557" loading="lazy">
       <img class="c-social" src="{{ img.social.src | asset }}" alt="{{ img.social.alt }}" width="502" height="302" loading="lazy">

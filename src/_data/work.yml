@@ -1,6 +1,12 @@
 heading: Selected Work
 other_heading: Other Selected Work
 cards:
+  - page: patient-summarization.html
+    name: AI Patient Summarization
+    card_title: AI Patient Summarization
+    summary: UX audit · readiness assessment · clinician research · accessibility audit · AI product strategy
+    thumbnail: /assets/img/work/patient-summarization-thumb.jpg
+    thumbnail_alt: AI patient summarization dashboard on desktop, clinician home screen and patient list
   - page: cancercompass.html
     name: CancerCompass
     card_title: CancerCompass
@@ -19,9 +25,3 @@ cards:
     summary: service design · workflow audit · cross-functional partnership · patient interviews
     thumbnail: /assets/img/work/ctca-telehealth-thumb.jpg
     thumbnail_alt: CTCA Telehealth video visit screens on three phones
-  - page: lakatta.html
-    name: Lakatta
-    card_title: Lakatta
-    summary: solo founder-designer · AI-assisted development · 0→1 build · brand & design system
-    thumbnail: /assets/img/work/lakatta-thumb.jpg
-    thumbnail_alt: Lakatta travel app on desktop and two phones

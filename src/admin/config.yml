@@ -247,74 +247,83 @@ collections:
   - label: Case studies
     name: case_studies
     files:
-      - label: "Lakatta"
-        name: lakatta
-        file: "src/_data/lakatta.yml"
+      - label: "AI Patient Summarization"
+        name: patient-summarization
+        file: "src/_data/patientSummarization.yml"
         fields:
             - {label: Browser tab title, name: page_title, widget: string}
             - {label: Search description, name: description, widget: text, hint: "One or two sentences shown in Google results."}
             - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
             - {label: Title, name: title, widget: string}
             - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
-            - label: "The Problem"
-              name: problem
+            - label: "The Situation"
+              name: situation
               widget: object
               fields:
                 - {label: Heading, name: heading, widget: string}
                 - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
-            - label: "My Role & Impact"
+            - label: "What I Did"
               name: role
               widget: object
               fields:
                 - {label: Heading, name: heading, widget: string}
                 - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
-            - label: "Metrics & Outcomes"
-              name: metrics
+            - label: "Findings table"
+              name: findings
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - label: Rows
+                  name: items
+                  widget: list
+                  fields:
+                    - {label: Category, name: tag, widget: string, hint: "The small orange word, e.g. Trust."}
+                    - {label: What we found, name: found, widget: string}
+                    - {label: What I designed, name: fix, widget: string, hint: "The bold line."}
+                    - {label: Detail, name: detail, widget: text}
+            - label: "The Takeaway"
+              name: takeaway
               widget: object
               fields:
                 - {label: Heading, name: heading, widget: string}
                 - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
-            - label: "Navigating Roadblocks"
-              name: roadblocks
+            - label: "From Audit to Design"
+              name: concept
               widget: object
               fields:
                 - {label: Heading, name: heading, widget: string}
                 - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Prioritized roadmap"
+              name: roadmap
+              widget: object
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - label: Columns
+                  name: items
+                  widget: list
+                  fields:
+                    - {label: When, name: when, widget: string, hint: "Now, Next, or Later."}
+                    - {label: Label, name: label, widget: string}
+                    - {label: Text, name: body, widget: text}
             - label: Images
               name: images
               widget: object
               hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
               fields:
-                - label: "Phone: day view (left)"
-                  name: phone_itinerary
+                - label: "Concept: home screen"
+                  name: home
                   widget: object
                   fields:
                     - {label: Image, name: src, widget: image}
                     - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
-                - label: "Phone: journey card (right)"
-                  name: phone_journey
+                    - {label: Caption, name: caption, widget: text}
+                - label: "Concept: patient summary"
+                  name: detail
                   widget: object
                   fields:
                     - {label: Image, name: src, widget: image}
                     - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
-                - label: "Design system: empty states"
-                  name: empty_states
-                  widget: object
-                  fields:
-                    - {label: Image, name: src, widget: image}
-                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
-                - label: "Design system: category labels"
-                  name: category_labels
-                  widget: object
-                  fields:
-                    - {label: Image, name: src, widget: image}
-                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
-                - label: "Desktop itinerary"
-                  name: desktop
-                  widget: object
-                  fields:
-                    - {label: Image, name: src, widget: image}
-                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                    - {label: Caption, name: caption, widget: text}
       - label: "CancerCompass"
         name: cancercompass
         file: "src/_data/cancercompass.yml"
@@ -324,7 +333,7 @@ collections:
             - {label: Eyebrow, name: eyebrow, widget: string, hint: "Small orange text above the title."}
             - {label: Title, name: title, widget: string}
             - {label: Tags, name: tags, widget: list, field: {label: Tag, name: tag, widget: string}, hint: "The skills shown in the white box under the title."}
-            - label: Animation video (beside “My Role & Impact”)
+            - label: Animation video (top left of the brand collage)
               name: video
               widget: object
               collapsed: true
@@ -363,14 +372,32 @@ collections:
               widget: object
               hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
               fields:
-                - label: "Compass AI phones"
-                  name: ai_phones
+                - label: "Beside My Role & Impact: website"
+                  name: website
                   widget: object
                   fields:
                     - {label: Image, name: src, widget: image}
                     - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
-                - label: "Collage: website"
-                  name: website
+                - label: "Beside My Role & Impact: front phone"
+                  name: screen_benefits
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Beside My Role & Impact: back phone"
+                  name: screen_article
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Beside Metrics: left phone"
+                  name: screen_home
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
+                - label: "Beside Metrics: right phone"
+                  name: screen_wellness
                   widget: object
                   fields:
                     - {label: Image, name: src, widget: image}
@@ -426,11 +453,24 @@ collections:
               fields:
                 - {label: Heading, name: heading, widget: string}
                 - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Revisiting It Today (concept)"
+              name: concept
+              widget: object
+              hint: "The present-day concept below the shipped work. Say plainly that it is a concept, not something that shipped."
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
             - label: Images
               name: images
               widget: object
               hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
               fields:
+                - label: "Concept board"
+                  name: concept
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
                 - label: "Phone: body map (left)"
                   name: phone_bodymap
                   widget: object
@@ -482,11 +522,24 @@ collections:
               fields:
                 - {label: Heading, name: heading, widget: string}
                 - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
+            - label: "Revisiting It Today (concept)"
+              name: concept
+              widget: object
+              hint: "The present-day concept below the shipped work. Say plainly that it is a concept, not something that shipped."
+              fields:
+                - {label: Heading, name: heading, widget: string}
+                - {label: Text, name: body, widget: markdown, minimal: true, buttons: [bold, italic, link], editor_components: [], hint: "Leave a blank line between paragraphs."}
             - label: Images
               name: images
               widget: object
               hint: "Pictures keep their size and position on the page; swap in images with a similar shape."
               fields:
+                - label: "Concept board"
+                  name: concept
+                  widget: object
+                  fields:
+                    - {label: Image, name: src, widget: image}
+                    - {label: Alt text, name: alt, widget: string, hint: "Describe the picture for screen readers and search engines."}
                 - label: "Three phones"
                   name: phones
                   widget: object

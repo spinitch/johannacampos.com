@@ -1,0 +1,59 @@
+---
+layout: base.njk
+permalink: patient-summarization.html
+# Client work under a confidentiality marking: kept out of search results and
+# out of work.yml, so nothing on the site links to it.
+noindex: true
+eleventyComputed:
+  title: "{{ patientSummarization.page_title }}"
+  description: "{{ patientSummarization.description }}"
+---
+{%- import "cs-macros.njk" as cs_ -%}
+{%- set cs = patientSummarization %}{% set heroClass = "summarization" %}{% set img = patientSummarization.images -%}
+{% include "cs-hero.njk" %}
+
+  <div class="cs-body">
+    {{- cs_.section(cs.situation) }}
+    {{- cs_.section(cs.role) }}
+
+    {#- Audit findings: what the research turned up, beside what it led to. #}
+    <section class="cs-section cs-findings-head">
+      <h2>{{ cs.findings.heading }}</h2>
+    </section>
+    <ol class="cs-findings">
+      {%- for f in cs.findings.items %}
+      <li>
+        <p class="f-tag">{{ f.tag }}</p>
+        <p class="f-found">{{ f.found }}</p>
+        <p class="f-fix"><strong>{{ f.fix }}</strong>{{ f.detail }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+
+    {{- cs_.section(cs.takeaway) }}
+    {{- cs_.section(cs.concept) }}
+
+    <figure class="cs-figure cs-figure--summary">
+      <img src="{{ img.home.src | asset }}" alt="{{ img.home.alt }}" width="2880" height="1920" loading="lazy">
+      <figcaption>{{ img.home.caption }}</figcaption>
+    </figure>
+    <figure class="cs-figure cs-figure--summary">
+      <img src="{{ img.detail.src | asset }}" alt="{{ img.detail.alt }}" width="2880" height="1920" loading="lazy">
+      <figcaption>{{ img.detail.caption }}</figcaption>
+    </figure>
+
+    <section class="cs-section cs-findings-head">
+      <h2>{{ cs.roadmap.heading }}</h2>
+    </section>
+    <ol class="cs-roadmap">
+      {%- for r in cs.roadmap.items %}
+      <li>
+        <p class="r-when">{{ r.when }}</p>
+        <p class="r-label">{{ r.label }}</p>
+        <p class="r-body">{{ r.body }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+
+{% include "other-work.njk" %}

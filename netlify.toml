@@ -2,6 +2,9 @@
 [build]
   command = "npm run build"
   publish = "_site"
+  # netlify/edge-functions/protect.js password-gates the AI Patient
+  # Summarization case study and its screenshots.
+  edge_functions = "netlify/edge-functions"
 
 [build.environment]
   NODE_VERSION = "22"
