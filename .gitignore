@@ -6,6 +6,12 @@
 /Home-1.png
 /About Me.png
 /Case Study- *.png
+/homev3.*.png
+
+# Camera originals dropped into hero-photos/; the .jpg copies beside them are
+# the ones the home hero actually uses, and those stay tracked.
+/hero-photos/*.heic
+/hero-photos/*.HEIC
 
 # Handoff / working notes
 /claude-code-handoff.md
