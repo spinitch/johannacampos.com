@@ -40,7 +40,7 @@ items:
 
       I’ve watched the same scene play out on every family trip: one person holds all the information, and everyone else is texting them for the Airbnb code, the flight number, which terminal to go to. I’ve stood in an airport digging through my own inbox trying to find that email that holds the QR code for the train while stressed and short on time. There had to be a better way to handle information that’s already sitting in your email.
 
-      I looked at what existed. TripIt, Wanderlog, they solve the aggregation problem, but not the simplicity problem. I thought I could build something better, something simpler. With help from Claude Code, Claude Design, I built [Lakatta](lakatta.html). It pulls your confirmation emails into one itinerary that shows you only what you need for right now, with the rest of the trip a tap away. Weather’s built in. Shared trips and split expenses mean nobody’s re-sending hotel details in a group chat for the fifth time.
+      I looked at what existed. TripIt, Wanderlog, they solve the aggregation problem, but not the simplicity problem. I thought I could build something better, something simpler. With help from Claude Code, Claude Design, I built Lakatta. It pulls your confirmation emails into one itinerary that shows you only what you need for right now, with the rest of the trip a tap away. Weather’s built in. Shared trips and split expenses mean nobody’s re-sending hotel details in a group chat for the fifth time.
   - name: Direct + Develop
     slug: direct-develop
     card_summary: Design executive for teams that need someone who’s already navigated clinical, engineering, and exec stakeholders, without the headcount.

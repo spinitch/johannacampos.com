@@ -322,17 +322,21 @@ a { color: inherit; }
 .cs-hero--cancercompass { background:
     linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%),
     linear-gradient(90deg, #607752 0 22.3%, #DA8F50 22.3% 50.1%, #C86647 50.1% 77.8%, #EEDDBC 77.8% 100%); }
+.cs-hero--summarization { background:
+    radial-gradient(circle, rgba(255,255,255,0.45) 1.6px, transparent 2.2px) 12px 12px / 31px 27px,
+    linear-gradient(180deg, #1F2A44 0%, #5B6B8C 55%, #C3CBDA 100%); }
+.cs-hero--summarization .cs-eyebrow, .cs-hero--summarization h1 { color: #fff; }
 .cs-hero--symptom { background: #B0BFD2 url("../img/symptom-checker/symptom-checker-hero-bg.jpg") center / cover no-repeat; }
-.cs-hero--lakatta { background: #E1EAF7 url("../img/lakatta/lakatta-hero-hills.svg") right top / auto 330px no-repeat; }
 .cs-hero .cs-eyebrow { font-size: 18px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #000; margin-bottom: 6px; }
 .cs-hero h1 { font-family: var(--sans); font-size: 36px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em; color: #000; margin-bottom: 30px; }
 .cs-tagbox { position: relative; background: var(--white); max-width: 825px; margin: 0 auto; padding: 24px 32px 22px; }
 .cs-tags { list-style: none; max-width: 540px; margin: 0 auto; font-size: 15px; line-height: 1.68; color: var(--slate); }
 .cs-tags li { display: inline; }
 .cs-tags li:not(:last-child)::after { content: "·"; color: var(--coral); margin: 0 0.85em 0 0.75em; }
-.cs-body { background: var(--white); padding: 70px 0 72px; }
+/* clip, not hidden: lets .cs-stack run past the right edge without a scrollbar. */
+.cs-body { background: var(--white); padding: 70px 0 72px; overflow-x: clip; }
 .cs-section { max-width: 728px; margin: 0 auto; padding: 0 24px; }
-.cs-section + .cs-section, .cs-section + .cs-split, .cs-split + .cs-section, .cs-figure + .cs-section, .cs-quote + .cs-section, .cs-section + .cs-figure, .cs-quote + .cs-video-split, .cs-video-split + .cs-split, .cs-video-split + .cs-section { margin-top: 72px; }
+.cs-section + .cs-section, .cs-section + .cs-split, .cs-split + .cs-section, .cs-figure + .cs-section, .cs-quote + .cs-section, .cs-section + .cs-figure, .cs-quote + .cs-video-split, .cs-video-split + .cs-split, .cs-video-split + .cs-section, .cs-split + .cs-split, .cs-findings + .cs-section, .cs-roadmap + .cs-section { margin-top: 72px; }
 .cs-section h2 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.005em; color: #000; margin-bottom: 12px; }
 .cs-section p { font-size: 17px; line-height: 1.7; color: var(--text-body); }
 .cs-section p + p { margin-top: 24px; }
@@ -350,31 +354,68 @@ a { color: inherit; }
    width (inline --w) so both render at the same height. */
 .cs-split-img--pair { display: flex; align-items: flex-start; gap: 3%; }
 .cs-split-img--pair img { flex: var(--w) 1 0; min-width: 0; width: auto; }
+/* Runs wider than its column and starts off-canvas, so the first phone is
+   cropped by the window edge. */
+.cs-split-img--bleed { width: clamp(260px, 31vw, 320px); margin-left: clamp(-51px, -5vw, -24px); }
 .cs-split .cs-section { max-width: none; margin: 0; padding: 0; }
+
+/* Mirror of .cs-split: text in the content column, image out to the right. */
+.cs-split--flip { grid-template-columns: minmax(0, 429px) minmax(0, 1fr); align-items: start; column-gap: 0; padding-right: 0; padding-left: max(24px, calc((100% - 680px) / 2)); }
+/* Marketing site with two app screens overlapping its lower-left corner.
+   The website export carries its drop shadow as a 78/900 transparent margin,
+   so the figure runs that much past the window and .cs-body clips it — which
+   lands the visible card edge just inside the window. Percentages are of the
+   full export, shadow included. */
+.cs-stack { --w: clamp(300px, 44vw, 484px); position: relative; margin: 0 calc(var(--w) * -0.0867 + 12px) 0 0; width: var(--w); justify-self: end; aspect-ratio: 455 / 468; }
+.cs-stack img { position: absolute; height: auto; }
+.cs-stack .k-web { left: 0; top: 0; width: 100%; }
+.cs-stack .k-phone { top: 49.9%; width: 24.6%; }
+.cs-stack .k-p1 { left: 34.2%; }
+.cs-stack .k-p2 { left: 60.7%; }
 
 /* Figures */
 .cs-figure { margin: 72px auto 0; padding: 0 24px; }
 .cs-figure img { margin: 0 auto; height: auto; }
 .cs-figure--telehealth img { width: 614px; }
 .cs-figure--bodymap img { width: 567px; }
-.cs-figure--lakatta-desktop img { width: 681px; }
+/* Wide concept boards: run to the content column, not the Figma widths above. */
+.cs-figure--concept img { width: 100%; max-width: 709px; }
 .cs-figure-pair { max-width: 690px; margin: 72px auto 0; padding: 0 24px; display: grid; grid-template-columns: 292fr 307fr; column-gap: 50px; align-items: start; }
 .cs-figure-pair img { width: 100%; height: auto; }
 .cs-figure-pair + .cs-figure { margin-top: 62px; }
+
+/* AI Patient Summarization: audit findings and roadmap */
+.cs-findings-head { margin-top: 72px; }
+.cs-findings-head h2 { margin-bottom: 0; }
+.cs-findings { max-width: 728px; margin: 22px auto 0; padding: 0 24px; list-style: none; }
+.cs-findings li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); column-gap: 32px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.cs-findings li:last-child { border-bottom: 1px solid var(--rule); }
+.cs-findings .f-tag { grid-column: 1 / -1; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
+.cs-findings .f-found { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
+.cs-findings .f-fix { font-size: 15px; line-height: 1.6; color: var(--text-body); }
+.cs-findings .f-fix strong { display: block; font-weight: 600; color: var(--text-strong); margin-bottom: 3px; }
+.cs-roadmap { max-width: 728px; margin: 22px auto 0; padding: 0 24px; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.cs-roadmap li { border-top: 2px solid var(--coral); padding-top: 14px; }
+.cs-roadmap .r-when { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); }
+.cs-roadmap .r-label { font-size: 15px; font-weight: 600; color: var(--text-strong); margin: 2px 0 6px; }
+.cs-roadmap .r-body { font-size: 14px; line-height: 1.6; color: var(--text-body); }
+.cs-figure--summary img { width: 100%; max-width: 709px; }
+.cs-figure--summary figcaption { max-width: 709px; margin: 10px auto 0; font-size: 12px; line-height: 1.6; color: var(--text-strong); }
+.cs-figure + .cs-figure { margin-top: 44px; }
 
 /* CancerCompass pull-quote band */
 .cs-quote { max-width: 697px; margin: 70px auto 0; border-top: 1px solid #C9C9C9; border-bottom: 1px solid #C9C9C9; padding: 52px 24px 58px; text-align: center; }
 .cs-quote p { font-size: 22px; font-weight: 600; line-height: 1.4; color: #000; }
 .cs-quote-accent { color: var(--coral-hot); }
-.cs-quote + .cs-section { margin-top: 104px; }
+.cs-quote + .cs-section, .cs-quote + .cs-split { margin-top: 104px; }
 
 /* CancerCompass collage (positions measured from the Figma frame, 709x536) */
 .cs-collage { position: relative; max-width: 709px; margin: 72px auto 0; aspect-ratio: 709 / 536; }
 .cs-collage img { position: absolute; height: auto; }
-/* The website and brand-tile exports carry their own drop shadows as
-   transparent padding, so these offsets are negative to line the visible card
-   edges up with the Figma positions. */
-.cs-collage .c-web { left: -6.0%; top: -1.0%; width: 73.9%; }
+/* The brand-tile export carries its own drop shadow as transparent padding, so
+   that offset is negative to line the visible card edge up with the Figma
+   position. */
+.cs-collage .c-video { position: absolute; left: 13.6%; top: -1.5%; width: 46.8%; }
 .cs-collage .c-chars { left: 70.5%; top: 0; width: 29.3%; }
 .cs-collage .c-brand { left: 35.7%; top: 38.0%; width: 69.7%; }
 .cs-collage .c-social { left: 2.8%; top: 72.2%; width: 35.8%; }
@@ -483,8 +524,12 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
 /* Image + text splits stack before the image column gets too narrow */
 @media (max-width: 860px) {
   .cs-split { grid-template-columns: 1fr; padding-right: 0; row-gap: 28px; }
+  .cs-split--flip { padding-left: 0; }
   .cs-video-split { grid-template-columns: 1fr; row-gap: 24px; }
   .cs-split-img { width: min(78vw, 340px); }
+  /* Stacked, nothing runs off the edge: drop the bleed and the overhang. */
+  .cs-split-img--bleed { width: min(84vw, 360px); margin-left: 0; justify-self: center; }
+  .cs-stack { width: min(92vw, 460px); margin: 0 auto; justify-self: center; }
   .cs-split .cs-section { max-width: 728px; margin: 0 auto; padding: 0 24px; width: 100%; }
 }
 
@@ -544,18 +589,21 @@ select.form-input option { background: #1A1A2E; color: var(--bg); }
 
   .cs-hero { padding-top: 44px; }
   .cs-hero h1 { font-size: 30px; margin-bottom: 24px; }
-  .cs-hero--lakatta { background-size: auto 250px; }
   .cs-tagbox { padding: 18px 20px; }
   .cs-tags { font-size: 14px; }
   .cs-body { padding: 52px 0 56px; }
-  .cs-section + .cs-section, .cs-section + .cs-split, .cs-split + .cs-section, .cs-figure + .cs-section, .cs-quote + .cs-section, .cs-section + .cs-figure, .cs-quote + .cs-video-split, .cs-video-split + .cs-split, .cs-video-split + .cs-section { margin-top: 52px; }
+  .cs-section + .cs-section, .cs-section + .cs-split, .cs-split + .cs-section, .cs-figure + .cs-section, .cs-quote + .cs-section, .cs-section + .cs-figure, .cs-quote + .cs-video-split, .cs-video-split + .cs-split, .cs-video-split + .cs-section, .cs-split + .cs-split, .cs-findings + .cs-section, .cs-roadmap + .cs-section { margin-top: 52px; }
   .cs-figure, .cs-figure-pair { margin-top: 52px; }
   .cs-figure-pair { grid-template-columns: 1fr; row-gap: 20px; max-width: 420px; }
   .cs-quote { margin: 52px 24px 0; padding: 36px 8px 40px; }
   .cs-quote p { font-size: 17px; }
-  .cs-quote + .cs-section { margin-top: 64px; }
+  .cs-quote + .cs-section, .cs-quote + .cs-split { margin-top: 64px; }
+  .cs-findings li { grid-template-columns: 1fr; row-gap: 6px; }
+  .cs-roadmap { grid-template-columns: 1fr; gap: 20px; }
+  .cs-findings-head { margin-top: 52px; }
   .cs-collage { aspect-ratio: auto; max-width: 480px; padding: 0 24px; display: grid; gap: 20px; }
   .cs-collage img { position: static; width: 100% !important; }
+  .cs-collage .c-video { position: static; width: auto; }
   .cs-collage .c-chars { width: 78% !important; justify-self: center; }
   .cs-collage .c-social { width: 72% !important; justify-self: center; }
   .cs-credit { position: static; width: auto; }

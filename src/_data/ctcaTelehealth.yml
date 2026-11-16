@@ -23,7 +23,17 @@ roadblocks:
   heading: Navigating Roadblocks
   body: |-
     Getting teams to actually change established process was the real challenge. What consistently moved things forward was putting direct patient feedback and interview findings in front of them — people are set in their ways, so managing those relationships well was the key to getting alignment.
+concept:
+  heading: Revisiting It Today
+  body: |-
+    A concept revisit, not shipped work — the same audit findings taken a step further. One thread replaces the flood of near-identical emails and texts, a one-minute setup check runs before the visit, and a phone fallback covers the call dropping anyway.
 images:
+  concept_desktop:
+    src: /assets/img/ctca-telehealth/telehealth-concept-desktop.webp
+    alt: "Concept revisit in the patient portal: one visit card tracking confirmed, setup and join, a setup check with camera, microphone and connection, and every visit message in one place"
+  concept_mobile:
+    src: /assets/img/ctca-telehealth/telehealth-concept-mobile.webp
+    alt: "The same concept on phones: the old duplicate email and text faded behind a single consolidated thread, a visit home screen with a setup check, and a connection check offering a phone call if the video drops"
   phones:
     src: /assets/img/ctca-telehealth/telehealth-phones.webp
     alt: "Three phones showing the redesigned telehealth visit: waiting room, live video call with Dr. Carol Jameson, and a countdown to the appointment"

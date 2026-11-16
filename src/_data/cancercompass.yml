@@ -35,12 +35,21 @@ roadblocks:
     The roadmap went through repeated pauses and pivots. Part of the job was managing internal and external relationships carefully enough to keep everyone aligned without burning bridges, and steering the team through sustained ambiguity — a project like this rarely moves in a straight line, and the leadership work was as much about the pauses as the progress.
 collage_credit: "*Visual identity, illustration, and campaign creative by an outside brand designer, art-directed by Johanna"
 images:
-  ai_phones:
-    src: /assets/img/cancercompass/cancercompass-ai-phones.png
-    alt: "Two phones showing Compass AI in dark mode: a personalized home screen and a chat preparing for an oncology visit"
   website:
     src: /assets/img/cancercompass/cancercompass-website.png
     alt: "CancerCompass website home page: “A place for you and your loved ones to get a second opinion”"
+  screen_benefits:
+    src: /assets/img/cancercompass/cancercompass-screen-benefits.png
+    alt: "App screen listing benefits and community resources — acupuncture, child care, legal services — each tagged health plan, employer, or community"
+  screen_article:
+    src: /assets/img/cancercompass/cancercompass-screen-article.png
+    alt: "App article screen, “Learn about emotional wellness”, opening on “You’re not alone.”"
+  screen_home:
+    src: /assets/img/cancercompass/cancercompass-screen-home.png
+    alt: "App home screen greeting Anna, with recommended tutorials and a digital library card on anxiety and emotional wellness"
+  screen_wellness:
+    src: /assets/img/cancercompass/cancercompass-screen-emotional-wellness.png
+    alt: "App screen on anxiety and emotional wellness, surfacing six matched benefits and short reads on managing feelings"
   characters:
     src: /assets/img/cancercompass/cancercompass-characters.png
     alt: CancerCompass illustrated characters
