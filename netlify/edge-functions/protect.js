@@ -25,17 +25,20 @@ const enc = new TextEncoder();
 
 // Netlify exposes env through its own global; Deno.env is the older spelling.
 // Either may be missing, so try both and treat a throw as "no value".
+// Trimmed, and the submitted password is trimmed to match: a value pasted into
+// Netlify's UI very easily picks up a trailing newline, and a password that
+// depends on invisible whitespace is a trap rather than a security measure.
 function readPassword() {
   try {
     if (typeof Netlify !== 'undefined' && Netlify?.env?.get) {
       const v = Netlify.env.get('CASE_STUDY_PASSWORD');
-      if (v) return v;
+      if (v && v.trim()) return v.trim();
     }
   } catch { /* fall through */ }
   try {
     if (typeof Deno !== 'undefined' && Deno?.env?.get) {
       const v = Deno.env.get('CASE_STUDY_PASSWORD');
-      if (v) return v;
+      if (v && v.trim()) return v.trim();
     }
   } catch { /* fall through */ }
   return null;
@@ -172,7 +175,7 @@ export default async (request, context) => {
     if (request.method === 'POST') {
       let supplied = '';
       try {
-        supplied = String((await request.formData()).get('password') ?? '');
+        supplied = String((await request.formData()).get('password') ?? '').trim();
       } catch { /* treated as a wrong password below */ }
 
       if (!equal(supplied, secret)) {
