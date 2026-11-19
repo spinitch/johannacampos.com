@@ -91,13 +91,13 @@ function loginPage({ error = false, configured = true } = {}) {
   const message = !configured
     ? '<p class="note">This page isn’t available yet.</p>'
     : error
-      ? '<p class="error" role="alert">That password didn’t work.</p>'
+      ? '<p class="error" id="err" role="alert">That password didn’t work. Check it and try again.</p>'
       : '<p class="note">This case study is shared privately.</p>';
   const form = configured ? `
       <form method="POST" autocomplete="off">
         <label for="p">Password</label>
         <input id="p" name="password" type="password" required autofocus
-               autocomplete="current-password" spellcheck="false">
+               autocomplete="current-password" spellcheck="false"${error ? ' aria-invalid="true" aria-describedby="err"' : ''}>
         <button type="submit">View case study</button>
       </form>` : '';
 
@@ -118,7 +118,9 @@ function loginPage({ error = false, configured = true } = {}) {
   .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E8624A}
   h1{font-size:23px;font-weight:600;line-height:1.3;margin:10px 0 0}
   .note,.error{font-size:14.5px;line-height:1.6;color:#737373;margin-top:12px}
-  .error{color:#C0392B}
+  .error{color:#A93226;background:#FDECEA;border-left:3px solid #C0392B;
+    padding:10px 12px;margin-top:18px;text-align:left;font-weight:500}
+  input[aria-invalid=true]{border-color:#C0392B}
   form{margin-top:26px;text-align:left}
   label{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;
     text-transform:uppercase;color:#202020;margin-bottom:7px}
